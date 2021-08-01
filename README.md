@@ -1,24 +1,63 @@
-# README
+# Sound Lodge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ミュージシャンとお店のための検索サイトです。  活躍の場を広げたいミュージシャンは演奏できるお店を、
+  イベント等で生の音楽を必要としているお店はミュージシャンを探せます。
 
-Things you may want to cover:
+プロフィールに掲載できる情報
 
-* Ruby version
+ミュージシャン
+* 都道府県名
+* 自分の演奏動画
+* 演奏人数
+* ボーカルの有無
+* 演奏ジャンル
+* 自己PR文
+* 希望料金
 
-* System dependencies
+お店
+* 店舗名
+* 都道府県名
+* 店舗紹介文
+* 画像（店内画像など）
+* ボーカルの有無
+* 希望ジャンル
+* 店内演奏設備
+* 希望料金
 
-* Configuration
+絞り込み検索機能を使うことにより、お互いの希望に沿った相手を見つけることができます。
+気になった相手はお気に入りに追加可能です。
+マイページにはお気に入りの情報を元に、おすすめの相手が表示されます。
+星の数を選び、口コミを投稿できるレビュー機能もつけました。
 
-* Database creation
+### サイトテーマ
+生の演奏をもっと身近なものにするサイト
 
-* Database initialization
 
-* How to run the test suite
+### テーマを選んだ理由
+現在のコロナ禍で演奏する場が減ってしまったミュージシャンと
+演奏スペースを持つお店を繋ぐものを作りたいと思いました。
+コロナ対策を徹底していたり、元々の雰囲気を大事にするお店もあるので、
+ボーカルの有無やジャンルでミュージシャンの絞り込み検索ができる機能をつけました。
 
-* Services (job queues, cache servers, search engines, etc.)
+### ターゲットユーザ
+* 活躍の場を広げたいミュージシャン
+* 飲食店
+* イベント会場
 
-* Deployment instructions
+### 主な利用シーン
+* 演奏を依頼したいミュージシャンの検索、演奏したいお店の検索ができます。
+* 気になる相手には詳細を問い合わせることができます。
 
-* ...
+## 設計書
+https://docs.google.com/spreadsheets/d/1buxIklVrJoGdTbtClkp3p_W2bN8JhpvWP1QWdtyd4eg/edit#gid=0
+
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1O6dYccGmsE2LGNf4KGvW1dOJPGUYBuCmk3raYTxF9eY/edit#gid=0
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
