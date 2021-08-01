@@ -1,3 +1,27 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main_visual{
+  display: flex;
+}
+
+.image_area{
+  background-image: image-url('public_top');
+  width: 1200px;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+}
+
+h1.top_main_heading{
+  writing-mode: vertical-lr;
+  margin: 50px auto;
+  font-size: 2.3rem ;
+}
