@@ -25,3 +25,38 @@ h1.top_main_heading{
   margin: 50px auto;
   font-size: 2.3rem ;
 }
+
+.about_image_area{
+  background-image: image-url('about');
+  width: 450px;
+  height: 450px;
+  background-size: cover;
+  background-position: center;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.about_container{
+  display: flex;
+}
+
+.about_content{
+  margin: 100px auto;
+}
+
+h1.about_heading{
+  margin-bottom: 100px;
+  text-align: center;
+  font-size: 2.8rem;
+  font-style: italic;
+  border-bottom: 6px double #000;
+}
+
+h1.about_heading:first-letter {
+  font-size: 150%;
+  color: #eb6100;
+}
+
+.about_text{
+  text-align: center;
+}
