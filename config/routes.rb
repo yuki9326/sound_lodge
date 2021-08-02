@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    get 'confirm' => 'end_users#confirm'
+    patch 'unsubscribe' => 'end_users#unsubscribe'
+    resources :end_users, only:[:show, :edit,:update]
   end
 
   namespace :admin do
