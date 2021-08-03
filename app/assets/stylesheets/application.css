@@ -68,3 +68,15 @@ input[type=submit] {
   font-size: 150%;
   color: #eb6100;
 }
+
+.admins_session_heading{
+  text-align: center;
+  margin-top: 50px;
+  font-style: italic;
+  border-bottom: 6px double #000;
+}
+
+.admins_session_heading:first-letter{
+  font-size: 150%;
+  color: #eb6100;
+}
