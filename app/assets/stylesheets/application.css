@@ -56,3 +56,15 @@ input[type=submit] {
   margin-bottom: 20px;
   padding: 1%;
 }
+
+.session_heading{
+  text-align: center;
+  margin-top: 50px;
+  font-style: italic;
+  border-bottom: 6px double #000;
+}
+
+.session_heading:first-letter {
+  font-size: 150%;
+  color: #eb6100;
+}
