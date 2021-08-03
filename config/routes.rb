@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'confirm' => 'end_users#confirm'
     patch 'unsubscribe' => 'end_users#unsubscribe'
     resources :end_users, only:[:show, :edit,:update]
+    resources :musician_profiles, except:[:destroy]
   end
 
   namespace :admin do

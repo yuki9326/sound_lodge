@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_053049) do
+ActiveRecord::Schema.define(version: 2021_08_03_174336) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_053049) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "username"
+    t.string "username", null: false
     t.integer "image_id"
     t.boolean "is_active", default: true, null: false
     t.integer "end_user_status", null: false
@@ -38,6 +38,23 @@ ActiveRecord::Schema.define(version: 2021_08_03_053049) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
+  end
+
+  create_table "musician_profiles", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.integer "end_user_id", null: false
+    t.integer "review_id", null: false
+    t.string "username", null: false
+    t.string "area", null: false
+    t.string "instrument", null: false
+    t.integer "total_member", null: false
+    t.boolean "is_vocal", default: true, null: false
+    t.integer "video_id"
+    t.text "introduction"
+    t.integer "price", null: false
+    t.float "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

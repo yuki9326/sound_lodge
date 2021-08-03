@@ -1,0 +1,41 @@
+<h1 class="musician_profiles_heading">Create Musicican Profile</h1>
+<%= form_with model: @musician_profile, local:true do |f| %>
+<div class="musician_form">
+   <%= f.label :username, "ユーザーネーム" %>
+  <%= f.text_field :username %>
+</div>
+<div class="musician_form">
+  <%= f.label :area, "都道府県名" %>
+  <%= f.text_field :area %>
+</div>
+<div class="musician_form">
+  <%= f.label :instrument, "楽器" %>
+  <%= f.text_field :instrument %>
+</div>
+<div class="musician_form">
+  <%= f.label :total_member, "活動人数" %>
+  <p><%= f.text_field :total_member %>人</p>
+</div>
+<div class="musician_form">
+  <%= f.label :is_vocal, "ボーカルの有無" %>
+  <%= f.radio_button :is_vocal, :有り, checked: "checked" %>
+  <%= f.label :有り, class: "musician_is_vocal_label" %>
+  <%= f.radio_button :is_vocal, :無し %>
+  <%= f.label :無し, class: "musician_is_vocal_label" %>
+</div>
+<div class="musician_form">
+  <%= f.label :video_id, "演奏動画" %>
+
+</div>
+<div class="musician_form">
+  <%= f.label :introduction, "自己紹介" %>
+  <%= f.text_area :introduction %>
+</div>
+<div class="musician_form">
+  <%= f.label :price, "希望価格(1時間)" %>
+  <p><%= f.text_field :price %>円</p>
+</div>
+<div class="musician_form_button">
+  <%= f.submit "登録", class:"musician_form_confirmation_button" %>
+</div>
+<% end %>
