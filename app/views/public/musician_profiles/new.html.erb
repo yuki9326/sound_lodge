@@ -8,7 +8,7 @@
   <%= f.label :area, "都道府県名" %>　<%= f.text_field :area, class:"musician_form_area" %>
 </div>
 <div class="musician_form">
-  <%= f.label :genre_id, "音楽ジャンル" %>　
+  <%= f.label :genre_id, "音楽ジャンル" %>　<%= f.select :genre_status, Genre.genre_statuses.keys, {}, {class: 'musician_form_genre'} %>
 </div>
 <div class="musician_form">
   <%= f.label :instrument, "楽器" %>　<%= f.text_field :instrument, class:"musician_form_instrument" %>
