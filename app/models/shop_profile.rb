@@ -1,0 +1,2 @@
+class ShopProfile < ApplicationRecord
+end

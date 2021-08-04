@@ -2,6 +2,16 @@
 
 <div class="profile_container">
   <div class="profile_content">
-    <%= attachment_image_tag @musician_profile.end_user, :image, fallback:"no_image.jpg" %>
+    <%= attachment_image_tag @musician_profile, :image, fallback:"no_image.jpg" %>　<%= @musician_profile.username %>
+  </div>
+  <div class="profile_content">
+    <p>音楽ジャンル　<%= @musician_profile.genre_id %></p>
+    <p>活動地域　<%= @musician_profile.area %></p>
+    <p>楽器　<%= @musician_profile.instrument %></p>
+    <p>活動人数　<%= @musician_profile.total_member %></p>
+    <p>ボーカルの有無　<%= @musician_profile.is_vocal %></p>
+    <p>希望価格(1時間)　<%= @musician_profile.price %>円</p>
+    <p>自己紹介<br><%= @musician_profile.introduction %></p>
+    <p>演奏動画　<%= @musician_profile.video_id %></p>
   </div>
 </div>

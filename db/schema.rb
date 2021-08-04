@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_04_085031) do
+ActiveRecord::Schema.define(version: 2021_08_04_161248) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2021_08_04_085031) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "username", null: false
-    t.integer "image_id"
     t.boolean "is_active", default: true, null: false
     t.integer "end_user_status", null: false
     t.datetime "created_at", null: false
@@ -77,6 +76,25 @@ ActiveRecord::Schema.define(version: 2021_08_04_085031) do
     t.integer "total_member", null: false
     t.boolean "is_vocal", default: true, null: false
     t.integer "video_id"
+    t.text "introduction"
+    t.integer "price", null: false
+    t.float "rate"
+    t.integer "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_profiles", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.integer "end_user_id", null: false
+    t.integer "review_id", null: false
+    t.string "username", null: false
+    t.string "shop_name", null: false
+    t.string "area", null: false
+    t.boolean "is_vocal", default: true, null: false
+    t.integer "shop_image_id"
+    t.integer "image_id"
+    t.text "audio_equipment"
     t.text "introduction"
     t.integer "price", null: false
     t.float "rate"
