@@ -8,6 +8,9 @@
   <%= f.label :image, "プロフィール画像" %>　 <%= f.attachment_field :image, class:"shop_form_image" %>
 </div>
 <div class="shop_form">
+  <%= f.label :shop_name, "店名" %>　<%= f.text_field :shop_name, class:"shop_form_shop_name" %>
+</div>
+<div class="shop_form">
   <%= f.label :area, "都道府県名" %>　<%= f.text_field :area, class:"shop_form_area" %>
 </div>
 <div class="shop_form">
@@ -26,11 +29,9 @@
 <div class="shop_form">
   <%= f.label :introduction, "店舗紹介文" %>　<%= f.text_area :introduction, class:"shop_form_introduction" %>
 </div>
-<br>
 <div class="shop_form">
   <%= f.label :audio_equipment, "店舗音響設備" %>　<%= f.text_field :audio_equipment, class:"shop_form_audio_equipment" %>
 </div>
-<br>
 <div class="shop_form">
   <%= f.label :price, "希望価格(1時間)" %>　<%= f.text_field :price, class:"shop_form_price" %><p>　円</p>
 </div>
