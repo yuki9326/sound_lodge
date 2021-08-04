@@ -13,12 +13,11 @@
   <%= f.text_field :instrument %>
 </div>
 <div class="musician_form">
-  <%= f.label :total_member, "活動人数" %>
-  <p><%= f.text_field :total_member %>人</p>
+  <p><%= f.label :total_member, "活動人数" %>
+  <%= f.text_field :total_member %>人</p>
 </div>
 <div class="musician_form">
-  <%= f.label :is_vocal, "ボーカルの有無" %>
-  <%= f.radio_button :is_vocal, :有り, checked: "checked" %>
+  <%= f.label :is_vocal, "ボーカルの有無" %>　<%= f.radio_button :is_vocal, :有り, checked: "checked" %>
   <%= f.label :有り, class: "musician_is_vocal_label" %>
   <%= f.radio_button :is_vocal, :無し %>
   <%= f.label :無し, class: "musician_is_vocal_label" %>
