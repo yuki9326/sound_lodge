@@ -1,0 +1,41 @@
+<h1 class="shop_profiles_heading">Edit Shop Profile</h1>
+<%= form_with model: @shop_profile, local:true do |f| %>
+<div class="shop_profile_container">
+<div class="shop_form">
+   <%= f.label :username, "ユーザーネーム" %>　<%= f.text_field :username, class:"shop_form_username" %>
+</div>
+<div class="shop_form">
+  <%= f.label :image, "プロフィール画像" %>　 <%= f.attachment_field :image, class:"shop_form_image" %>
+</div>
+<div class="shop_form">
+  <%= f.label :area, "都道府県名" %>　<%= f.text_field :area, class:"shop_form_area" %>
+</div>
+<div class="shop_form">
+  <%= f.label :genre_id, "希望音楽ジャンル" %>　<%= f.select :genre_status, Genre.genre_statuses.keys, {}, {class: 'shop_form_genre'} %>
+</div>
+<div class="shop_form">
+  <%= f.label :is_vocal, "ボーカルの希望" %>　<%= f.radio_button :is_vocal, :ボーカル有り, checked: "checked", class:"shop_is_vocal_button" %>
+  <%= f.label :有り, class: "shop_is_vocal_label" %>　<%= f.radio_button :is_vocal, :ボーカル無し %>
+  <%= f.label :無し, class: "shop_is_vocal_label" %>
+</div>
+<br>
+<div class="shop_form">
+  <%= f.label :image, "店舗画像" %>　<%= f.attachment_field :image, class:"shop_form_image2" %>
+</div>
+<br>
+<div class="shop_form">
+  <%= f.label :introduction, "店舗紹介文" %>　<%= f.text_area :introduction, class:"shop_form_introduction" %>
+</div>
+<br>
+<div class="shop_form">
+  <%= f.label :audio_equipment, "店舗音響設備" %>　<%= f.text_field :audio_equipment, class:"shop_form_audio_equipment" %>
+</div>
+<br>
+<div class="shop_form">
+  <%= f.label :price, "希望価格(1時間)" %>　<%= f.text_field :price, class:"shop_form_price" %><p>　円</p>
+</div>
+<div class="shop_form">
+  <%= f.submit "変更を保存", class:"shop_form_confirmation_button" %>
+</div>
+</div>
+<% end %>
