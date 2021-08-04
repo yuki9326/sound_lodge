@@ -1,4 +1,5 @@
-<h1 class="musician_profiles_heading">Create Musicican Profile</h1>
+<h1 class="musician_profile_edit">Edit Musician Profile</h1>
+
 <%= form_with model: @musician_profile, local:true do |f| %>
 <div class="musician_profile_container">
 <div class="musician_form">
@@ -6,9 +7,6 @@
 </div>
 <div class="musician_form">
   <%= f.label :area, "都道府県名" %>　<%= f.text_field :area, class:"musician_form_area" %>
-</div>
-<div class="musician_form">
-  <%= f.label :genre_id, "音楽ジャンル" %>　
 </div>
 <div class="musician_form">
   <%= f.label :instrument, "楽器" %>　<%= f.text_field :instrument, class:"musician_form_instrument" %>
@@ -34,7 +32,7 @@
   <%= f.label :price, "希望価格(1時間)" %>　<%= f.text_field :price, class:"musician_form_price" %><p>　円</p>
 </div>
 <div class="musician_form">
-  <%= f.submit "登録", class:"musician_form_confirmation_button" %>
+  <%= f.submit "変更を保存", class:"musician_form_confirmation_button" %>
 </div>
 </div>
 <% end %>
