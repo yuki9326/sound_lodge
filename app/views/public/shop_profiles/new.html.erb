@@ -11,7 +11,7 @@
   <%= f.label :shop_name, "店名" %>　<%= f.text_field :shop_name, class:"shop_form_shop_name" %>
 </div>
 <div class="shop_form">
-  <%= f.label :area, "都道府県名" %>　<%= f.text_field :area, class:"shop_form_area" %>
+  <%= f.label :area, "都道府県名" %>　<%= f.select :area_status, ShopProfile.area_statuses.keys, {}, {class:'shop_form_area'} %>
 </div>
 <div class="shop_form">
   <%= f.label :genre_id, "希望音楽ジャンル" %>　<%= f.select :genre_status, Genre.genre_statuses.keys, {}, {class: 'shop_form_genre'} %>

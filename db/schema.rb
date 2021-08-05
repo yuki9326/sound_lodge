@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_161248) do
     t.integer "end_user_id", null: false
     t.integer "review_id", null: false
     t.string "username", null: false
-    t.string "area", null: false
+    t.integer "area", default: 0, null: false
     t.string "instrument", null: false
     t.integer "total_member", null: false
     t.boolean "is_vocal", default: true, null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_161248) do
     t.integer "review_id", null: false
     t.string "username", null: false
     t.string "shop_name", null: false
-    t.string "area", null: false
+    t.integer "area", default: 0, null: false
     t.boolean "is_vocal", default: true, null: false
     t.integer "shop_image_id"
     t.integer "image_id"

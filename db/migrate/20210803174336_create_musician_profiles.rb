@@ -5,7 +5,7 @@ class CreateMusicianProfiles < ActiveRecord::Migration[5.2]
       t.integer :end_user_id, null: false
       t.integer :review_id, null: false
       t.string :username, null: false
-      t.string :area, null: false
+      t.integer :area, null: false, default: 0
       t.string :instrument, null: false
       t.integer :total_member, null: false
       t.boolean :is_vocal, null: false, default: true

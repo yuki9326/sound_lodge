@@ -6,7 +6,7 @@ class CreateShopProfiles < ActiveRecord::Migration[5.2]
       t.integer :review_id, null: false
       t.string :username, null: false
       t.string :shop_name, null: false
-      t.string :area, null: false
+      t.integer :area, null: false, default: 0
       t.boolean :is_vocal, null: false, default: true
       t.integer :shop_image_id
       t.integer :image_id
