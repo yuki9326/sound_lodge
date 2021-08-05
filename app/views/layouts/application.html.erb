@@ -10,6 +10,32 @@
   </head>
 
   <body>
+    <header>
+      <%= link_to image_tag("logo.png"), "/",class: "navbar-brand" %>
+      <nav class="navbar">
+        <ul class="nav_content">
+          <% if end_user_signed_in? %>
+          <li class="nav_list"><%= link_to 'Sound Logeとは', about_path, class:"nav_link" %></li>
+          <li class="nav_list">マイページ</li>
+          <li class="nav_list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav_link" %></li>
+          <li class="nav_list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav_link" %></li>
+          <li class="nav_list">お問い合わせ</li>
+          <li class="nav_list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class:"nav_link" %></li>
+          <% elsif admin_signed_in? %>
+          <li class="nav_list">会員店舗一覧</li>
+          <li class="nav_list">会員ミュージシャン一覧</li>
+          <li class="nav_list">お問い合わせ一覧</li>
+          <li class="nav_list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"nav_link" %></li>
+          <% else %>
+          <li class="nav_list"><%= link_to 'Sound Lodgeとは', about_path, class:"nav_link" %></li>
+          <li class="nav_list"><%= link_to 'ログイン', new_end_user_session_path, class:"nav_link" %></li>
+          <li class="nav_list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav_link" %></li>
+          <li class="nav_list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav_link" %></li>
+          <li class="nav_list">Contact Us</li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -14,16 +14,16 @@
 
 .image_area{
   background-image: image-url('public_top');
-  width: 1200px;
-  height: 600px;
+  width: 100%;
+  height: 650px;
   background-size: cover;
   background-position: center;
 }
 
-h1.top_main_heading{
-  writing-mode: vertical-lr;
-  margin: 50px auto;
-  font-size: 2.3rem ;
+.top_main_heading{
+ margin-top: 20%;
+ margin-left: 15%;
+ color: #777777;
 }
 
 .about_image_area{

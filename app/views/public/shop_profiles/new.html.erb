@@ -1,4 +1,4 @@
-<h1 class="shop_profiles_heading">Create Shop Profile</h1>
+<h1 class="shop_profiles_heading">Create Profile</h1>
 <%= form_with model: @shop_profile, local:true do |f| %>
 <div class="shop_profile_container">
 <div class="shop_form">
@@ -23,7 +23,7 @@
 </div>
 <br>
 <div class="shop_form">
-  <%= f.label :image, "店舗画像" %>　<%= f.attachment_field :image, class:"shop_form_image2" %>
+  <%= f.label :shop_image, "店舗画像" %>　<%= f.attachment_field :shop_image, class:"shop_form_image2" %>
 </div>
 <br>
 <div class="shop_form">

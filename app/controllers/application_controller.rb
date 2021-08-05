@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:usename, :end_user_status])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :end_user_status])
   end
 end
