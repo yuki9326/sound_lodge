@@ -1,0 +1,12 @@
+<h1 class="shop_profile_heading">Organizers</h1>
+
+<div class="shop_list">
+    <% @shop_profiles.each do |shop_profile| %>
+    <div class="profile_box">
+        <%= attachment_image_tag shop_profile, :image, fallback:"no_image.jpg" %>　<%= shop_profile.end_user.username %>
+        <p class= "box_content">店名　<%= shop_profile.shop_name %></p>
+        <p class="box_content">都道府県　<%= shop_profile.area %></p>
+        <p class="box_content">希望価格(1時間)　<%= shop_profile.price %></p>
+    </div>
+    <% end %>
+</div>
