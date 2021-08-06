@@ -21,10 +21,6 @@
   display: flex;
 }
 
-.musician_form_username{
-  margin-left: 5%;
-}
-
 .musician_form_area{
   margin-left: 11%;
 }
@@ -65,4 +61,19 @@ select{
 .musician_form_image{
   margin-bottom: 20px;
   margin-left: 3%;
+}
+
+.profile_box{
+  padding: 0.5em, 1em;
+  margin: 2em, 0;
+  font-weight: bold;
+  color: #000000;
+  background: #fff;
+  border: solid 3px #eb6100;
+  border-radius: 10px;
+}
+
+.profile_box p{
+  margin: 0;
+  padding: 0;
 }

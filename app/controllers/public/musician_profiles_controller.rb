@@ -37,6 +37,6 @@ class Public::MusicianProfilesController < ApplicationController
   private
 
   def musician_profile_params
-    params.require(:musician_profile).permit(:genre_id, :end_user_id, :review_id, :username, :area, :instrument, :total_member, :is_vocal, :video_id, :introduction, :price, :rate)
+    params.require(:musician_profile).permit(:genre_id, :end_user_id, :review_id, :username, :area, :instrument, :total_member, :is_vocal, :video_id, :introduction, :price, :rate, :image)
   end
 end

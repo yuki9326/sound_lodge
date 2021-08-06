@@ -1,9 +1,7 @@
 <h1 class="shop_profiles_heading">Create Profile</h1>
 <%= form_with model: @shop_profile, local:true do |f| %>
 <div class="shop_profile_container">
-<div class="shop_form">
-   <%= f.label :username, "ユーザーネーム" %>　<%= f.text_field :username, class:"shop_form_username" %>
-</div>
+
 <div class="shop_form">
   <%= f.label :image, "プロフィール画像" %>　 <%= f.attachment_field :image, class:"shop_form_image" %>
 </div>

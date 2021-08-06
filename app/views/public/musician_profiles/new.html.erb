@@ -1,9 +1,7 @@
 <h1 class="musician_profiles_heading">Create Profile</h1>
 <%= form_with model: @musician_profile, local:true do |f| %>
 <div class="musician_profile_container">
-<div class="musician_form">
-   <%= f.label :username, "ユーザーネーム" %>　<%= f.text_field :username, class:"musician_form_username" %>
-</div>
+
 <div class="musician_form">
   <%= f.label :image, "プロフィール画像" %>　 <%= f.attachment_field :image, class:"musician_form_image" %>
 </div>
