@@ -1,0 +1,16 @@
+<h1 class="musician_profile_heading">ミュージシャン一覧</h1>
+
+<% @musician_profile.each do |musician_profile| %>
+
+<tabele class="musician_profile_table">
+  <tr>
+    <th>ユーザーネーム</th>
+    <th>活動エリア</th>
+  </tr>
+  <tr>
+    <td><%= musician_profile.end_user.username %></td>
+    <td><%= musician_profile.area %></td>
+  </tr>
+</tabele>
+
+<% end %>
