@@ -26,5 +26,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
+    resources :musician_profiles, only:[:index, :show]
   end
 end

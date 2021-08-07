@@ -2,15 +2,17 @@
 
 <% @musician_profile.each do |musician_profile| %>
 
-<tabele class="musician_profile_table">
+<table class="musician_profile_table">
   <tr>
     <th>ユーザーネーム</th>
     <th>活動エリア</th>
+    <th>楽器</th>
   </tr>
   <tr>
     <td><%= musician_profile.end_user.username %></td>
     <td><%= musician_profile.area %></td>
+    <td><%= musician_profile.instrument %></td>
   </tr>
-</tabele>
+</table>
 
 <% end %>
