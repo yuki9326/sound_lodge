@@ -1,0 +1,16 @@
+<h1 class="shop_profiles_heading">プロフィール</h1>
+
+<div class="profile_container">
+  <div class="profile_content">
+    <%= attachment_image_tag @shop_profile, :image, fallback:"no_image.jpg" %>　<%= @shop_profile.end_user.username %>
+  </div>
+  <div class="profile_content">
+    <p>店名　<%= @shop_profile.shop_name %></p>
+    <p>都道府県名　<%= @shop_profile.area %></p>
+    <p>店舗画像</p>
+    <p>店舗音響設備　<%= @shop_profile.audio_equipment %></p>
+    <p>店舗紹介　<%= @shop_profile.introduction %></p>
+    <p>ボーカルの希望　<%= @shop_profile.is_vocal %></p>
+    <p>希望価格(1時間)　<%= @shop_profile.price %>円</p>
+  </div>
+</div>
