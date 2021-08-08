@@ -60,3 +60,26 @@ h1.about_heading:first-letter {
 .about_text{
   text-align: center;
 }
+
+.btn-orange {
+  color: #fff;
+  background-color: #eb6100;
+  border-bottom: 5px solid #b84c00;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 2px 10px;
+  margin-left: 50px;
+}
+
+.btn-orange:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+}
+
+.top_link{
+  padding-top: 45px;
+  display: flex;
+  justify-content: center;
+}
