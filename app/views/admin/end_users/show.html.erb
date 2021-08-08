@@ -1,1 +1,23 @@
-<div 
+<div class="container">
+  <div class="row">
+    <h1 class="end_user_heading">会員詳細</h1>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>会員タイプ</th>
+      <th>プロフィール</th>
+      <th>退会ステータス</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td><%= @end_user.name %></td>
+        <td><%= @end_user.email %></td>
+        <td><%= @end_user. %></td>
+        <td><%= @end_user.is_active %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
