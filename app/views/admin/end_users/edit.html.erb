@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <h1 class="end_user_heading">会員情報編集</h1>
+  </div>
+
+  <%= form_with model: @end_user, local: true do |f| %>
+  <ul>
+    <li><%= f.label :name, "氏名" %></li>
+    <li><%= f.text_field :name %></li>
+    <li><%=f.label :email, "メールアドレス" %></li>
+    <li><%= f.email_field :email %></li>
+    <li><%= f.label :is_active, "退会ステータス" %></li>
+    <li>
+      <%= f.radio_button :is_active, 有効, checked: "checked" %>
+      <%= f.label :有効 %>
+      <%= f.radio_button :is_active, 退会 %>
+      <%= f.label :退会 %>
+    </li>
+  </ul>
+  <% end %>
