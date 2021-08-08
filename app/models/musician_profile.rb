@@ -2,7 +2,6 @@ class MusicianProfile < ApplicationRecord
   has_one_attached :video
   attachment :image
   belongs_to :end_user
-  belongs_to :genre
 
   enum area_status: {北海道:0,青森県:1,岩手県:2,宮城県:3,秋田県:4,山形県:5,福島県:6,
      茨城県:7,栃木県:8,群馬県:9,埼玉県:10,千葉県:11,東京都:12,神奈川県:13,新潟県:14,

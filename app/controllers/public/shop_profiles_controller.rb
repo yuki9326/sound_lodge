@@ -10,6 +10,8 @@ class Public::ShopProfilesController < ApplicationController
 
   def create
     @shop_profile = ShopProfile.new(shop_profile_params)
+    @shop_profile.genre = ShopProfile.genre_statuses[params[:shop_profile][:genre_status]]
+    @shop_profile.area = ShopProfile.area_statuses[params[:shop_profile][:area_status]]
     if @shop_profile.save
       redirect_to shop_profile_path(@shop_profile.id)
     else
@@ -37,6 +39,6 @@ class Public::ShopProfilesController < ApplicationController
   private
 
   def shop_profile_params
-    params.require(:shop_profile).permit(:genre_id, :end_user_id, :review_id, :username, :shop_name, :area, :is_vocal, :shop_image_id, :image_id, :audio_equipment, :introduction, :price, :rate)
+    params.require(:shop_profile).permit(:genre, :end_user_id, :review_id, :username, :shop_name, :area, :is_vocal, :shop_image_id, :image_id, :audio_equipment, :introduction, :price, :rate)
   end
 end
