@@ -13,7 +13,7 @@ class CreateMusicianProfiles < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.integer :price, null: false
       t.float :rate
-      t.integer :image_id
+      t.string :image_id
 
       t.timestamps
     end

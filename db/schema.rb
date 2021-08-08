@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2021_08_04_161248) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "username", null: false
     t.boolean "is_active", default: true, null: false
     t.integer "end_user_status", null: false
     t.datetime "created_at", null: false
@@ -79,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_161248) do
     t.text "introduction"
     t.integer "price", null: false
     t.float "rate"
-    t.integer "image_id"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -93,7 +92,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_161248) do
     t.integer "area", default: 0, null: false
     t.boolean "is_vocal", default: true, null: false
     t.integer "shop_image_id"
-    t.integer "image_id"
+    t.string "image_id"
     t.text "audio_equipment"
     t.text "introduction"
     t.integer "price", null: false

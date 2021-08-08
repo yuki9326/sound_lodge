@@ -2,7 +2,7 @@
 
 <div class="profile_container">
   <div class="profile_content">
-    <%= attachment_image_tag @shop_profile, :image, fallback:"no_image.jpg" %>　<%= @shop_profile.end_user.username %>
+    <%= attachment_image_tag @shop_profile, :image, fallback:"no_image.jpg" %>　<%= @shop_profile.username %>
   </div>
   <div class="profile_content">
     <p>店名　<%= @shop_profile.shop_name %></p>

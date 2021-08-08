@@ -9,7 +9,7 @@ class CreateShopProfiles < ActiveRecord::Migration[5.2]
       t.integer :area, null: false, default: 0
       t.boolean :is_vocal, null: false, default: true
       t.integer :shop_image_id
-      t.integer :image_id
+      t.string :image_id
       t.text :audio_equipment
       t.text :introduction
       t.integer :price, null: false

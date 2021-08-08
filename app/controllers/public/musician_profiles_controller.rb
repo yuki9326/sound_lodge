@@ -6,6 +6,8 @@ class Public::MusicianProfilesController < ApplicationController
 
   def create
     @musician_profile = MusicianProfile.new(musician_profile_params)
+    @musician_profile.genre_id =Genre.genre_statuses[params[:musician_profile][:genre_status]]
+    @musician_profile.area =MusicianProfile.area_statuses[params[:musician_profile][:area_status]]
     if @musician_profile.save
       redirect_to musician_profile_path(@musician_profile.id)
     else
@@ -37,6 +39,6 @@ class Public::MusicianProfilesController < ApplicationController
   private
 
   def musician_profile_params
-    params.require(:musician_profile).permit(:genre_id, :end_user_id, :review_id, :username, :area, :instrument, :total_member, :is_vocal, :video_id, :introduction, :price, :rate, :image)
+    params.require(:musician_profile).permit(:genre_id, :end_user_id, :review_id, :username, :area, :instrument,:total_member, :is_vocal, :video_id, :introduction, :price, :rate, :image)
   end
 end

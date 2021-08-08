@@ -3,7 +3,7 @@
 <div class="musician_list">
     <% @musician_profiles.each do |musician_profile| %>
     <div class="profile_box">
-        <%= attachment_image_tag musician_profile, :image, fallback:"no_image.jpg" %>　<%= musician_profile.end_user.username %>
+        <%= attachment_image_tag musician_profile, :image, fallback:"no_image.jpg" %>　<%= musician_profile.username %>
         <p class= "box_content">活動エリア　<%= musician_profile.area %></p>
         <p class="box_content">楽器　<%= musician_profile.instrument %></p>
         <p class="box_content">希望価格(1時間)　<%= musician_profile.price %></p>
