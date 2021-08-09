@@ -8,10 +8,10 @@
   <%= f.label :image, "プロフィール画像" %>　 <%= f.attachment_field :image, class:"musician_form_image" %>
 </div>
 <div class="musician_form">
-  <%= f.label :area, "活動エリア" %>　<%= f.select :area_status, MusicianProfile.area_statuses.keys, {}, {class:'musician_form_area'} %>
+  <%= f.label :area, "活動エリア" %>　<%= f.select :area, MusicianProfile.area_statuses.keys, {}, {class:'musician_form_area'} %>
 </div>
 <div class="musician_form">
-  <%= f.label :genre_id, "音楽ジャンル" %>　<%= f.select :genre_status, Genre.genre_statuses.keys, {}, {class: 'musician_form_genre'} %>
+  <%= f.label :genre_id, "音楽ジャンル" %>　<%= f.select :genre, Genre.genre_statuses.keys, {}, {class: 'musician_form_genre'} %>
 </div>
 <div class="musician_form">
   <%= f.label :instrument, "楽器" %>　<%= f.text_field :instrument, class:"musician_form_instrument" %>

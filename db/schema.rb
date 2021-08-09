@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_161248) do
   create_table "musician_profiles", force: :cascade do |t|
     t.integer "genre", null: false
     t.integer "end_user_id", null: false
-    t.integer "review_id", null: false
+    t.integer "review_id"
     t.string "username", null: false
     t.integer "area", default: 0, null: false
     t.string "instrument", null: false

@@ -5,7 +5,7 @@
     <%= attachment_image_tag @musician_profile, :image, fallback:"no_image.jpg" %>　<%= @musician_profile.username %>
   </div>
   <div class="profile_content">
-    <p>音楽ジャンル　<%= @musician_profile.genre_id %></p>
+    <p>音楽ジャンル　<%= @musician_profile.genre %></p>
     <p>活動エリア　<%= @musician_profile.area %></p>
     <p>楽器　<%= @musician_profile.instrument %></p>
     <p>活動人数　<%= @musician_profile.total_member %></p>
