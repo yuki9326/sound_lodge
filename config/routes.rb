@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     resources :end_users, only:[:show, :edit,:update]
     resources :musician_profiles, except:[:destroy]
     resources :shop_profiles, except:[:destroy]
+    post 'contacts/confirm' => 'contacts#confirm'
+    get 'thanks' => 'contacts#thanks'
+    resources :contacts, only:[:new,:create]
   end
 
   namespace :admin do
