@@ -1,0 +1,32 @@
+<table class ="table">
+  <tbody>
+    <tr>
+      <td class="text-center">お名前</td>
+      <td><%= @contact.name %></td>
+      <td class="text-center">メールアドレス</td>
+      <td><%= @contact.email %></td>
+    </tr>
+    <tr>
+      <td class="text-center">件名</td>
+      <td><%= @contact.subject %></td>
+      <td class="text-center">本文</td>
+      <td><%= @contact.mail_body %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= form_with model: @contact do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :subject %>
+  <%= f.hidden_field :mail_body %>
+  <%= f.submit '送信' %>
+<% end %>
+
+<%= form_with model: @contact, url: back_path do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :subject %>
+  <%= f.hidden_field :mail_body %>
+  <%= f.submit '入力画面に戻る' %>
+<% end %>

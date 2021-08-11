@@ -23,7 +23,8 @@ Rails.application.routes.draw do
     resources :musician_profiles, except:[:destroy]
     resources :shop_profiles, except:[:destroy]
     post 'contacts/confirm' => 'contacts#confirm'
-    get 'thanks' => 'contacts#thanks'
+    post 'contacts/back' => 'contact#back'
+    get 'contacts/thanks' => 'contacts#thanks'
     resources :contacts, only:[:new,:create]
   end
 
