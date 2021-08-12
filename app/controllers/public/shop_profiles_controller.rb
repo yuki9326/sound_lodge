@@ -21,6 +21,7 @@ class Public::ShopProfilesController < ApplicationController
 
   def show
     @shop_profile = ShopProfile.find(params[:id])
+    @review = Review.new
   end
 
   def edit

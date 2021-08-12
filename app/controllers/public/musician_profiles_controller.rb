@@ -23,6 +23,7 @@ class Public::MusicianProfilesController < ApplicationController
 
   def show
     @musician_profile = MusicianProfile.find(params[:id])
+    @review = Review.new
   end
 
   def edit
