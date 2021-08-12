@@ -1,0 +1,6 @@
+ja:
+  enums:
+    end_user:
+      end_user_status:
+        musician: 'ミュージシャン'
+        shop: 'お店'

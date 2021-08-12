@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_091536) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.string "subject", default: "0", null: false
+    t.string "subject", null: false
     t.string "name", null: false
     t.string "email", null: false
     t.text "mail_body", null: false

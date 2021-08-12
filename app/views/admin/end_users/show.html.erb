@@ -15,7 +15,10 @@
       <tr>
         <td><%= @end_user.name %></td>
         <td><%= @end_user.email %></td>
-        <td><%= @end_user. %></td>
+        <td><%= @end_user.end_user_status %></td>
+        <td><% if @end_user.musician? %>
+        <%= link_to "プロフィール", musician_profile_path(@end_user.musician_profile.id) %>
+        <% end %></td>
         <td><%= @end_user.is_active %></td>
       </tr>
     </tbody>

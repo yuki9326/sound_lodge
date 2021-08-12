@@ -9,9 +9,10 @@
       <th>退会ステータス</th>
     </tr>
     <tr>
-      <td><%= end_user.name %></td>
+      <td><%= link_to end_user.name, admin_end_user_path(end_user.id) %></td>
       <td><%= end_user.end_user_status %></td>
       <td><%= end_user.is_active %></td>
     </tr>
   </table>
+  <% end %>
 </div>

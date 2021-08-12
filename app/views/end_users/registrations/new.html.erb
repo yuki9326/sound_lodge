@@ -1,46 +1,31 @@
-<h1 class="registration_heading">Sign Up</h1>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="container">
+  <div class="row">
+    <h1 class="registration-heading">Sign Up</h1>
+  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "end_users/shared/error_messages", resource: resource %>
-  <ul>
-    <li>
-      <%= f.label :name, "氏名" %>
-    </li>
-    <li>
-      <%= f.text_field :name, autofocus: true %>
-    </li>
-    <li>
-      <%= f.label :email, "メールアドレス" %>
-    </li>
-    <li>
-      <%= f.email_field :email, autocomplete: "email" %>
-    </li>
-    <li>
-      <%= f.label :password, "パスワード(6文字以上)" %>
-    </li>
-    <li>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </li>
-    <li>
-      <%= f.label :password_confirmation, "パスワード確認" %>
-    </li>
-    <li>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </li>
-    <li>
-      <%= f.label :end_user_status, "会員タイプ選択" %>
-    </li>
-    <li>
-      <%= f.radio_button :end_user_status, :ミュージシャン, checked: "checked" %>
-      <%= f.label :ミュージシャン, class: "end_user_status_label" %>
-      <%= f.radio_button :end_user_status, :お店 %>
-      <%= f.label :お店, class: "end_user_status_label" %>
-    </li>
-    <br>
-    <li>
-      <%= f.submit "登録", class:"sign_up_button" %>
-    </li>
-  </ul>
-<% end %>
 
-<p class="to_session">会員登録済みの方は<%= link_to 'ログイン', new_end_user_session_path %></p>
+  <div class="form-group">
+    <%= f.label :name, "氏名" %>
+    <%= f.text_field :name, autofocus: true, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, autocomplete: "email", class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, "パスワード(6文字以上)" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation, "パスワード確認" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+  </div>
+  <div class="form-control">
+    <%= f.label :end_user_status, "会員タイプ選択" %>
+    <%= f.radio_button :end_user_status, :musician, checked: "checked" %>
+    <%= f.label :ミュージシャン %>
+    <%= f.radio_button :end_user_status, :shop %>
+    <%= f.label :お店 %>
+  </div>
+</div>
