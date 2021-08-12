@@ -17,6 +17,12 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .registration-heading{
   text-align: center;
   margin-top: 50px;
@@ -90,3 +96,8 @@ header{
   maigin-top: 30px;
 }
 
+.navbar-brand{
+  width: 330px;
+  height: 30px;
+  margin-bottom: 50px;
+}

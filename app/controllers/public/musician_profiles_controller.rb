@@ -10,7 +10,7 @@ class Public::MusicianProfilesController < ApplicationController
     @musician_profile.area = MusicianProfile.area_statuses[params[:musician_profile][:area]]
     @musician_profile.end_user_id = current_end_user.id
 
-    if @musician_profile.save!
+    if @musician_profile.save
       redirect_to musician_profile_path(@musician_profile.id)
     else
       render :new

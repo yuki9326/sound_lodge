@@ -15,8 +15,15 @@
           <td><%= @end_user.end_user_status %></td>
         </tr>
         <tr>
-          <th>プロフィールを表示</th>
-          <td><%= リンク %></td>
+          <th>プロフィール</th>
+          <td>
+            <% if @end_user.musician? %>
+            <%= link_to "表示", musician_profile_path(@end_user.musician_profile.id) %>
+            <% end %>
+            <% if @end_user.shop? %>
+            <%= link_to "表示", shop_profile_path(@end_user.shop_profile.id) %>
+            <% end %>
+          </td>
         </tr>
       </table>
     </div>
