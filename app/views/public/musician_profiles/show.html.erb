@@ -1,20 +1,41 @@
 <div class="container">
-  <div class="row">
-    <h1 class="musician_profiles_heading">Profile</h1>
-    <div class="profile_box">
-      <div class="profile_content">
-        <%= attachment_image_tag @musician_profile, :image, fallback:"no_image.jpg" %>　<%= @musician_profile.username %>
-      </div>
-      <div class="profile_content">
-        <p>音楽ジャンル　<%= @musician_profile.genre %></p>
-        <p>活動エリア　<%= @musician_profile.area %></p>
-        <p>楽器　<%= @musician_profile.instrument %></p>
-        <p>活動人数　<%= @musician_profile.total_member %></p>
-        <p>ボーカルの有無　<%= @musician_profile.is_vocal %></p>
-        <p>希望価格(1時間)　<%= @musician_profile.price %>円</p>
-        <p>自己紹介<br><%= @musician_profile.introduction %></p>
-        <p>演奏動画　<%= @musician_profile.video_id %></p>
-      </div>
-    </div>
-  </div>
-
+  <h1 class="musician-profile-heading">Profile</h1>
+  <table class="table-borderless">
+    <tr>
+      <th><%= attachment_image_tag @musician_profile, :image, fallback:"no_image.jpg" %></th>
+      <td><%= @musician_profile.username %></td>
+    </tr>
+    <tr>
+      <th>音楽ジャンル</th>
+      <td><%= @musician_profile.genre %></td>
+    </tr>
+    <tr>
+      <th>活動エリア</th>
+      <td><%= @musician_profile.area %></td>
+    </tr>
+    <tr>
+      <th>楽器</th>
+      <td><%= @musician_profile.instrument %></td>
+    </tr>
+    <tr>
+      <th>活動人数</th>
+      <td><%= @musician_profile.total_member %>人</td>
+    </tr>
+    <tr>
+      <th>ボーカルの有無</th>
+      <tr><%= @musician_profile.is_vocal %></tr>
+    </tr>
+    <tr>
+      <th>希望価格(1時間)</th>
+      <td><%= @musician_profile.price %></td>
+    </tr>
+    <tr>
+      <th>自己紹介文</th>
+      <td><%= @musician_profile.introduction %></td>
+    </tr>
+    <tr>
+      <th>演奏動画</th>
+      <td><%= @musician_profile.video_id %></td>
+    </tr>
+  </table>
+</div>
