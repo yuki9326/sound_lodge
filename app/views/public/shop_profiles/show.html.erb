@@ -1,3 +1,37 @@
 <div class="container">
-  
+  <h1 class="shop-profile-heading">Profile</h1>
+  <table class="table-borderless">
+    <tr>
+      <th><%= attachment_image_tag @shop_profile, :image, fallback:"no_image.jpg" %></th>
+      <td><%= @shop_profile.usename %></td>
+    </tr>
+    <tr>
+      <th>店名</th>
+      <td><%= @shop_profile.shop_name %></td>
+    </tr>
+    <tr>
+      <th>店舗所在地</th>
+      <td><%= @shop_profile.area %></td>
+    </tr>
+    <tr>
+      <th>店舗画像</th>
+      <td><%= attachment_image_tag @shop_profile, :shop_image %></td>
+    </tr>
+    <tr>
+      <th>店舗音響設備</th>
+      <td><%= @shop_profile.audio_equipment %></td>
+    </tr>
+    <tr>
+      <th>店舗紹介文</th>
+      <td><%= @shop_profile.introduction %></td>
+    </tr>
+    <tr>
+      <th>ボーカルの希望</th>
+      <td><%= @shop_profile.is_vocal %></td>
+    </tr>
+    <tr>
+      <th>希望価格(1時間)</th>
+      <td><%= @shop_profile.price %>円</td>
+    </tr>
+  </table>
 </div>
