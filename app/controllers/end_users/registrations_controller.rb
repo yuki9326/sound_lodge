@@ -59,9 +59,9 @@ class EndUsers::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
   # def after_inactive_sign_up_path_for(resource)
     case resource.end_user_status
-    when "ミュージシャン"
+    when "musician"
       new_musician_profile_path(resource)
-    when "お店"
+    when "shop"
       new_shop_profile_path(resource)
     end
   end

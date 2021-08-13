@@ -13,11 +13,11 @@
     </div>
     <div class="form-group">
       <%= f.label :area, "活動エリア" %>
-      <%= f.select :area, MusicianProfile.area_statuses.keys, {}, {class:'form-control'} %>
+      <%= f.select :area, MusicianProfile.areas_i18n.invert, {prompt: "---"}, {class:"form-control"} %>
     </div>
     <div class="form-group">
       <%= f.label :genre, "音楽ジャンル" %>
-      <%= f.select :genre, Genre.genre_statuses.keys, {}, {class: 'form-control'} %>
+      <%= f.select :genre, MusicianProfile.genres_i18n.invert, {prompt: "---"}, {class:"form-control"} %>
     </div>
     <div class="form-group">
       <%= f.label :instrument, "楽器" %>

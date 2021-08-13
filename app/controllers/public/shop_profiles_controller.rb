@@ -10,8 +10,6 @@ class Public::ShopProfilesController < ApplicationController
 
   def create
     @shop_profile = ShopProfile.new(shop_profile_params)
-    @shop_profile.genre = ShopProfile.genre_statuses[params[:shop_profile][:genre]]
-    @shop_profile.area = ShopProfile.area_statuses[params[:shop_profile][:area]]
     @shop_profile.end_user_id = current_end_user.id
     if @shop_profile.save
       redirect_to shop_profile_path(@shop_profile.id)

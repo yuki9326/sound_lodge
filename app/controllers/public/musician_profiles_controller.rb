@@ -6,8 +6,6 @@ class Public::MusicianProfilesController < ApplicationController
 
   def create
     @musician_profile = MusicianProfile.new(musician_profile_params)
-    @musician_profile.genre = MusicianProfile.genre_statuses[params[:musician_profile][:genre]]
-    @musician_profile.area = MusicianProfile.area_statuses[params[:musician_profile][:area]]
     @musician_profile.end_user_id = current_end_user.id
 
     if @musician_profile.save
