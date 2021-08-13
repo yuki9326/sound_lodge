@@ -1,3 +1,20 @@
 // Place all the styles related to the public/shop_profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.shop-profile-heading{
+  text-align: center;
+  margin-top: 50px;
+  font-style: italic;
+  border-bottom: 6px double #000;
+}
+
+.shop-profile-heading:first-letter {
+  font-size: 150%;
+  color: #eb6100;
+}
