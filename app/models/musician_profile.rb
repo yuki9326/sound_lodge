@@ -11,6 +11,6 @@ class MusicianProfile < ApplicationRecord
      島根県:31,岡山県:32,広島県:33,山口県:34,徳島県:35,香川県:36,愛媛県:37,高知県:38,
      福岡県:39,佐賀県:40,長崎県:41,熊本県:42,大分県:43,宮崎県:44,鹿児島県:45, 沖縄県:46}
 
-  enum genre_status: {ポップス:0, ロック:1, エレクトロニカ:2, ヒップホップ:3, レゲエ:4, R＆B:5,
-     カントリー:6, ワールド:7, 演歌:8, 歌謡曲:9, ジャズ:10, クラシック:11, その他:12}
+  enum genre: {pops:0, rock:1, electronica:2, hiphop:3, raggae:4, r_and_b:5,
+  country:6, world:7, enka:8, japanese_old_pops:9, jazz:10, classic:11, others:12}
 end

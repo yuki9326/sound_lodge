@@ -4,3 +4,7 @@ ja:
       end_user_status:
         musician: 'ミュージシャン'
         shop: 'お店'
+        
+ja:
+  enums:
+    
