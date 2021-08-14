@@ -13,4 +13,6 @@ class MusicianProfile < ApplicationRecord
 
   enum genre: {pops:0, rock:1, electronica:2, hiphop:3, raggae:4, r_and_b:5,
   country:6, world:7, enka:8, japanese_old_pops:9, jazz:10, classic:11, others:12}
+
+  scope :get_by_genre, ->(genre) {where(genre: genre)}
 end

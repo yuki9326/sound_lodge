@@ -13,9 +13,20 @@
   margin-top: 50px;
   font-style: italic;
   border-bottom: 6px double #000;
+  margin-bottom: 50px;
 }
 
 .musician-profile-heading:first-letter {
   font-size: 150%;
   color: #eb6100;
+}
+
+.profile-box{
+  padding: 30px 30px;
+  margin: 20px 20px;
+  font-weight: bold;
+  color: #000000;
+  background: #fff;
+  border: solid 1px #eb6100;
+  border-radius: 10px;
 }

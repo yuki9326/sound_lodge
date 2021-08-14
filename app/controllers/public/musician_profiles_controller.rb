@@ -17,6 +17,9 @@ class Public::MusicianProfilesController < ApplicationController
 
   def index
     @musician_profiles = MusicianProfile.all
+    if params[:genre].present?
+      @musician_profiles = @musician_profiles.get_by_genre params[:genre]
+    end
   end
 
   def show

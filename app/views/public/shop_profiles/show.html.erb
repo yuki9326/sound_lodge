@@ -1,41 +1,43 @@
 <div class="container">
   <h1 class="shop-profile-heading">Profile</h1>
+  <div class="row justify-content-center">
   <table class="table-borderless">
     <tr>
-      <th><%= attachment_image_tag @shop_profile, :image, fallback:"no_image.jpg" %></th>
-      <td><%= @shop_profile.usename %></td>
+      <th><%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %></th>
+      <td>　　　　　<%= @shop_profile.username %></td>
     </tr>
     <tr>
       <th>店名</th>
-      <td><%= @shop_profile.shop_name %></td>
+      <td>　　　　　<%= @shop_profile.shop_name %></td>
     </tr>
     <tr>
       <th>店舗所在地</th>
-      <td><%= @shop_profile.area_i18n %></td>
-    </tr>
-    <tr>
-      <th>店舗画像</th>
-      <td><%= attachment_image_tag @shop_profile, :shop_image %></td>
+      <td>　　　　　<%= @shop_profile.area_i18n %></td>
     </tr>
     <tr>
       <th>店舗音響設備</th>
-      <td><%= @shop_profile.audio_equipment %></td>
+      <td>　　　　　<%= @shop_profile.audio_equipment %></td>
     </tr>
     <tr>
       <th>店舗紹介文</th>
-      <td><%= @shop_profile.introduction %></td>
+      <td>　　　　　<%= @shop_profile.introduction %></td>
     </tr>
     <tr>
       <th>希望音楽ジャンル</th>
-      <td><%= @shop_profile.genre_i18n %></td>
+      <td>　　　　　<%= @shop_profile.genre_i18n %></td>
     </tr>
     <tr>
       <th>ボーカルの希望</th>
-      <td><%= @shop_profile.is_vocal %></td>
+      <td>　　　　　<%= @shop_profile.is_vocal %></td>
     </tr>
     <tr>
       <th>希望価格(1時間)</th>
-      <td><%= @shop_profile.price %>円</td>
+      <td>　　　　　<%= @shop_profile.price %>円</td>
+    </tr>
+     <tr>
+      <th>店舗画像</th>
+      <td>　　　　　<%= attachment_image_tag @shop_profile, :shop_image, :fill, 200, 200 %></td>
     </tr>
   </table>
+  </div>
 </div>
