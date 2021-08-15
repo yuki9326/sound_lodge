@@ -1,12 +1,24 @@
-<h1 class="shop_profile_heading">Organizers</h1>
-
-<div class="shop_list">
-    <% @shop_profiles.each do |shop_profile| %>
-    <div class="profile_box">
-        <%= attachment_image_tag shop_profile, :image, fallback:"no_image.jpg" %>　<%= shop_profile.username %>
-        <p class= "box_content">店名　<%= shop_profile.shop_name %></p>
-        <p class="box_content">都道府県　<%= shop_profile.area %></p>
-        <p class="box_content">希望価格(1時間)　<%= shop_profile.price %></p>
-    </div>
+<div class="container">
+    <h1 class="shop-profile-heading">Organizers</h1>
+    <%= form_tag(shop_profiles_path, method: "get") do %>
+    <%= label_tag :genre, "ジャンルで絞り込む" %>
+    <%= select_tag :genre, options_for_select(ShopProfile.genres_i18n), include_blank: true %>
+    <%= submit_tag "検索" %>
     <% end %>
+    <br><br>
+
+    <div class="d-flex flex-wrap justify-content-start">
+        <% @shop_profiles.each do |shop_profile| %>
+        <div class="card">
+            <%= attachment_image_tag shop_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", class:"card-img-top" %>
+            <div class="card-body">
+                <h4 class="card-title"><%= shop_profile.username %></h4>
+                <p class="card-text">店名　　<%= shop_profile.shop_name %></p>
+                <p class="card-text">所在地　<%= shop_profile.area %></p>
+                <p class="card-text">１時間　<%= shop_profile.price %>円</p>
+                <%= link_to "詳細", shop_profile_path(shop_profile.id), class:"btn btn-warning" %>
+            </div>
+        </div>
+        <% end %>
+    </div>
 </div>

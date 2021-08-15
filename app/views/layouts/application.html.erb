@@ -16,7 +16,7 @@
         <ul class="nav_content">
           <% if end_user_signed_in? %>
           <li class="nav_list"><%= link_to 'Sound Logeとは', about_path, class:"nav_link" %></li>
-          <li class="nav_list">マイページ</li>
+          <li class="nav_list"><%= link_to 'マイページ', end_user_path(current_end_user.id), class:"nav_link" %></li>
           <li class="nav_list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav_link" %></li>
           <li class="nav_list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav_link" %></li>
           <li class="nav_list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav_link" %></li>

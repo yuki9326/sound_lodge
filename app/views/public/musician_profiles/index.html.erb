@@ -5,29 +5,19 @@
     <%= select_tag :genre, options_for_select(MusicianProfile.genres_i18n), include_blank: true %>
     <%= submit_tag "検索" %>
     <% end %>
+    <br><br>
 
-
-    <div class="row d-flex flex-wrap justify-content-start">
+    <div class="d-flex flex-wrap justify-content-start">
         <% @musician_profiles.each do |musician_profile| %>
-        <div class="profile-box">
-            <table class=" table-borderless">
-                <tr>
-                    <th><%= attachment_image_tag musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %></th>
-                    <td><%= link_to musician_profile.username,musician_profile_path(musician_profile.id) %></td>
-                </tr>
-                <tr>
-                    <th>活動エリア</th>
-                    <td><%= musician_profile.area %></td>
-                </tr>
-                <tr>
-                    <th>楽器</th>
-                    <td><%= musician_profile.instrument %></td>
-                </tr>
-                <tr>
-                    <th>1時間</th>
-                    <td><%= musician_profile.price %>円</td>
-                </tr>
-            </table>
+        <div class="card">
+            <%= attachment_image_tag musician_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", class:"card-img-top" %>
+            <div class="card-body">
+                <h4 class="card-title"><%= musician_profile.username %></h4>
+                <p class="card-text">エリア　<%= musician_profile.area %></p>
+                <p class="card-text">楽器　　<%= musician_profile.instrument %></p>
+                <p class="card-text">１時間　<%= musician_profile.price %>円</p>
+                <%= link_to "詳細", musician_profile_path(musician_profile.id), class:"btn btn-warning" %>
+            </div>
         </div>
         <% end %>
     </div>
