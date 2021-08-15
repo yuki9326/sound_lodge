@@ -4,7 +4,7 @@
   <table class="table-borderless">
     <tr>
       <th><%= attachment_image_tag @musician_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %></th>
-      <td>　　　　　<%= @musician_profile.username %></td>
+      <td>　　　    <%= @musician_profile.username %>　<%= @musician_profile.reviews.count %>件のレビュー</td>
     </tr>
     <tr>
       <th>音楽ジャンル</th>
@@ -40,4 +40,28 @@
     </tr>
   </table>
   </div>
+
+  <div class="review-new">
+    <h5 class="review-heading">レビューを書く</h5>
+      <div class="rating-box">
+        <%= form_with model: @review, url: musician_profile_reviews_path(@musician_profile), local: true do |f| %>
+          <div class="main-rating">
+            <div class="ratings">
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+            </div>
+            <div class="rating-value-display"><span id="rating-value-display">0</span>/5</div>
+          </div>
+          <%= f.hidden_field :musician_profile_id, value: @musician_profile.id %>
+          <%= f.hidden_field :score, id: "rating-value" %>
+          <%= f.text_area :comment %>
+          <%= f.submit "保存", class:"btn btn-success" %>
+        <% end %>
+      </div>
+  </div>
 </div>
+
+<%= javascript_include_tag "reviews.js" %>

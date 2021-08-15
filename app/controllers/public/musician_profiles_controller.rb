@@ -7,7 +7,6 @@ class Public::MusicianProfilesController < ApplicationController
   def create
     @musician_profile = MusicianProfile.new(musician_profile_params)
     @musician_profile.end_user_id = current_end_user.id
-
     if @musician_profile.save
       redirect_to musician_profile_path(@musician_profile.id)
     else
@@ -16,7 +15,7 @@ class Public::MusicianProfilesController < ApplicationController
   end
 
   def index
-    @musician_profiles = MusicianProfile.all
+    @musician_profiles = MusicianProfile.order(created_at: :desc).limit(20)
     if params[:genre].present?
       @musician_profiles = @musician_profiles.get_by_genre params[:genre]
     end

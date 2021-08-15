@@ -5,10 +5,6 @@ class MusicianProfile < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  def favorited_by?(end_user)
-    favorites.where(end_user_id,end_user.id).exists?
-  end
-
   enum area: {hokkaido:0,aomori:1,iwate:2,miyagi:3,akita:4,yamagata:5,fukushima:6,
      ibaraki:7,tochigi:8,gunma:9,saitama:10,chiba:11,tokyo:12,kanagawa:13,nigata:14,
      toyama:15,ishikawa:16,fukui:17,yamanashi:18,nagano:19,gifu:20,shizuoka:21,aichi:22,

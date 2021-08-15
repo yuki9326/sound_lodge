@@ -22,9 +22,11 @@ Rails.application.routes.draw do
     resources :end_users, only:[:show, :edit,:update]
     resources :musician_profiles, except:[:destroy] do
       resources :reviews, only:[:index,:create]
+      resources :favorites, only:[:create, :destroy]
     end
     resources :shop_profiles, except:[:destroy] do
       resources :reviews, only:[:index,:create]
+      resources :favorites, only:[:create, :destroy]
     end
     post 'contacts/confirm' => 'contacts#confirm'
     post 'contacts/back' => 'contact#back'

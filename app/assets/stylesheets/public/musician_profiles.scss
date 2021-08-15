@@ -24,3 +24,17 @@
 .card{
   margin: 0 20px;
 }
+
+.fa.fa-star-o{
+  font-size: 30px;
+  color: #ffcc00;
+  cursor: pointer;
+}
+
+.main-rating{
+  display: flex;
+}
+
+.rating-value-display{
+  font-size: 20px;
+}
