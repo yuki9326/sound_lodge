@@ -7,6 +7,7 @@ class EndUser < ApplicationRecord
   has_one :musician_profile, dependent: :destroy
   has_one :shop_profile, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   enum end_user_status: {musician:1, shop:2}
 end
