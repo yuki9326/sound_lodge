@@ -36,8 +36,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :musician_profiles, only:[:show]
-    resources :shop_profiles, only:[:show]
-    resources :end_users, only:[:index,:show,:edit,:update]
+    resources :musician_profiles, only:[:show,:index]
+    resources :shop_profiles, only:[:show,:index]
+    resources :end_users, only:[:show,:edit,:update]
   end
 end

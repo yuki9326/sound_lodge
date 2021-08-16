@@ -13,7 +13,7 @@
             <%= attachment_image_tag musician_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", class:"card-img-top" %>
             <div class="card-body">
                 <h4 class="card-title"><%= musician_profile.username %></h4>
-                <p class="card-text">エリア　<%= musician_profile.area %></p>
+                <p class="card-text">エリア　<%= musician_profile.area_i18n %></p>
                 <p class="card-text">楽器　　<%= musician_profile.instrument %></p>
                 <p class="card-text">１時間　<%= musician_profile.price %>円</p>
                 <%= link_to "詳細", musician_profile_path(musician_profile.id), class:"btn btn-warning" %>

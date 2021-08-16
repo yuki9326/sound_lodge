@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="musician-profile-heading">Musicians</h1>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ユーザーネーム</th>
+            <th>エリア</th>
+            <th>楽器</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @musician_profiles.each do |musician_profile| %>
+            <tr>
+              <td><%= attachment_image_tag musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %></td>
+              <td><%= musician_profile.username %></td>
+              <td><%= musician_profile.area_i18n %></td>
+              <td><%= musician_profile.instrument %></td>
+              <td><%= link_to "詳細",admin_musician_profile_path(musician_profile.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
