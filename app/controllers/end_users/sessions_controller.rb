@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class EndUsers::SessionsController < Devise::SessionsController
+  before_action :reject_inactive_end_user, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -24,4 +25,14 @@ class EndUsers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def reject_inactive_end_user
+    @end_user = EndUser.find_by(email: params[:end_user][:email])
+    if @end_user
+      if @end_user.valid_password?(params[:end_user][:password]) && !@end_user.is_active
+        redirect_to new_end_user_session_path
+      end
+    end
+  end
+
 end

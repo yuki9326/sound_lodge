@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    get 'confirm' => 'end_users#confirm'
-    patch 'unsubscribe' => 'end_users#unsubscribe'
+    get 'end_users/confirm' => 'end_users#confirm'
+    patch 'end_users/unsubscribe' => 'end_users#unsubscribe'
     resources :end_users, only:[:show, :edit,:update]
     resources :musician_profiles, except:[:destroy] do
       resources :reviews, only:[:index,:create]
