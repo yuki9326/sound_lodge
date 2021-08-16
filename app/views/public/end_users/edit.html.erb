@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="end-user-heading">Edit My Infomation</h1><br><br>
+    <div class="row justify-content-center">
+      <%= form_with model: @end_user, local: true do |f| %>
+
+      <div class="form-group">
+        <%= f.label :name, "氏名" %>
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, class:"form-control" %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= f.label :end_user_status, "会員タイプ選択" %>
+        <%= f.radio_button :end_user_status, :musician %>
+        <%= f.label :ミュージシャン %>
+        <%= f.radio_button :end_user_status, :shop %>
+        <%= f.label :お店 %>
+      </div>
+      <br>
+      <%= f.submit "変更", class:"btn btn-success btn-block" %>
+      <% end %>
+    </div>
+    <br><br>
+    <div class="row justify-content-center">
+      <p>パスワードの変更はこちら</p>
+    </div>
+</div>
