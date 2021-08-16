@@ -5,7 +5,10 @@ class Public::ShopProfilesController < ApplicationController
   end
 
   def index
-    @shop_profiles = ShopProfile.all
+    @shop_profiles = ShopProfile.order(created_at: :desc).limit(20)
+    if params[:genre].present? && params[:area].present?
+      @shop_profiles = @shop_profiles.get_by_genre(params[:genre],params[:area])
+    end
   end
 
   def create

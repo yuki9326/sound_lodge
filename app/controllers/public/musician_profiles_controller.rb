@@ -16,8 +16,8 @@ class Public::MusicianProfilesController < ApplicationController
 
   def index
     @musician_profiles = MusicianProfile.order(created_at: :desc).limit(20)
-    if params[:genre].present?
-      @musician_profiles = @musician_profiles.get_by_genre params[:genre]
+    if params[:genre].present? && params[:area].present?
+      @musician_profiles = @musician_profiles.get_by_genre(params[:genre],params[:area])
     end
   end
 

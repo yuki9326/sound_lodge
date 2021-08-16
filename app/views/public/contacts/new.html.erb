@@ -1,26 +1,30 @@
-<%= form_with model: @contact, url: contacts_confirm_path, local: true do |f| %>
-<div class="form-group">
-  <%= f.label :name, "お名前" %>
-  <%= f.text_field :name, autofocus: true, class:"form-control" %>
+<div class="container">
+  <h1 class="contact-heading">Contact Us</h1>
+    <%= form_with model: @contact, url: contacts_confirm_path, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "お名前" %>
+        <%= f.text_field :name, autofocus: true, class:"form-control" %>
+      </div>
+
+      <div class="form_grounp">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, class:"form-control" %>
+      </div>
+
+      <div class="form-grounp">
+        <%= f.label :subject, "件名" %>
+        <%= f.text_field :subject, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :mail_body, "本文" %>
+        <%= f.text_area :mail_body, size: '10x10', class:"form-control" %>
+      </div>
+
+      <div>
+        <%= f.submit '入力内容確認' %>
+      </div>
+
+    <% end %>
 </div>
 
-<div class="form_grounp">
-  <%= f.label :email, "メールアドレス" %>
-  <%= f.email_field :email, class:"form-control" %>
-</div>
-
-<div class="form-grounp">
-  <%= f.label :subject, "件名" %>
-  <%= f.text_field :subject, class:"form-control" %>
-</div>
-
-<div class="form-group">
-  <%= f.label :mail_body, "本文" %>
-  <%= f.text_area :mail_body, size: '10x10', class:"form-control" %>
-</div>
-
-<div>
-  <%= f.submit '入力内容確認' %>
-</div>
-
-<% end %>

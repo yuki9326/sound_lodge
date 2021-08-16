@@ -39,5 +39,6 @@ Rails.application.routes.draw do
     resources :musician_profiles, only:[:show,:index]
     resources :shop_profiles, only:[:show,:index]
     resources :end_users, only:[:show,:edit,:update]
+    resources :contacts, except:[:show, :create,:new]
   end
 end

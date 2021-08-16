@@ -32,6 +32,6 @@ class Public::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:email,:name,:subject,:mail_body,:end_user_id)
+    params.require(:contact).permit(:email,:name,:subject,:mail_body).merge(end_user_id: current_end_user.id)
   end
 end

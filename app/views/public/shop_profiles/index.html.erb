@@ -1,20 +1,22 @@
 <div class="container">
     <h1 class="shop-profile-heading">Organizers</h1>
     <%= form_tag(shop_profiles_path, method: "get") do %>
-    <%= label_tag :genre, "ジャンルで絞り込む" %>
-    <%= select_tag :genre, options_for_select(ShopProfile.genres_i18n), include_blank: true %>
-    <%= submit_tag "検索" %>
+    <%= label_tag :genre, "ジャンル" %>
+    <%= select_tag :genre, options_for_select(ShopProfile.genres.keys.map {|k| [I18n.t("enums.shop_profile.genre.#{k}"), k]}) %>
+    <%= label_tag :area, "エリア" %>
+    <%= select_tag :area, options_for_select(ShopProfile.areas.keys.map {|k| [I18n.t("enums.shop_profile.area.#{k}"), k]}) %>
+    <%= submit_tag "絞り込み検索" %>
     <% end %>
     <br><br>
 
     <div class="d-flex flex-wrap justify-content-start">
         <% @shop_profiles.each do |shop_profile| %>
         <div class="card">
-            <%= attachment_image_tag shop_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", class:"card-img-top" %>
+            <%= attachment_image_tag shop_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", size:'200x200', class:"card-img-top" %>
             <div class="card-body">
                 <h4 class="card-title"><%= shop_profile.username %></h4>
                 <p class="card-text">店名　　<%= shop_profile.shop_name %></p>
-                <p class="card-text">所在地　<%= shop_profile.area %></p>
+                <p class="card-text">所在地　<%= shop_profile.area_i18n %></p>
                 <p class="card-text">１時間　<%= shop_profile.price %>円</p>
                 <%= link_to "詳細", shop_profile_path(shop_profile.id), class:"btn btn-warning" %>
             </div>

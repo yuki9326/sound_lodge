@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="shop-profile-heading">Organizers</h1>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ユーザーネーム</th>
+            <th>店名</th>
+            <th>エリア</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shop_profiles.each do |shop_profile| %>
+            <tr>
+              <td><%= attachment_image_tag shop_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %></td>
+              <td><%= shop_profile.username %></td>
+              <td><%= shop_profile.shop_name %></td>
+              <td><%= shop_profile.area_i18n %></td>
+              <td><%= link_to "詳細",admin_shop_profile_path(shop_profile.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>

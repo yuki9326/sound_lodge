@@ -1,16 +1,22 @@
 <div class="container">
     <h1 class="musician-profile-heading">Musicians</h1>
     <%= form_tag(musician_profiles_path, method: "get") do %>
-    <%= label_tag :genre, "ジャンルで絞り込む" %>
-    <%= select_tag :genre, options_for_select(MusicianProfile.genres_i18n), include_blank: true %>
-    <%= submit_tag "検索" %>
+    <%= label_tag :genre, "ジャンル" %>
+    <%= select_tag :genre, options_for_select(MusicianProfile.genres.keys.map {|k| [I18n.t("enums.musician_profile.genre.#{k}"), k]}) %>
+    <%= label_tag :area, "エリア" %>
+    <%= select_tag :area, options_for_select(MusicianProfile.areas.keys.map {|k| [I18n.t("enums.musician_profile.area.#{k}"), k]}) %>
+    <%= submit_tag "絞り込み検索" %>
+    <% end %>
+
+    <% if @musician_profiles.count == 0 %>
+    <p>検索結果なし</p>
     <% end %>
     <br><br>
 
     <div class="d-flex flex-wrap justify-content-start">
         <% @musician_profiles.each do |musician_profile| %>
         <div class="card">
-            <%= attachment_image_tag musician_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", class:"card-img-top" %>
+            <%= attachment_image_tag musician_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", size:'200x200', class:"card-img-top" %>
             <div class="card-body">
                 <h4 class="card-title"><%= musician_profile.username %></h4>
                 <p class="card-text">エリア　<%= musician_profile.area_i18n %></p>
