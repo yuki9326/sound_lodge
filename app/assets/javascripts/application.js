@@ -20,4 +20,4 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require jquery.raty.js
+//= require jquery_raty.js

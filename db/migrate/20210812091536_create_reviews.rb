@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.references :musician_profile, foreign_key: true
       t.references :shop_profile, foreign_key: true
       t.string :comment
-      t.float :score, default: 0
+      t.float :rate, default: 0
 
       t.timestamps
     end

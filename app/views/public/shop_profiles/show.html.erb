@@ -1,43 +1,70 @@
 <div class="container">
   <h1 class="shop-profile-heading">Profile</h1>
-  <div class="row justify-content-center">
-  <table class="table-borderless">
-    <tr>
-      <th><%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %></th>
-      <td>　　　　　<%= @shop_profile.username %></td>
-    </tr>
-    <tr>
-      <th>店名</th>
-      <td>　　　　　<%= @shop_profile.shop_name %></td>
-    </tr>
-    <tr>
-      <th>店舗所在地</th>
-      <td>　　　　　<%= @shop_profile.area_i18n %></td>
-    </tr>
-    <tr>
-      <th>店舗音響設備</th>
-      <td>　　　　　<%= @shop_profile.audio_equipment %></td>
-    </tr>
-    <tr>
-      <th>店舗紹介文</th>
-      <td>　　　　　<%= @shop_profile.introduction %></td>
-    </tr>
-    <tr>
-      <th>希望音楽ジャンル</th>
-      <td>　　　　　<%= @shop_profile.genre_i18n %></td>
-    </tr>
-    <tr>
-      <th>ボーカルの希望</th>
-      <td>　　　　　<%= @shop_profile.is_vocal %></td>
-    </tr>
-    <tr>
-      <th>希望価格(1時間)</th>
-      <td>　　　　　<%= @shop_profile.price %>円</td>
-    </tr>
-     <tr>
-      <th>店舗画像</th>
-      <td>　　　　　<%= attachment_image_tag @shop_profile, :shop_image, :fill, 200, 200 %></td>
-    </tr>
-  </table>
+  <div class="row">
+    <div class="col-8 d-flex justify-content-center">
+      <div class="profile-box">
+        <div class="d-flex flex-row">
+          <%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
+          <p class="profile-name"><%= @shop_profile.username %></p>
+        </div>
+        <br>
+        <p><%= @shop_profile.reviews.count %>件のレビュー</p>
+        <table class="table table-borderless">
+          <tr>
+            <th>店名</th>
+            <td><%= @shop_profile.shop_name %></td>
+          </tr>
+          <tr>
+            <th>店舗所在地</th>
+            <td><%= @shop_profile.area_i18n %></td>
+          </tr>
+          <tr>
+            <th>店舗音響設備</th>
+            <td><%= @shop_profile.audio_equipment %></td>
+          </tr>
+          <tr>
+            <th>店舗紹介文</th>
+            <td><%= @shop_profile.introduction %></td>
+          </tr>
+          <tr>
+            <th>希望音楽ジャンル</th>
+            <td><%= @shop_profile.genre_i18n %></td>
+          </tr>
+          <tr>
+            <th>ボーカルの希望</th>
+            <td><% if @shop_profile.is_vocal = true %>
+                <p>有り</p>
+                <% else %>
+                <p>無し</p>
+                <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>希望価格(1時間)</th>
+            <td><%= @shop_profile.price %>円</td>
+          </tr>
+          <tr>
+            <th>店舗画像</th>
+            <td><%= attachment_image_tag @shop_profile, :shop_image, :fill, 200, 200 %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-4 d-flex justify-content-center align-items-center">
+      <div class="rating-box">
+        <h5>レビューを書く</h5>
+          <div id="rating-stars">
+            <%= form_with model: @shop_profile, local: true do |f| %>
+              <%=f.label :comment, "コメント" %>
+              <%= f.text_area :comment %>
+              <%= f.label :rate %>
+              <%= f.hidden_field :rate, id: :review_star %>
+              <%= f.submit "投稿" %>
+            <% end %>
+          </div>
+      </div>
+    </div>
   </div>
 </div>
+
