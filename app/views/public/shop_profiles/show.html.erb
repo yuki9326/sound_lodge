@@ -66,5 +66,9 @@
       </div>
     </div>
   </div>
+  
+  <div id="show_favorite_<%= @shop_profile.id %>">
+    <%= render 'favorites/favorite', shop_profile: @shop_profile %>
+  </div>
 </div>
 

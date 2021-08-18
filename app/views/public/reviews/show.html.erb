@@ -1,10 +1,11 @@
-<% @reviews.each do |review| %>
-<div id="average-review-rating-<%= review.id %>" data-score=<%= review.rate %>>
+<div class="col-sm-8">
+
+  <div class="average-review-rating" data-score=<%= @review.rate %>>
 </div>
 <%# data-scoreに先ほど設定した@average_reviewのインスタンス変数を当てる。 %>
 
 <script>
-  $('#average-review-rating-<%= review.id %>').raty({
+  $('.average-review-rating').raty({
     readOnly: true,
     path: '/assets/',
     score: function() {
@@ -12,4 +13,5 @@
     }
   });
 </script>
-<% end %>
+<%# jquery発火条件記載 %>
+

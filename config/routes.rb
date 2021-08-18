@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     patch 'end_users/unsubscribe' => 'end_users#unsubscribe'
     resources :end_users, only:[:show, :edit,:update]
     resources :musician_profiles, except:[:destroy] do
-      resources :reviews, only:[:index,:create]
+      resources :reviews, only:[:index,:create,:show]
       resources :favorites, only:[:create, :destroy]
     end
     resources :shop_profiles, except:[:destroy] do
