@@ -1,17 +1,20 @@
-<div class="col-sm-8">
-
-  <div class="average-review-rating" data-score=<%= @review.rate %>>
-</div>
+<div class="container">
+  <h1 class="review-heading">Review</h1>
+    <div class="row justify-content-center">
+      <p>コメント</p>
+      <br>
+      <%= @review.comment %>
+      <div class="average-review-rating" data-score=<%= @review.rate %>></div>
 <%# data-scoreに先ほど設定した@average_reviewのインスタンス変数を当てる。 %>
 
-<script>
-  $('.average-review-rating').raty({
-    readOnly: true,
-    path: '/assets/',
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-</script>
-<%# jquery発火条件記載 %>
-
+      <script>
+        $('.average-review-rating').raty({
+          readOnly: true,
+          path: '/assets/',
+          score: function() {
+            return $(this).attr('data-score')
+          }
+        });
+      </script>
+    </div>
+</div>
