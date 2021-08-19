@@ -1,23 +1,26 @@
 <div class="container">
   <h1 class="contact-heading">Inquiries</h1>
-    <table class="table">
-      <% @contacts.each do |contact| %>
-      <tr>
-        <th>お名前</th>
-        <td><%= contact.name %></td>
-      </tr>
-      <tr>
-        <th>件名</th>
-        <td><%= contact.subject %></td>
-      </tr>
-      <tr>
-        <th>受信日</th>
-        <td><%= contact.created_at.strftime("%Y年%m月%d日 ") %></td>
-      </tr>
-      <tr>
-        <th><%= link_to "返信", edit_admin_contact_path(contact), class:"btn btn-success" %></th>
-        <td><%= link_to "削除", admin_contact_path(contact), method: :delete, class:"btn btn-danger" %></td>
-      </tr>
-      <% end %>
-    </table>
+    <div class="row justify-content-center">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>お名前</th>
+            <th>件名</th>
+            <th>受信日</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.name %></td>
+            <td><%= contact.subject %></td>
+            <td><%= contact.created_at.strftime("%Y年%m月%d日 ") %></td>
+            <td><%= link_to "返信", edit_admin_contact_path(contact), class:"btn btn-success" %></td>
+            <td><%= link_to "削除", admin_contact_path(contact), method: :delete, class:"btn btn-danger" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 </div>
