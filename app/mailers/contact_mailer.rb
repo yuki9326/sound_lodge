@@ -6,8 +6,8 @@ class ContactMailer < ApplicationMailer
   end
 
   def send_when_admin_reply(end_user, contact)
-    @end_user = end_user
+    @contact = contact
     @answer = contact.reply
-    mail to: end_user.email, subject: '【Sound Lodge】お問い合わせありがとうございます'
+    mail to: contact.email, subject: '【Sound Lodge】お問い合わせありがとうございます'
   end
 end

@@ -1,14 +1,29 @@
-<h2>お問い合わせ内容</h2>
-    <%= form_for @contact, url: admin_contact_path do |f| %>
-        <h3>顧客名</h3>
-        <%= @contact.name %>さん
-        <h3>問い合わせ日</h3>
-        <%= @contact.created_at.strftime("%Y年%m月%d日 ") %>
-        <h3>タイトル</h3>
-        <%= @contact.subject %>
-        <h3>問い合わせ内容</h3>
-        <%= @contact.mail_body %>
-        <h3>返信</h3>
-        <%= f.text_area :reply, class:"form-control", placeholder: "返信内容" %>
-        <%= f.submit "送信" %>
-    <% end %>
+<div class="container">
+  <h1 class="contact-heading">Reply</h1>
+    <table class="table">
+      <tr>
+        <th>お名前</th>
+        <td><%= @contact.name %></td>
+      </tr>
+      <tr>
+        <th>受信日</th>
+        <td><%= @contact.created_at.strftime("%Y年%m月%d日 ") %></td>
+      </tr>
+      <tr>
+        <th>件名</th>
+        <td><%= @contact.subject %></td>
+      </tr>
+      <tr>
+        <th>問い合わせ内容</th>
+        <td><%= @contact.mail_body %></td>
+      </tr>
+      <%= form_for @contact, url: admin_contact_path do |f| %>
+      <tr>
+        <th>返信内容</th>
+        <td><%= f.text_area :reply, size: "20x10", class:"form-control" %></td>
+      </tr>
+    </table>
+    <%= f.submit "送信", class:"btn btn-success btn-lg" %>
+      <% end %>
+</div>
+
