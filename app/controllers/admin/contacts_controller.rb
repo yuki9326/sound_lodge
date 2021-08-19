@@ -2,6 +2,7 @@ class Admin::ContactsController < ApplicationController
 
   def index
     @contacts = Contact.page(params[:page]).order(created_at: :desc).per(20)
+    @end_users = EndUser.all
   end
 
   def edit

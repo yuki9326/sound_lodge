@@ -6,6 +6,7 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :email, null: false
       t.text :mail_body, null: false
+      t.text :reply
 
       t.timestamps
     end

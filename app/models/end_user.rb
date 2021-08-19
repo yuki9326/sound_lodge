@@ -8,6 +8,7 @@ class EndUser < ApplicationRecord
   has_one :shop_profile, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   def already_favorited?(musician_profile)
     self.favorites.exists?(musician_profile_id: musician_profile.id)

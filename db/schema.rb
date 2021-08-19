@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_08_15_065154) do
     t.string "name", null: false
     t.string "email", null: false
     t.text "mail_body", null: false
+    t.text "reply"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
