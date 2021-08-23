@@ -1,15 +1,26 @@
-<% @reviews.each do |review| %>
-<div id="average-review-rating-<%= review.id %>" data-score=<%= review.rate %>>
+<div class="container">
+  <h1 class="Review-heading">Reviews</h1>
+  <div class="row">
+    <% @musician_profile.reviews.each do |review| %>
+    <div class="review-box">
+      <div class="d-flex flex-row">
+        <%= attachment_image_tag review.musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
+        <%= review.musician_profile.name %>
+      </div>
+      <div id="average-review-rating-<%= review.id %>" data-score=<%= review.rate %>></div>
+      <script>
+        $('#average-review-rating-<%= review.id %>').raty({
+          readOnly: true,
+          path: '/assets/',
+          score: function() {
+            return $(this).attr('data-score')
+          }
+        });
+      </script>
+      <div class="comment-box">
+        <%= review.comment %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
-<%# data-scoreに先ほど設定した@average_reviewのインスタンス変数を当てる。 %>
-
-<script>
-  $('#average-review-rating-<%= review.id %>').raty({
-    readOnly: true,
-    path: '/assets/',
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-</script>
-<% end %>
