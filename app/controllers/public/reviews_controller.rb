@@ -7,7 +7,7 @@ class Public::ReviewsController < ApplicationController
   @review = Review.new(review_params)
   @review.end_user_id = current_end_user.id
   @review.save
-  redirect_to musician_profile_review_path(@review.id)
+  redirect_to review_path(@musician_profile.id)
   end
 
   def show
