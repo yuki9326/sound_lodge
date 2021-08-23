@@ -1,19 +1,19 @@
 class Public::MusicianReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all
-    render "public/musician_profiles/reviews/index"
+    @musician_reviews = Review.all
   end
 
   def create
-  @review = Review.new(review_params)
-  @review.end_user_id = current_end_user.id
-  @review.save
-  redirect_to review_path(@musician_profile.id)
+  @musician_review = Review.new(review_params)
+  @musician_review.musician_profile_id = params["musician_profile_id"]
+  @musician_review.end_user_id = current_end_user.id
+  @musician_review.save
+  redirect_to musician_profile_musician_review_path(@musician_review.musician_profile,@musician_review)
   end
 
   def show
-  @review = Review.find(params[:id])
+  @musician_review = Review.find(params[:id])
   end
 
  private

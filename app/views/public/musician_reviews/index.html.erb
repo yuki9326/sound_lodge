@@ -1,15 +1,15 @@
 <div class="container">
   <h1 class="Review-heading">Reviews</h1>
   <div class="row">
-    <% @musician_profile.reviews.each do |review| %>
+    <% @musician_reviews.each do |musician_review| %>
     <div class="review-box">
       <div class="d-flex flex-row">
-        <%= attachment_image_tag review.musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
-        <%= review.musician_profile.name %>
+        <%= attachment_image_tag musician_review.musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
+        <%= musician_review.musician_profile.username %>
       </div>
-      <div id="average-review-rating-<%= review.id %>" data-score=<%= review.rate %>></div>
+      <div id="average-review-rating-<%= musician_review.id %>" data-score=<%= musician_review.rate %>></div>
       <script>
-        $('#average-review-rating-<%= review.id %>').raty({
+        $('#average-review-rating-<%= musician_review.id %>').raty({
           readOnly: true,
           path: '/assets/',
           score: function() {
@@ -18,7 +18,7 @@
         });
       </script>
       <div class="comment-box">
-        <%= review.comment %>
+        <%= musician_review.comment %>
       </div>
     </div>
     <% end %>
