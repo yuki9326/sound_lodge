@@ -4,7 +4,7 @@
     <div class="col-2">
       <%= attachment_image_tag @musician_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
       <p class="profile-name"><%= @musician_profile.username %></p>
-      <p class="text-center"><%= @musician_profile.reviews.count %>件のレビュー</p>
+      <p class="text-center"><%= link_to @musician_profile.reviews.count, musician_profile_reviews_path(musician_profile_id: @musician_profile.id)%>件のレビュー</p>
     </div>
     <div class="col-7 d-flex justify-content-center">
       <div class="profile-box">

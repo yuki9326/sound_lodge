@@ -1,6 +1,7 @@
 class Public::ReviewsController < ApplicationController
   def index
     @reviews = Review.all
+    render "public/musician_profiles/reviews/index"
   end
 
   def create
