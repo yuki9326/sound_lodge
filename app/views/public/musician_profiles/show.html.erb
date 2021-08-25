@@ -50,9 +50,9 @@
         </div>
       </div>
 
-      <div class="col-3 d-flex justify-content-center align-items-center">
+      <div class="col-3 d-flex justify-content-center">
         <div class="rating-box">
-          <h5>レビューを書く</h5>
+          <h6>レビューを書く</h6>
               <%= form_with model: @review, url: musician_profile_musician_reviews_path(@musician_profile) ,local: true do |f| %>
                 <%= f.label :comment, "コメント" %>
                 <%= f.text_area :comment, class:"form-control" %>

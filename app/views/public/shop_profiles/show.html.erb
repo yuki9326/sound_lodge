@@ -51,9 +51,9 @@
         </div>
       </div>
 
-      <div class="col-3 d-flex justify-content-center align-items-center">
+      <div class="col-3 d-flex justify-content-center">
         <div class="rating-box">
-          <h5>レビューを書く</h5>
+          <h6>レビューを書く</h6>
             <%= form_with model: @review, url: shop_profile_shop_reviews_path(@shop_profile), local: true do |f| %>
               <%= f.label :comment, "コメント" %>
               <%= f.text_area :comment, class:"form-control" %>
