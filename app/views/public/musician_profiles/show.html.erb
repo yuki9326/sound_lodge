@@ -1,72 +1,72 @@
 <div class="container">
   <h1 class="musician-profile-heading">Profile</h1>
-  <div class="row">
-    <div class="col-2">
-      <%= attachment_image_tag @musician_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
-      <p class="profile-name"><%= @musician_profile.username %></p>
-      <p class="text-center"><%= link_to @musician_reviews.count, musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) %>件のレビュー</p>
-    </div>
-    <div class="col-7 d-flex justify-content-center">
-      <div class="profile-box">
-        <table class="table table-borderless">
-          <tr>
-            <th>音楽ジャンル</th>
-            <td><%= @musician_profile.genre_i18n %></td>
-          </tr>
-          <tr>
-            <th>活動エリア</th>
-            <td><%= @musician_profile.area_i18n %></td>
-          </tr>
-          <tr>
-            <th>楽器</th>
-            <td><%= @musician_profile.instrument %></td>
-          </tr>
-          <tr>
-            <th>活動人数</th>
-            <td><%= @musician_profile.total_member %>人</td>
-          </tr>
-          <tr>
-            <th>ボーカルの有無</th>
-            <td><% if @musician_profile.is_vocal = true %>
-                <p>有り</p>
-                <% else %>
-                <p>無し</p>
-                <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>希望価格(1時間)</th>
-            <td><%= @musician_profile.price %></td>
-          </tr>
-          <tr>
-            <th>自己紹介文</th>
-            <td><%= @musician_profile.introduction %></td>
-          </tr>
-          <tr>
-            <th>演奏動画</th>
-            <td><%= @musician_profile.video_id %></td>
-          </tr>
-        </table>
+    <div class="row">
+      <div class="col-2">
+        <%= attachment_image_tag @musician_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
+        <p class="profile-name"><%= @musician_profile.username %></p>
+        <p class="text-center"><%= link_to @musician_reviews.count, musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) %>件のレビュー</p>
       </div>
-    </div>
+      <div class="col-7 d-flex justify-content-center">
+        <div class="profile-box">
+          <table class="table table-borderless">
+            <tr>
+              <th>音楽ジャンル</th>
+              <td><%= @musician_profile.genre_i18n %></td>
+            </tr>
+            <tr>
+              <th>活動エリア</th>
+              <td><%= @musician_profile.area_i18n %></td>
+            </tr>
+            <tr>
+              <th>楽器</th>
+              <td><%= @musician_profile.instrument %></td>
+            </tr>
+            <tr>
+              <th>活動人数</th>
+              <td><%= @musician_profile.total_member %>人</td>
+            </tr>
+            <tr>
+              <th>ボーカルの有無</th>
+              <td><% if @musician_profile.is_vocal = true %>
+                  <p>有り</p>
+                  <% else %>
+                  <p>無し</p>
+                  <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>希望価格(1時間)</th>
+              <td><%= @musician_profile.price %></td>
+            </tr>
+            <tr>
+              <th>自己紹介文</th>
+              <td><%= @musician_profile.introduction %></td>
+            </tr>
+            <tr>
+              <th>演奏動画</th>
+              <td><%= @musician_profile.video_id %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
 
-    <div class="col-3 d-flex justify-content-center align-items-center">
-      <div class="rating-box">
-        <h5>レビューを書く</h5>
-            <%= form_with model: @review, url: musician_profile_musician_reviews_path(@musician_profile) ,local: true do |f| %>
-              <%= f.label :comment, "コメント" %>
-              <%= f.text_area :comment, class:"form-control" %>
-              <br>
-              <div id="star">
-              <%= f.label :rate, "評価" %>
-              <%= f.hidden_field :rate, id: :review_star %>
-              </div>
-              <br>
-              <%= f.submit "投稿", class:"btn btn-success" %>
-            <% end %>
+      <div class="col-3 d-flex justify-content-center align-items-center">
+        <div class="rating-box">
+          <h5>レビューを書く</h5>
+              <%= form_with model: @review, url: musician_profile_musician_reviews_path(@musician_profile) ,local: true do |f| %>
+                <%= f.label :comment, "コメント" %>
+                <%= f.text_area :comment, class:"form-control" %>
+                <br>
+                <div id="star">
+                <%= f.label :rate, "評価" %>
+                <%= f.hidden_field :rate, id: :review_star %>
+                </div>
+                <br>
+                <%= f.submit "投稿", class:"btn btn-success" %>
+              <% end %>
+        </div>
       </div>
     </div>
-  </div>
 </div>
 
  <script>

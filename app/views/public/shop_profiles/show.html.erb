@@ -1,74 +1,82 @@
 <div class="container">
   <h1 class="shop-profile-heading">Profile</h1>
-  <div class="row">
-    <div class="col-8 d-flex justify-content-center">
-      <div class="profile-box">
-        <div class="d-flex flex-row">
-          <%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
-          <p class="profile-name"><%= @shop_profile.username %></p>
-        </div>
-        <br>
-        <p><%= @shop_profile.reviews.count %>件のレビュー</p>
-        <table class="table table-borderless">
-          <tr>
-            <th>店名</th>
-            <td><%= @shop_profile.shop_name %></td>
-          </tr>
-          <tr>
-            <th>店舗所在地</th>
-            <td><%= @shop_profile.area_i18n %></td>
-          </tr>
-          <tr>
-            <th>店舗音響設備</th>
-            <td><%= @shop_profile.audio_equipment %></td>
-          </tr>
-          <tr>
-            <th>店舗紹介文</th>
-            <td><%= @shop_profile.introduction %></td>
-          </tr>
-          <tr>
-            <th>希望音楽ジャンル</th>
-            <td><%= @shop_profile.genre_i18n %></td>
-          </tr>
-          <tr>
-            <th>ボーカルの希望</th>
-            <td><% if @shop_profile.is_vocal = true %>
+    <div class="row">
+      <div class="col-2">
+        <%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
+        <p class="profile-name"><%= @shop_profile.username %></p>
+        <p class="text-center"><%= link_to @shop_reviews.count, shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) %>件のレビュー</p>
+      </div>
+      <div class="col-7 d-flex justify-content-center">
+        <div class="profile-box">
+          <table class="table table-borderless">
+            <tr>
+              <th>店名</th>
+              <td><%= @shop_profile.shop_name %></td>
+            </tr>
+            <tr>
+              <th>都道府県</th>
+              <td><%= @shop_profile.area_i18n %></td>
+            </tr>
+            <tr>
+              <th>店舗音響設備</th>
+              <td><%= @shop_profile.audio_equipment %></td>
+            </tr>
+            <tr>
+              <th>店舗紹介文</th>
+              <td><%= @shop_profile.introduction %></td>
+            </tr>
+            <tr>
+              <th>希望音楽ジャンル</th>
+              <td><%= @shop_profile.genre_i18n %></td>
+            </tr>
+            <tr>
+              <th>ボーカルの希望</th>
+              <td>
+                <% if @shop_profile.is_vocal = true %>
                 <p>有り</p>
                 <% else %>
                 <p>無し</p>
                 <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>希望価格(1時間)</th>
-            <td><%= @shop_profile.price %>円</td>
-          </tr>
-          <tr>
-            <th>店舗画像</th>
-            <td><%= attachment_image_tag @shop_profile, :shop_image, :fill, 200, 200 %></td>
-          </tr>
-        </table>
+              </td>
+            </tr>
+            <tr>
+              <th>希望価格(1時間)</th>
+              <td><%= @shop_profile.price %></td>
+            </tr>
+            <tr>
+              <th>店舗画像</th>
+              <td><%= attachment_image_tag @shop_profile, :shop_image, :fill, 200, 200 %></td>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
 
-    <div class="col-4 d-flex justify-content-center align-items-center">
-      <div class="rating-box">
-        <h5>レビューを書く</h5>
-          <div id="rating-stars">
-            <%= form_with model: @shop_profile, local: true do |f| %>
-              <%=f.label :comment, "コメント" %>
-              <%= f.text_area :comment %>
-              <%= f.label :rate %>
-              <%= f.hidden_field :rate, id: :review_star %>
-              <%= f.submit "投稿" %>
+      <div class="col-3 d-flex justify-content-center align-items-center">
+        <div class="rating-box">
+          <h5>レビューを書く</h5>
+            <%= form_with model: @review, url: shop_profile_shop_reviews_path(@shop_profile), local: true do |f| %>
+              <%= f.label :comment, "コメント" %>
+              <%= f.text_area :comment, class:"form-control" %>
+              <br>
+              <div id="star">
+                <%= f.label :rate, "評価" %>
+                <%= f.hidden_field :rate, id: :review_star %>
+              </div>
+              <br>
+              <%= f.submit "投稿", class:"btn btn-success" %>
             <% end %>
-          </div>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div id="show_favorite_<%= @shop_profile.id %>">
-    <%= render 'favorites/favorite', shop_profile: @shop_profile %>
-  </div>
 </div>
 
+<script>
+  $('#star').raty({
+    size: 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'review[rate]',
+    half: true
+  });
+</script>
