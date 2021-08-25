@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="review-heading">Review</h1>
+  <div class="box justify-content-center align-items-center">
+    <div class="card review mx-auto">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <%= attachment_image_tag @musician_review.musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
+        <%= @musician_review.musician_profile.username %>
+        <div id="average-review-rating-<%= @musician_review.id %>" data-score=<%= @musician_review.rate %>></div>
+          <script>
+            $('#average-review-rating-<%= @musician_review.id %>').raty({
+              readOnly: true,
+              path: '/assets/',
+              score: function() {
+                return $(this).attr('data-score')
+              }
+            });
+          </script>
+      </div>
+      <div class="card-body">
+        <p class="card-text text-center"><%= @musician_review.comment %></p>
+      </div>
+    </div>
+  </div>
+</div>
