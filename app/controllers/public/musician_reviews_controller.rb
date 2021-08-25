@@ -5,15 +5,15 @@ class Public::MusicianReviewsController < ApplicationController
   end
 
   def create
-  @musician_review = Review.new(review_params)
-  @musician_review.musician_profile_id = params[:musician_profile_id]
-  @musician_review.end_user_id = current_end_user.id
-  @musician_review.save
-  redirect_to musician_profile_musician_review_path(@musician_review.musician_profile,@musician_review)
+    @musician_review = Review.new(review_params)
+    @musician_review.musician_profile_id = params[:musician_profile_id]
+    @musician_review.end_user_id = current_end_user.id
+    @musician_review.save
+    redirect_to musician_profile_musician_review_path(@musician_review.musician_profile, @musician_review)
   end
 
   def show
-  @musician_review = Review.find(params[:id])
+    @musician_review = Review.find(params[:id])
   end
 
  private
