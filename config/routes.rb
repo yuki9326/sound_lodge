@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :favorites, only:[:create, :destroy]
     end
     resources :shop_profiles, except:[:destroy] do
-      resources :shop_reviews, only:[:index,:create]
+      resources :shop_reviews, only:[:index,:create,:show]
       resources :favorites, only:[:create, :destroy]
     end
     post 'contacts/confirm' => 'contacts#confirm'
