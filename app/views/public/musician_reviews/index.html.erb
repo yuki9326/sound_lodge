@@ -1,26 +1,24 @@
 <div class="container">
-  <h1 class="Review-heading">Reviews</h1>
-  <div class="row">
+  <h1 class="review-heading">Reviews</h1>
     <% @musician_reviews.each do |musician_review| %>
-    <div class="review-box">
-      <div class="d-flex flex-row">
-        <%= attachment_image_tag musician_review.musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
-        <%= musician_review.musician_profile.username %>
+      <div class="card review mx-auto">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <%= attachment_image_tag musician_review.musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
+          <%= musician_review.musician_profile.username %>
+          <div id="average-review-rating-<%= musician_review.id %>" data-score=<%= musician_review.rate %>></div>
+            <script>
+              $('#average-review-rating-<%= musician_review.id %>').raty({
+                readOnly: true,
+                path: '/assets/',
+                score: function() {
+                  return $(this).attr('data-score')
+                }
+              });
+            </script>
+        </div>
+        <div class="card-body">
+          <p class="card-text text-center"><%= musician_review.comment %></p>
+        </div>
       </div>
-      <div id="average-review-rating-<%= musician_review.id %>" data-score=<%= musician_review.rate %>></div>
-      <script>
-        $('#average-review-rating-<%= musician_review.id %>').raty({
-          readOnly: true,
-          path: '/assets/',
-          score: function() {
-            return $(this).attr('data-score')
-          }
-        });
-      </script>
-      <div class="comment-box">
-        <%= musician_review.comment %>
-      </div>
-    </div>
     <% end %>
-  </div>
 </div>

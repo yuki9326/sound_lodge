@@ -2,3 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.review-heading{
+  text-align: center;
+  margin-top: 50px;
+  font-style: italic;
+  border-bottom: 6px double #000;
+  margin-bottom: 50px;
+}
+
+.review-heading:first-letter {
+  font-size: 150%;
+  color: #eb6100;
+}
+
+.card.review{
+  width: 60%;
+  margin-bottom: 20px;
+}
