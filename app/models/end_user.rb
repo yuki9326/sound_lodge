@@ -12,11 +12,11 @@ class EndUser < ApplicationRecord
   has_many :contacts, dependent: :destroy
 
   def already_favorited?(musician_profile)
-    self.favorites.exists?(musician_profile_id: musician_profile.id)
+    self.musician_favorites.exists?(musician_profile_id: musician_profile.id)
   end
 
   def already_favorited?(shop_profile)
-    self.favorites.exists?(shop_profile_id: shop_profile.id)
+    self.shop_favorites.exists?(shop_profile_id: shop_profile.id)
   end
   enum end_user_status: {musician:1, shop:2}
 end
