@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :end_users, only:[:show, :edit,:update]
     resources :musician_profiles, except:[:destroy] do
       resources :musician_reviews, only:[:index,:create,:show]
-      resources :favorites, only:[:create, :destroy]
+      resources :musician_favorites, only:[:create, :destroy]
     end
     resources :shop_profiles, except:[:destroy] do
       resources :shop_reviews, only:[:index,:create,:show]
