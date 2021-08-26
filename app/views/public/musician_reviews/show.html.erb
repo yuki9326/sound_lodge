@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="review-heading">Review</h1>
-  <div class="box justify-content-center align-items-center">
+  <div class="row justify-content-center align-items-center">
     <div class="card review mx-auto">
       <div class="card-header d-flex align-items-center justify-content-between">
         <%= attachment_image_tag @musician_review.musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
@@ -20,5 +20,10 @@
         <p class="card-text text-center"><%= @musician_review.comment %></p>
       </div>
     </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <%= link_to "一覧へ戻る", musician_profile_musician_reviews_path, class:"btn btn-warning mx-auto" %>
   </div>
 </div>

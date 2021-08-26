@@ -79,3 +79,7 @@
     half: true
   });
 </script>
+
+<div id="show_favorite_<%= @musician_profile.id %>">
+  <%= render 'public/favorites/favorite', musician_profile: @musician_profile %>
+</div>
