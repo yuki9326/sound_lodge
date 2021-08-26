@@ -1,0 +1,2 @@
+class MusicianFavorite < ApplicationRecord
+end
