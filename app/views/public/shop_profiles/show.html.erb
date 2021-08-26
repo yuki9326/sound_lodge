@@ -80,3 +80,7 @@
     half: true
   });
 </script>
+
+<div id="show_favorite_<%= @shop_profile.id %>">
+  <%= render 'public/shop_favorites/favorite', shop_profile: @shop_profile %>
+</div>
