@@ -3,7 +3,7 @@ class ShopProfile < ApplicationRecord
   attachment :shop_image
   belongs_to :end_user
   has_many :reviews, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :shop_favorites, dependent: :destroy
 
  enum area: {hokkaido:0,aomori:1,iwate:2,miyagi:3,akita:4,yamagata:5,fukushima:6,
      ibaraki:7,tochigi:8,gunma:9,saitama:10,chiba:11,tokyo:12,kanagawa:13,nigata:14,
