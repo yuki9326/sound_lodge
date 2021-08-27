@@ -23,8 +23,8 @@ class Public::MusicianProfilesController < ApplicationController
 
   def show
     @musician_profile = MusicianProfile.find(params[:id])
-    @musician_review = Review.new
-    @musician_reviews = Review.where(musician_profile_id: params[:id])
+    @musician_review = MusicianReview.new
+    @musician_reviews = MusicianReview.where(musician_profile_id: params[:id])
   end
 
   def edit
