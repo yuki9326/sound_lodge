@@ -5,6 +5,12 @@
         <%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
         <p class="profile-name"><%= @shop_profile.username %></p>
         <p class="text-center"><%= link_to @shop_reviews.count, shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) %>件のレビュー</p>
+        <div class="d-flex justify-content-between">
+          <p>お気に入りに追加</p>
+          <div id="show_favorite_<%= @shop_profile.id %>">
+            <%= render 'public/shop_favorites/favorite', shop_profile: @shop_profile %>
+          </div>
+        </div>
       </div>
       <div class="col-7 d-flex justify-content-center">
         <div class="profile-box">
