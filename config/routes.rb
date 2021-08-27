@@ -19,26 +19,26 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'end_users/confirm' => 'end_users#confirm'
     patch 'end_users/unsubscribe' => 'end_users#unsubscribe'
-    resources :end_users, only:[:show, :edit,:update]
+    resources :end_users, only:[:show, :edit, :update]
     resources :musician_profiles, except:[:destroy] do
-      resources :musician_reviews, only:[:index,:create,:show]
+      resources :musician_reviews, only:[:index, :create, :show]
       resource :musician_favorites, only:[:create, :destroy]
     end
     resources :shop_profiles, except:[:destroy] do
-      resources :shop_reviews, only:[:index,:create,:show]
+      resources :shop_reviews, only:[:index, :create, :show]
       resource :shop_favorites, only:[:create, :destroy]
     end
     post 'contacts/confirm' => 'contacts#confirm'
     post 'contacts/back' => 'contact#back'
     get 'contacts/thanks' => 'contacts#thanks'
-    resources :contacts, only:[:new,:create]
+    resources :contacts, only:[:new, :create]
   end
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :musician_profiles, only:[:show,:index]
-    resources :shop_profiles, only:[:show,:index]
-    resources :end_users, only:[:show,:edit,:update]
-    resources :contacts, except:[:show, :create,:new]
+    resources :musician_profiles, only:[:show, :index]
+    resources :shop_profiles, only:[:show, :index]
+    resources :end_users, only:[:show, :edit, :update]
+    resources :contacts, except:[:show, :create, :new]
   end
 end

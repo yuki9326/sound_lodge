@@ -60,7 +60,7 @@
       <div class="col-3 d-flex justify-content-center">
         <div class="rating-box">
           <h6>レビューを書く</h6>
-            <%= form_with model: @review, url: shop_profile_shop_reviews_path(@shop_profile), local: true do |f| %>
+            <%= form_with model: @shop_review, url: shop_profile_shop_reviews_path(@shop_profile), local: true do |f| %>
               <%= f.label :comment, "コメント" %>
               <%= f.text_area :comment, class:"form-control" %>
               <br>
@@ -82,11 +82,7 @@
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    scoreName: 'review[rate]',
+    scoreName: 'shop_review[rate]',
     half: true
   });
 </script>
-
-<div id="show_favorite_<%= @shop_profile.id %>">
-  <%= render 'public/shop_favorites/favorite', shop_profile: @shop_profile %>
-</div>
