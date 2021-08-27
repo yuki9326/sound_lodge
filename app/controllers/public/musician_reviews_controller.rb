@@ -1,11 +1,11 @@
 class Public::MusicianReviewsController < ApplicationController
 
   def index
-    @musician_reviews = Review.where(musician_profile_id: params[:musician_profile_id])
+    @musician_reviews = MusicianReview.where(musician_profile_id: params[:musician_profile_id])
   end
 
   def create
-    @musician_review = Review.new(review_params)
+    @musician_review = MusicianReview.new(review_params)
     @musician_review.musician_profile_id = params[:musician_profile_id]
     @musician_review.end_user_id = current_end_user.id
     @musician_review.comment = params[:comment]
@@ -14,13 +14,13 @@ class Public::MusicianReviewsController < ApplicationController
   end
 
   def show
-    @musician_review = Review.find(params[:id])
+    @musician_review = MusicianReview.find(params[:id])
   end
 
  private
 
  def review_params
-   params.require(:review).permit(:rate, :comment)
+   params.require(:musician_review).permit(:rate, :comment)
  end
 end
 
