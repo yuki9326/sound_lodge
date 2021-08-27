@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_043440) do
+ActiveRecord::Schema.define(version: 2021_08_27_044626) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -134,6 +134,17 @@ ActiveRecord::Schema.define(version: 2021_08_27_043440) do
     t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_reviews", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.integer "shop_profile_id"
+    t.float "rate"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["end_user_id"], name: "index_shop_reviews_on_end_user_id"
+    t.index ["shop_profile_id"], name: "index_shop_reviews_on_shop_profile_id"
   end
 
 end
