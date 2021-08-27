@@ -1,11 +1,11 @@
 class Public::ShopReviewsController < ApplicationController
 
   def index
-    @shop_reviews = Review.where(shop_profile_id: params[:shop_profile_id])
+    @shop_reviews = ShopReview.where(shop_profile_id: params[:shop_profile_id])
   end
 
   def create
-    @shop_review = Review.new(review_params)
+    @shop_review = ShopReview.new(review_params)
     @shop_review.shop_profile_id = params[:shop_profile_id]
     @shop_review.end_user_id = current_end_user.id
     @shop_review.comment = params[:comment]
@@ -14,12 +14,12 @@ class Public::ShopReviewsController < ApplicationController
   end
 
   def show
-    @shop_review = Review.find(params[:id])
+    @shop_review = ShopReview.find(params[:id])
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:rate, :comment)
+    params.require(:shop_review).permit(:rate, :comment)
   end
 end
