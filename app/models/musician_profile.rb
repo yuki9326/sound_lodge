@@ -2,7 +2,7 @@ class MusicianProfile < ApplicationRecord
   has_one_attached :video
   attachment :image
   belongs_to :end_user
-  has_many :reviews, dependent: :destroy
+  has_many :musician_reviews, dependent: :destroy
   has_many :musician_favorites, dependent: :destroy
 
   enum area: {hokkaido:0,aomori:1,iwate:2,miyagi:3,akita:4,yamagata:5,fukushima:6,
