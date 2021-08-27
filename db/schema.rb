@@ -98,19 +98,6 @@ ActiveRecord::Schema.define(version: 2021_08_26_050033) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "end_user_id"
-    t.integer "musician_profile_id"
-    t.integer "shop_profile_id"
-    t.string "comment"
-    t.float "rate", default: 0.0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["end_user_id"], name: "index_reviews_on_end_user_id"
-    t.index ["musician_profile_id"], name: "index_reviews_on_musician_profile_id"
-    t.index ["shop_profile_id"], name: "index_reviews_on_shop_profile_id"
-  end
-
   create_table "shop_favorites", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "shop_profile_id"
