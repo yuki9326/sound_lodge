@@ -23,8 +23,8 @@ class Public::ShopProfilesController < ApplicationController
 
   def show
     @shop_profile = ShopProfile.find(params[:id])
-    @shop_review = Review.new
-    @shop_reviews = Review.where(shop_profile_id: params[:id])
+    @shop_review = ShopReview.new
+    @shop_reviews = ShopReview.where(shop_profile_id: params[:id])
   end
 
   def edit
