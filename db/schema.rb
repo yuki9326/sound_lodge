@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_044626) do
+ActiveRecord::Schema.define(version: 2021_08_30_022731) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -107,6 +107,12 @@ ActiveRecord::Schema.define(version: 2021_08_27_044626) do
     t.datetime "updated_at", null: false
     t.index ["end_user_id"], name: "index_musician_reviews_on_end_user_id"
     t.index ["musician_profile_id"], name: "index_musician_reviews_on_musician_profile_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shop_favorites", force: :cascade do |t|

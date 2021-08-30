@@ -2,6 +2,7 @@ class Public::ShopReviewsController < ApplicationController
 
   def index
     @shop_reviews = ShopReview.where(shop_profile_id: params[:shop_profile_id])
+    @shop_profile = ShopProfile.find(params[:shop_profile_id])
   end
 
   def create
@@ -15,6 +16,7 @@ class Public::ShopReviewsController < ApplicationController
 
   def show
     @shop_review = ShopReview.find(params[:id])
+    @shop_profile = @shop_review.shop_profile
   end
 
   private

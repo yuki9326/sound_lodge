@@ -3,9 +3,15 @@ class Public::EndUsersController < ApplicationController
   def show
     @end_user = EndUser.find(params[:id])
     if @end_user.end_user_status == "musician"
-    @end_user.musician_profile.id = current_end_user.musician_profile.id
+      @end_user.musician_profile.id = current_end_user.musician_profile.id
     else
-    @end_user.shop_profile.id = current_end_user.shop_profile.id
+      @end_user.shop_profile.id = current_end_user.shop_profile.id
+    end
+
+    if @end_user.end_user_status == "musician"
+      @shop_ranks = ShopProfile.find(ShopFavorite.group(:shop_profile_id).order('count(shop_profile_id) desc').limit(3).pluck(:shop_profile_id))
+    else
+      @musician_ranks = MusicianProfile.find(MusicianProfile.group(:musician_profile).order('count(musician_profile_id) desc').limit(3).pluck(:mudician_profile_id))
     end
   end
 
