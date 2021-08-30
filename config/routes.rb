@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     post 'contacts/back' => 'contact#back'
     get 'contacts/thanks' => 'contacts#thanks'
     resources :contacts, only:[:new, :create]
+    resources :rooms, only:[:new, :index, :create]
   end
 
   namespace :admin do
