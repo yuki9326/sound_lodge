@@ -35,6 +35,7 @@
       <% if current_end_user.end_user_status == "musician" %>
         <% @shop_ranks.each do |shop_rank| %>
         <%= shop_rank.username %>
+        <%= shop_rank.area %>
         <% end %>
       <% else %>
         <% @musician_ranks.each do |musician_rank| %>

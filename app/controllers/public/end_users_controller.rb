@@ -9,7 +9,19 @@ class Public::EndUsersController < ApplicationController
     end
 
     if @end_user.end_user_status == "musician"
-      @shop_ranks = ShopProfile.find(ShopFavorite.group(:shop_profile_id).order('count(shop_profile_id) desc').limit(3).pluck(:shop_profile_id))
+      # @shop_ranks = ShopProfile.find(ShopFavorite.group(:shop_profile_id).order('count(shop_profile_id) desc').limit(3).pluck(:shop_profile_id))
+
+      #
+      @shop_ranks_all = ShopProfile.where(id: ShopFavorite.group(:shop_profile_id).order('count(shop_profile_id) desc').pluck(:shop_profile_id))
+      @shop_ranks_filter = @shop_ranks_all.where(area: @end_user.musician_profile.area)
+      @shop_ranks = []
+      @shop_ranks << @shop_ranks_filter
+      if @shop_ranks.flatten.count < 3
+        @shop_ranks << @shop_ranks_all
+      end
+      @shop_ranks = @shop_ranks.flatten.take(3)
+      #
+
     else
       @musician_ranks = MusicianProfile.find(MusicianProfile.group(:musician_profile).order('count(musician_profile_id) desc').limit(3).pluck(:musician_profile_id))
     end

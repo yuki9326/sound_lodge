@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="musician-profile-heading">Profile</h1>
     <div class="row">
-      <div class="col-2">
+      <div class="col-md-2">
         <%= attachment_image_tag @musician_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
         <p class="profile-name"><%= @musician_profile.username %></p>
         <p class="text-center"><%= link_to @musician_reviews.count, musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) %>件のレビュー</p>
@@ -12,7 +12,7 @@
           </div>
         </div>
       </div>
-      <div class="col-7 d-flex justify-content-center">
+      <div class="col-md-7">
         <div class="profile-box">
           <table class="table table-borderless">
             <tr>
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div class="col-3 d-flex justify-content-center">
+      <div class="col-md-3">
         <div class="rating-box">
           <h6>レビューを書く</h6>
               <%= form_with model: @musician_review, url: musician_profile_musician_reviews_path(@musician_profile) ,local: true do |f| %>
