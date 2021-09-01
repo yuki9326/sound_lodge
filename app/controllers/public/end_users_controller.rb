@@ -11,7 +11,7 @@ class Public::EndUsersController < ApplicationController
     if @end_user.end_user_status == "musician"
       @shop_ranks = ShopProfile.find(ShopFavorite.group(:shop_profile_id).order('count(shop_profile_id) desc').limit(3).pluck(:shop_profile_id))
     else
-      @musician_ranks = MusicianProfile.find(MusicianProfile.group(:musician_profile).order('count(musician_profile_id) desc').limit(3).pluck(:mudician_profile_id))
+      @musician_ranks = MusicianProfile.find(MusicianProfile.group(:musician_profile).order('count(musician_profile_id) desc').limit(3).pluck(:musician_profile_id))
     end
   end
 

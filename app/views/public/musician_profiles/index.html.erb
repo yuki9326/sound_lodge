@@ -13,15 +13,17 @@
     <% end %>
     <br><br>
 
-    <div class="d-flex flex-wrap justify-content-start">
+    <div class="d-flex flex-wrap justify-content-between">
         <% @musician_profiles.each do |musician_profile| %>
-        <div class="card">
-            <%= attachment_image_tag musician_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", size:'200x200', class:"card-img-top" %>
-            <div class="card-body">
-                <h4 class="card-title"><%= musician_profile.username %></h4>
-                <p class="card-text">エリア　<%= musician_profile.area_i18n %></p>
-                <p class="card-text">楽器　　<%= musician_profile.instrument %></p>
-                <p class="card-text">１時間　<%= musician_profile.price %>円</p>
+        <div class="profile-box border-dark d-flex justify-content-center">
+            <div class="profile-content">
+                <div class="image-area d-inline">
+                    <%= attachment_image_tag musician_profile, :image, fallback:"no_image.jpg", class:"rounded-circle image-area" %>
+                </div>
+                <h4 class="d-inline"><%= musician_profile.username %></h4><br>
+                <i class="fas fa-map-pin"><%= musician_profile.area_i18n %></i><br>
+                <i class="fas fa-music"><%= musician_profile.instrument %></i><br>
+                <i class="fas fa-yen-sign"><%= musician_profile.price %>/時間</i>
                 <%= link_to "詳細", musician_profile_path(musician_profile.id), class:"btn btn-warning" %>
             </div>
         </div>

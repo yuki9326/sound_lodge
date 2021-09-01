@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+body{
+  background-image: image-url('background');
+}
+
 .musician-profile-heading{
   text-align: center;
   margin-top: 50px;
@@ -29,4 +33,17 @@
   font-size: 40px;
   margin-left: 50px;
   padding-top: 20px;
+}
+
+.image-area{
+  width: 100px;
+  height: 100px;
+}
+
+.profile-box{
+  border: 1px solid #000000;
+  box-shadow: 3px 3px;
+  margin: 10px 10px;
+  padding: 20px 20px;
+  background-color: #ffffff;
 }

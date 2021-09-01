@@ -11,6 +11,8 @@ class EndUser < ApplicationRecord
   has_many :musician_favorites, dependent: :destroy
   has_many :shop_favorites, dependent: :destroy
   has_many :contacts, dependent: :destroy
+  has_many :room_users
+  has_many :rooms, through: :room_users
 
   def already_musician_favorited?(musician_profile)
     self.musician_favorites.exists?(musician_profile_id: musician_profile.id)

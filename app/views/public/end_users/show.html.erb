@@ -32,7 +32,15 @@
 
     <div class="col2">
       <h4 class="mypage_heading">あなたへのおすすめ</h4>
-      <% @all_ranks.each do |profile| %>
+      <% if current_end_user.end_user_status == "musician" %>
+        <% @shop_ranks.each do |shop_rank| %>
+        <%= shop_rank.username %>
+        <% end %>
+      <% else %>
+        <% @musician_ranks.each do |musician_rank| %>
+        <%= musician_rank.username %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
