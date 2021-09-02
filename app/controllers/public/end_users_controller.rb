@@ -23,7 +23,14 @@ class Public::EndUsersController < ApplicationController
       #
 
     else
-      @musician_ranks = MusicianProfile.find(MusicianProfile.group(:musician_profile).order('count(musician_profile_id) desc').limit(3).pluck(:musician_profile_id))
+      @musician_ranks_all = MusicianProfile.where(id: MusicianFavorite.group(:musician_profile_id).order('count(musician_profile_id) desc').pluck(:musician_profile_id))
+      @musician_ranks_filter = @musician_ranks_all.where(area: @end_user.shop_profile.area)
+      @musician_ranks = []
+      @musician_ranks << @musician_ranks_filter
+      if @musician_ranks.flatten.count < 3
+        @musician_ranks << @musician_ranks_all
+      end
+      @musician_ranks = @musician_ranks.flatten.take(3)
     end
   end
 
