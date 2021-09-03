@@ -16,6 +16,6 @@ class Public::RoomsController < ApplicationController
   private
 
   def room_params
-    params.permit(enduser_ids: [])
+    params.permit(end_user_ids: [])
   end
 end
