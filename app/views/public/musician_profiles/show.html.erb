@@ -72,6 +72,9 @@
               <% end %>
               <br>
         </div>
+        <div class="chat-wrapper">
+          <%= link_to("メッセージを送る", rooms_path(end_user_ids: [current_end_user.id, @musician_profile.end_user.id]), method: :post, class:"btn btn-success") %>
+        </div>
       </div>
     </div>
 </div>
