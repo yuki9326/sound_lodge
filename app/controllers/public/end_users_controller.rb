@@ -53,9 +53,14 @@ class Public::EndUsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
+
+  def musician_favorite_list
+    @favorites = MusicianFavorite.where(musician_favorite_id: params[:musician_favorite_id])
+  end
   
-  def favorite
-    @end_user.
+  def shop_favorite_list
+    @favorites = ShopFavorite.where(shop_favorite_id: params[:shop_favorite_id])
+  end
 
   private
 
