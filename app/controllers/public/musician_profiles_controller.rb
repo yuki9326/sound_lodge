@@ -25,6 +25,7 @@ class Public::MusicianProfilesController < ApplicationController
     @musician_profile = MusicianProfile.find(params[:id])
     @musician_review = MusicianReview.new
     @musician_reviews = MusicianReview.where(musician_profile_id: params[:id])
+    @room = RoomUser.find_by(room_id: current_end_user.room_users.pluck(:room_id), end_user_id: @musician_profile.end_user.id)&.room
   end
 
   def edit
