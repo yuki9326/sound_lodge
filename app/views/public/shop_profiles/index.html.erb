@@ -14,7 +14,7 @@
         <div class="card">
             <%= attachment_image_tag shop_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", size:'200x200', class:"card-img-top" %>
             <div class="card-body">
-                <h4 class="card-title"><%= shop_profile.username %></h4>
+                <h4 class="card-title"><%= shop_profile.end_user.username %></h4>
                 <p class="card-text">店名　　<%= shop_profile.shop_name %></p>
                 <p class="card-text">所在地　<%= shop_profile.area_i18n %></p>
                 <p class="card-text">１時間　<%= shop_profile.price %>円</p>

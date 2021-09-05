@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-2">
         <%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
-        <p class="profile-name"><%= @shop_profile.username %></p>
+        <p class="profile-name"><%= @shop_profile.end_user.username %></p>
         <p class="text-center"><%= link_to @shop_reviews.count, shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) %>件のレビュー</p>
         <div class="d-flex justify-content-between">
           <p>お気に入りに追加</p>

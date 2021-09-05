@@ -4,7 +4,7 @@
       <div class="card review mx-auto">
         <div class="card-header d-flex align-items-center justify-content-between">
           <%= attachment_image_tag musician_review.musician_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
-          <%= musician_review.musician_profile.username %>
+          <%= musician_review.end_user.username %>
           <div id="average-review-rating-<%= musician_review.id %>" data-score=<%= musician_review.rate %>></div>
             <script>
               $('#average-review-rating-<%= musician_review.id %>').raty({

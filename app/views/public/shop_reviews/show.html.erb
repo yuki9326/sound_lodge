@@ -4,7 +4,7 @@
     <div class="card review mx-auto">
       <div class="card-header d-flex align-items-center justify-content-between">
         <%= attachment_image_tag @shop_review.shop_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
-        <%= @shop_review.shop_profile.username %>
+        <%= @shop_review.end_user.username %>
         <div id="average-review-rating-<%= @shop_review.id %>" data-score=<%= @shop_review.rate %>></div>
           <script>
             $('#average-review-rating-<%= @shop_review.id %>').raty({

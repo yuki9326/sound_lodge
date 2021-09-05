@@ -49,7 +49,7 @@ class Public::EndUsersController < ApplicationController
 
   def unsubscribe
     @end_user = current_end_user
-    @end_user.update(is_active: false)
+    @end_user.destroy
     reset_session
     redirect_to root_path
   end
@@ -57,7 +57,7 @@ class Public::EndUsersController < ApplicationController
   def musician_favorite_list
     @favorites = MusicianFavorite.where(musician_favorite_id: params[:musician_favorite_id])
   end
-  
+
   def shop_favorite_list
     @favorites = ShopFavorite.where(shop_favorite_id: params[:shop_favorite_id])
   end

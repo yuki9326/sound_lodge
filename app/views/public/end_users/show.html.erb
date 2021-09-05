@@ -8,6 +8,10 @@
           <td><%= @end_user.name %></td>
         </tr>
         <tr>
+          <th>ユーザーネーム</th>
+          <td><%= @end_user.username %></td>
+        </tr>
+        <tr>
           <th>メールアドレス</th>
           <td><%= @end_user.email %></td>
         </tr>
@@ -34,12 +38,12 @@
       <h4 class="mypage_heading">あなたへのおすすめ</h4>
       <% if current_end_user.end_user_status == "musician" %>
         <% @shop_ranks.each do |shop_rank| %>
-        <%= shop_rank.username %>
-        <%= shop_rank.area %>
+        <%= shop_rank.end_user.username %>
+        <%= shop_rank.area_i18n %>
         <% end %>
       <% else %>
         <% @musician_ranks.each do |musician_rank| %>
-        <%= musician_rank.username %>
+        <%= musician_rank.end_user.username %>
         <% end %>
       <% end %>
     </div>

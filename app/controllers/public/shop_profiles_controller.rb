@@ -2,6 +2,7 @@ class Public::ShopProfilesController < ApplicationController
 
   def new
     @shop_profile = ShopProfile.new
+    @shop_profile.end_user = current_end_user
   end
 
   def index
