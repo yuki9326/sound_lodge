@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     post 'contacts/back' => 'contact#back'
     get 'contacts/thanks' => 'contacts#thanks'
     resources :contacts, only:[:new, :create]
-    resources :rooms, only:[:new, :index, :create] do
+    resources :rooms, only:[:new, :index, :create, :destroy] do
       resources :messages
     end
   end

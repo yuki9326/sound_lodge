@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_09_03_181328) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
+    t.string "username", null: false
     t.boolean "is_active", default: true, null: false
     t.integer "end_user_status", null: false
     t.datetime "created_at", null: false
@@ -95,7 +96,6 @@ ActiveRecord::Schema.define(version: 2021_09_03_181328) do
     t.integer "genre", null: false
     t.integer "end_user_id", null: false
     t.integer "review_id"
-    t.string "username", null: false
     t.integer "area", default: 0, null: false
     t.string "instrument", null: false
     t.integer "total_member", null: false
@@ -148,7 +148,6 @@ ActiveRecord::Schema.define(version: 2021_09_03_181328) do
     t.integer "genre", null: false
     t.integer "end_user_id", null: false
     t.integer "review_id"
-    t.string "username", null: false
     t.string "shop_name", null: false
     t.integer "area", default: 0, null: false
     t.boolean "is_vocal", default: true, null: false

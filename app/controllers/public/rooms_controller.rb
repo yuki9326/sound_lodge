@@ -13,6 +13,13 @@ class Public::RoomsController < ApplicationController
     redirect_to room_messages_path(@room)
   end
 
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    redirect_to rooms_path
+  end
+
+
   private
 
   def room_params

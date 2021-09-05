@@ -43,6 +43,6 @@ class Public::ShopProfilesController < ApplicationController
   private
 
   def shop_profile_params
-    params.require(:shop_profile).permit(:genre, :end_user_id, :review_id, :username, :shop_name, :area, :is_vocal, :shop_image, :image, :audio_equipment, :introduction, :price, :rate)
+    params.require(:shop_profile).permit(:genre, :end_user_id, :review_id, :shop_name, :area, :is_vocal, :shop_image, :image, :audio_equipment, :introduction, :price, :rate)
   end
 end
