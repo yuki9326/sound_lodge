@@ -6,5 +6,5 @@
   </div>
   <div class="row">
     <%= link_to "会員情報を見る", admin_end_user_path(@end_user.id), class:"btn btn-success" %>
-    <%= link_to "レビューを見る", 
+    <%= link_to "レビューを見る", admin_shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id), class:"btn btn-success" %>
   </div>
