@@ -14,4 +14,8 @@
     <p>自己紹介<br><%= @musician_profile.introduction %></p>
     <p>演奏動画　<%= @musician_profile.video_id %></p>
   </div>
+
+  <div class ="row">
+    <%= link_to "会員情報を見る", admin_end_user_path(@end_user.id), class:"btn btn-success" %>
+  </div>
 </div>
