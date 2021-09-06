@@ -2,5 +2,5 @@
   <h1 class="shop-profile-heading">Profile</h1>
   <div class="row justify-content-center">
     <%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
-    <%= @shop_profile.username %>
+    <%= @shop_profile.end_user.username %>
   </div>

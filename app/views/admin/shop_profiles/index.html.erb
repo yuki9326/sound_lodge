@@ -15,7 +15,7 @@
           <% @shop_profiles.each do |shop_profile| %>
             <tr>
               <td><%= attachment_image_tag shop_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %></td>
-              <td><%= shop_profile.username %></td>
+              <td><%= shop_profile.end_user.username %></td>
               <td><%= shop_profile.shop_name %></td>
               <td><%= shop_profile.area_i18n %></td>
               <td><%= link_to "詳細",admin_shop_profile_path(shop_profile.id) %></td>
