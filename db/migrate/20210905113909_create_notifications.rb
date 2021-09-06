@@ -1,13 +1,17 @@
 class CreateNotifications < ActiveRecord::Migration[5.2]
   def change
     create_table :notifications do |t|
-      t.text "url"
-      t.integer "to_user_id"
-      t.integer "from_user_id"
-      t.integer "notification_type"
-      t.datetime "open_time"
+      t.integer :visitor_id, null: false
+      t.integer :visited_id, null: false
+      t.integer :message_id
+      t.string :action, default: '', null: false
+      t.boolean :checked, default: false, null: false
 
       t.timestamps
     end
+
+    add_index :notifications, :visitor_id
+    add_index :notifications, :visited_id
+    add_index :notifications, :message_id
   end
 end
