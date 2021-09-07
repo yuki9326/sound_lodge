@@ -7,7 +7,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
       t.integer :musician_review_id
       t.integer :shop_favorite_id
       t.integer :shop_review_id
-      t.boolean :is_read, default: true, null: false
+      t.boolean :is_read, default: false, null: false
       t.string :content
 
       t.timestamps

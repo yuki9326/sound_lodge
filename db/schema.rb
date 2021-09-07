@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_113909) do
     t.string "image_id"
     t.integer "room_id"
     t.integer "end_user_id"
+    t.boolean "is_read", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["end_user_id"], name: "index_messages_on_end_user_id"
@@ -127,7 +128,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_113909) do
     t.integer "musician_review_id"
     t.integer "shop_favorite_id"
     t.integer "shop_review_id"
-    t.boolean "is_read", default: true, null: false
+    t.boolean "is_read", default: false, null: false
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

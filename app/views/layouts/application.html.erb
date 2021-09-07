@@ -21,8 +21,34 @@
           <li class="nav_list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav_link" %></li>
           <li class="nav_list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav_link" %></li>
           <li class="nav_list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class:"nav_link" %></li>
-          <% if @notification.any? %>
-          <i class="far fa-envelope"></i>
+          <% if @notification_message.any? %>
+            <%= link_to rooms_path do %>
+              <i class="far fa-envelope"></i>
+            <% end %>
+          <% end %>
+          <% if @notification_favorite.any? %>
+            <% if current_end_user.end_user_status == "musician" %>
+              <%= link_to musician_profile_path(@musician_profile.id) do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
+            <% end %>
+            <% if current_end_user.end_user_status == "shop" %>
+              <%= link_to shop_profile_path(@shop_profile.id) do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% if @notification_review.any? %>
+            <% if current_end_user.end_user_status == "musician" %>
+              <%= link_to musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            <% end %>
+            <% if current_end_user.end_user_status == "shop" %>
+              <%= link_to shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            <% end %>
           <% end %>
           <% elsif admin_signed_in? %>
           <li class="nav_list">会員店舗一覧</li>
