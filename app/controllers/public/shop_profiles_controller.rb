@@ -26,6 +26,7 @@ class Public::ShopProfilesController < ApplicationController
     @shop_profile = ShopProfile.find(params[:id])
     @shop_review = ShopReview.new
     @shop_reviews = ShopReview.where(shop_profile_id: params[:id])
+    Notification.where.not(shop_favorite_id: nil).update_all(is_read: true)
   end
 
   def edit

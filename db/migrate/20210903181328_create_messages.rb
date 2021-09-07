@@ -5,7 +5,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.string :image_id
       t.references :room, foreign_key: true
       t.references :end_user, foreign_key: true
-      t.boolean :is_read, null: false, default: false
+      t.boolean :is_read, default: false
 
       t.timestamps
     end

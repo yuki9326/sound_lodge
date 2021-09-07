@@ -3,6 +3,7 @@ class Public::ShopReviewsController < ApplicationController
   def index
     @shop_reviews = ShopReview.where(shop_profile_id: params[:shop_profile_id])
     @shop_profile = ShopProfile.find(params[:shop_profile_id])
+    Notification.where.not(shop_review_id: nil).update_all(is_read: true)
   end
 
   def create
@@ -11,7 +12,7 @@ class Public::ShopReviewsController < ApplicationController
     @shop_review.end_user_id = current_end_user.id
     @shop_review.comment = params[:shop_review][:comment]
     if @shop_review.save
-      Notification.create
+      Notification.create(end_user_id: shop_review.end_user_id, shop_review_id: shop_review.shop_profile_id)
     end
     redirect_to shop_profile_shop_review_path(@shop_review.shop_profile, @shop_review)
   end

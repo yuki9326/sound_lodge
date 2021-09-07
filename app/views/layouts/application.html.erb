@@ -13,54 +13,26 @@
     <header>
       <nav class="navbar">
       <%= link_to image_tag("logo.jpg"), "/",class: "navbar-brand" %>
-        <ul class="nav_content">
+        <ul class="nav-content">
           <% if end_user_signed_in? %>
-          <li class="nav_list"><%= link_to 'Sound Logeとは', about_path, class:"nav_link" %></li>
-          <li class="nav_list"><%= link_to 'マイページ', end_user_path(current_end_user.id), class:"nav_link" %></li>
-          <li class="nav_list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav_link" %></li>
-          <li class="nav_list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav_link" %></li>
-          <li class="nav_list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav_link" %></li>
-          <li class="nav_list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class:"nav_link" %></li>
-          <% if @notification_message.any? %>
-            <%= link_to rooms_path do %>
-              <i class="far fa-envelope"></i>
-            <% end %>
-          <% end %>
-          <% if @notification_favorite.any? %>
-            <% if current_end_user.end_user_status == "musician" %>
-              <%= link_to musician_profile_path(@musician_profile.id) do %>
-                <i class="fas fa-heart"></i>
-              <% end %>
-            <% end %>
-            <% if current_end_user.end_user_status == "shop" %>
-              <%= link_to shop_profile_path(@shop_profile.id) do %>
-                <i class="fas fa-heart"></i>
-              <% end %>
-            <% end %>
-          <% end %>
-          <% if @notification_review.any? %>
-            <% if current_end_user.end_user_status == "musician" %>
-              <%= link_to musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-            <% end %>
-            <% if current_end_user.end_user_status == "shop" %>
-              <%= link_to shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-            <% end %>
-          <% end %>
+            <li class="nav-list"><%= link_to 'Sound Logeとは', about_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'マイページ', end_user_path(current_end_user.id), class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav-link" %></li>
+            <li class="nav-list notification-badge"><%= link_to 'お知らせ', notifications_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class:"nav-link" %></li>
           <% elsif admin_signed_in? %>
-          <li class="nav_list">会員店舗一覧</li>
-          <li class="nav_list">会員ミュージシャン一覧</li>
-          <li class="nav_list">お問い合わせ一覧</li>
-          <li class="nav_list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"nav_link" %></li>
+            <li class="nav-list">会員店舗一覧</li>
+            <li class="nav-list">会員ミュージシャン一覧</li>
+            <li class="nav-list">お問い合わせ一覧</li>
+            <li class="nav-list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"nav-link" %></li>
           <% else %>
-          <li class="nav_list"><%= link_to 'Sound Lodgeとは', about_path, class:"nav_link" %></li>
-          <li class="nav_list"><%= link_to 'ログイン', new_end_user_session_path, class:"nav_link" %></li>
-          <li class="nav_list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav_link" %></li>
-          <li class="nav_list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav_link" %></li>
-          <li class="nav_list">お問い合わせ</li>
+            <li class="nav-list"><%= link_to 'Sound Lodgeとは', about_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'ログイン', new_end_user_session_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav-link" %></li>
           <% end %>
         </ul>
       </nav>

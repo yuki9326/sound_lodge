@@ -1,0 +1,17 @@
+
+
+
+
+
+
+
+<div class="container">
+  <h2>Message</h2>
+  <h2>Good</h2>
+  <h2>Favorite</h2>
+  <% @notification_favorite.each do |favorite| %>
+    <% if favorite.is_read == false %>
+      <%= favorite.id %>
+    <% end %>
+  <% end %>
+</div>

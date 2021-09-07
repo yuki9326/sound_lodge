@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :rooms, only:[:new, :index, :create, :destroy] do
       resources :messages
     end
+    resources :notifications, only:[:index]
   end
 
   namespace :admin do
