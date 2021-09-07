@@ -1,6 +1,7 @@
 class Public::RoomsController < ApplicationController
 
   def index
+    Notification.where.not(message_id: nil).update_all(is_read: true)
   end
 
   def new

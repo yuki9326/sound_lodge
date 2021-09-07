@@ -9,7 +9,9 @@ class Public::MusicianReviewsController < ApplicationController
     @musician_review.musician_profile_id = params[:musician_profile_id]
     @musician_review.end_user_id = current_end_user.id
     @musician_review.comment = params[:musician_review][:comment]
-    @musician_review.save
+    if @musician_review.save
+      Notification.create
+    end
     redirect_to musician_profile_musician_review_path(@musician_review.musician_profile, @musician_review)
   end
 

@@ -10,7 +10,9 @@ class Public::ShopReviewsController < ApplicationController
     @shop_review.shop_profile_id = params[:shop_profile_id]
     @shop_review.end_user_id = current_end_user.id
     @shop_review.comment = params[:shop_review][:comment]
-    @shop_review.save
+    if @shop_review.save
+      Notification.create
+    end
     redirect_to shop_profile_shop_review_path(@shop_review.shop_profile, @shop_review)
   end
 

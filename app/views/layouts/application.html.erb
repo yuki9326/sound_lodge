@@ -21,6 +21,9 @@
           <li class="nav_list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav_link" %></li>
           <li class="nav_list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav_link" %></li>
           <li class="nav_list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class:"nav_link" %></li>
+          <% if @notification.any? %>
+          <i class="far fa-envelope"></i>
+          <% end %>
           <% elsif admin_signed_in? %>
           <li class="nav_list">会員店舗一覧</li>
           <li class="nav_list">会員ミュージシャン一覧</li>

@@ -10,6 +10,7 @@ class Public::MessagesController < ApplicationController
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
     if @message.save
+      Notification.create(end_user_id: end_user_id, message_id: message_id)
       redirect_to room_messages_path(@room)
     else
       @messages = @room.messages.includes(:end_user)
