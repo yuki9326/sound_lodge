@@ -1,4 +1,5 @@
 class Public::ShopReviewsController < ApplicationController
+  before_action :authenticate_end_user!, except:[:index]
 
   def index
     @shop_reviews = ShopReview.where(shop_profile_id: params[:shop_profile_id])
@@ -26,5 +27,9 @@ class Public::ShopReviewsController < ApplicationController
 
   def shop_review_params
     params.require(:shop_review).permit(:rate, :comment)
+  end
+
+  def redirect_sessions
+    redirect_to new_end_user_session_path unless end_user_signed_in?
   end
 end

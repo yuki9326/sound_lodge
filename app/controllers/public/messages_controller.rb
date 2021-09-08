@@ -1,4 +1,5 @@
 class Public::MessagesController < ApplicationController
+  before_action :authenticate_end_user!
 
   def index
     @message = Message.new
@@ -23,6 +24,10 @@ class Public::MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content, :image).merge(end_user_id: current_end_user.id)
+  end
+
+  def redirect_sessions
+    redirect_to new_end_user_session_path unless end_user_signed_in?
   end
 
 end

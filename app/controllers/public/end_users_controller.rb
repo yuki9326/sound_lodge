@@ -1,4 +1,5 @@
 class Public::EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
 
   def show
     @end_user = EndUser.find(params[:id])
@@ -66,5 +67,9 @@ class Public::EndUsersController < ApplicationController
 
   def end_user_params
     params.require(:end_user).permit(:name, :email, :end_user_status, :is_active)
+  end
+
+  def redirect_sessions
+    redirect_to new_end_user_session_path unless end_user_signed_in?
   end
 end

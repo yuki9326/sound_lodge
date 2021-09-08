@@ -20,6 +20,7 @@
             <li class="nav-list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav-link" %></li>
+            
             <li class="nav-list notification-badge"><%= link_to 'お知らせ', notifications_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class:"nav-link" %></li>
           <% elsif admin_signed_in? %>

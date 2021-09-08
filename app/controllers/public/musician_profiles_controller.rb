@@ -1,4 +1,5 @@
 class Public::MusicianProfilesController < ApplicationController
+  before_action :authenticate_end_user!, except: [:index, :show]
 
   def new
     @musician_profile = MusicianProfile.new
@@ -26,7 +27,7 @@ class Public::MusicianProfilesController < ApplicationController
     @musician_profile = MusicianProfile.find(params[:id])
     @musician_review = MusicianReview.new
     @musician_reviews = MusicianReview.where(musician_profile_id: params[:id])
-    @room = RoomUser.find_by(room_id: current_end_user.room_users.pluck(:room_id), end_user_id: @musician_profile.end_user.id)&.room
+    @room = RoomUser.find_by(room_id: current_end_user.room_users.pluck(:room_id), end_user_id: @musician_profile.end_user.id)&.room if end_user_signed_in?
     Notification.where.not(musician_favorite_id: nil).update_all(is_read: true)
   end
 
@@ -47,5 +48,9 @@ class Public::MusicianProfilesController < ApplicationController
 
   def musician_profile_params
     params.require(:musician_profile).permit(:genre, :end_user_id, :review_id, :area, :instrument, :total_member, :is_vocal, :video_id, :introduction, :price, :rate, :image)
+  end
+
+  def redirect_sessions
+    redirect_to new_end_user_session_path unless end_user_signed_in?
   end
 end

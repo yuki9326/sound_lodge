@@ -5,12 +5,14 @@
         <%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
         <p class="profile-name"><%= @shop_profile.end_user.username %></p>
         <p class="text-center"><%= link_to @shop_reviews.count, shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) %>件のレビュー</p>
+        <% if end_user_signed_in? %>
         <div class="d-flex justify-content-between">
           <p>お気に入りに追加</p>
           <div id="show_favorite_<%= @shop_profile.id %>">
             <%= render 'public/shop_favorites/favorite', shop_profile: @shop_profile %>
           </div>
         </div>
+        <% end %>
       </div>
       <div class="col-7 d-flex justify-content-center">
         <div class="profile-box">
@@ -71,6 +73,16 @@
               <br>
               <%= f.submit "投稿", class:"btn btn-success" %>
             <% end %>
+            <br>
+        </div>
+        <div class="chat-wrapper">
+          <% if @room.present? %>
+            <% if end_user_signed_in? %>
+            <%= link_to "メッセージを送る", room_messages_path(@room), class:"btn btn-success" %>
+          <% else %>
+            <%= link_to("メッセージを送る", rooms_path(end_user_ids: [current_end_user.id, @musician_profile.end_user.id]), method: :post, class:"btn btn-success") %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

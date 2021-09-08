@@ -1,4 +1,5 @@
 class Public::MusicianReviewsController < ApplicationController
+  before_action :authenticate_end_user!, only:[:create, :show]
 
   def index
     @musician_reviews = MusicianReview.where(musician_profile_id: params[:musician_profile_id])
@@ -24,6 +25,10 @@ class Public::MusicianReviewsController < ApplicationController
 
  def musician_review_params
    params.require(:musician_review).permit(:rate, :comment)
+ end
+
+ def redirect_sessions
+    redirect_to new_end_user_session_path unless end_user_signed_in?
  end
 end
 
