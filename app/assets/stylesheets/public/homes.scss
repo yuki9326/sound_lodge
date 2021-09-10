@@ -8,22 +8,20 @@
   box-sizing: border-box;
 }
 
-.main_visual{
+.main-visual{
   display: flex;
-}
-
-.image_area{
-  background-image: image-url('public-top');
+  background: image-url('public-top');
   width: 100%;
-  height: 650px;
+  min-height: 800px;
   background-size: cover;
   background-position: center;
 }
 
-.top_main_heading{
+.top-main-heading{
  margin-top: 20%;
  margin-left: 15%;
  color: #777777;
+ font-family: cursive
 }
 
 .about_image_area{

@@ -2,8 +2,8 @@ class Public::ShopFavoritesController < ApplicationController
   before_action :shop_profile_params
     def create
         shop_favorite = current_end_user.shop_favorites.new(shop_profile_id: @shop_profile.id)
-        if shop_favorite.save
-          Notification.create(end_user_id: shop_favorite.end_user_id, shop_favorite_id: shop_favorite.shop_profile_id)
+        if shop_favorite.save!
+          Notification.create(end_user_id: @shop_profile.end_user_id, shop_favorite_id: shop_favorite.shop_profile_id)
         end
     end
 

@@ -76,11 +76,11 @@
             <br>
         </div>
         <div class="chat-wrapper">
-          <% if @room.present? %>
-            <% if end_user_signed_in? %>
-            <%= link_to "メッセージを送る", room_messages_path(@room), class:"btn btn-success" %>
-          <% else %>
-            <%= link_to("メッセージを送る", rooms_path(end_user_ids: [current_end_user.id, @musician_profile.end_user.id]), method: :post, class:"btn btn-success") %>
+          <% if end_user_signed_in? %>
+            <% if @room.present? %>
+              <%= link_to "メッセージを送る", room_messages_path(@room), class:"btn btn-success" %>
+            <% else %>
+              <%= link_to("メッセージを送る", rooms_path(end_user_ids: [current_end_user.id, @musician_profile.end_user.id]), method: :post, class:"btn btn-success") %>
             <% end %>
           <% end %>
         </div>

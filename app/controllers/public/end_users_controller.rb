@@ -37,8 +37,23 @@ class Public::EndUsersController < ApplicationController
 
   def update
     @end_user = EndUser.find(params[:id])
+    before_end_user_status = @end_user.end_user_status
+
     if @end_user.update(end_user_params)
-      redirect_to end_user_path(@end_user.id)
+      if before_end_user_status == @end_user.end_user_status
+        redirect_to end_user_path(@end_user.id)
+        #return
+      else
+        if @end_user.end_user_status == "musician"
+          @end_user.shop_profile.destroy
+          redirect_to new_musician_profile_path
+        else
+          @end_user.musician_profile.destroy
+          redirect_to new_shop_profile_path
+        end
+      end
+
+      #redirect_to end_user_path(@end_user.id)
     else
       render :edit
     end
@@ -55,12 +70,12 @@ class Public::EndUsersController < ApplicationController
     redirect_to root_path
   end
 
-  def musician_favorite_list
-    @favorites = MusicianFavorite.where(musician_favorite_id: params[:musician_favorite_id])
-  end
-
-  def shop_favorite_list
-    @favorites = ShopFavorite.where(shop_favorite_id: params[:shop_favorite_id])
+  def favorite_list
+    if @end_user.end_status == "musician"
+      @favorites = current_end_user.shop_favorites
+    else
+      @favorites = current_end_user.musician_favorites
+    end
   end
 
   private

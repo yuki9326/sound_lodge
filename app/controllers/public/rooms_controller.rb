@@ -1,6 +1,7 @@
 class Public::RoomsController < ApplicationController
 
   def index
+    @end_user = current_end_user
   end
 
   def new
