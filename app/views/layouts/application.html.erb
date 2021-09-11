@@ -11,8 +11,8 @@
 
   <body>
     <header>
-      <nav class="navbar col-auto">
       <%= link_to image_tag("logo.jpg"), "/",class: "navbar-brand" %>
+      <div id="sp-menu">
         <ul class="nav-content">
           <% if end_user_signed_in? %>
             <li class="nav-list"><%= link_to 'Sound Logeとは', about_path, class:"nav-link" %></li>
@@ -39,7 +39,14 @@
             <li class="nav-list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav-link" %></li>
           <% end %>
         </ul>
-      </nav>
+      </div>
+      <div id="hm-icon">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+    </div>
     </header>
     <%= yield %>
   </body>
