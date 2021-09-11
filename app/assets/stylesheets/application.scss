@@ -37,14 +37,17 @@
 
 .session-heading{
   text-align: center;
-  margin-top: 50px;
-  font-style: italic;
-  border-bottom: 6px double #000;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  color: #777777;
 }
 
-.session-heading:first-letter {
-  font-size: 150%;
-  color: #eb6100;
+.to-registration{
+  margin-bottom: 50px;
+}
+
+.form-control.session{
+  width: 300px;
 }
 
 .admins-session_heading{
