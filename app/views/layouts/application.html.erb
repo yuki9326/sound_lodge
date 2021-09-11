@@ -48,7 +48,15 @@
         </a>
     </div>
     </header>
-    <footer class=""
     <%= yield %>
+    <footer>
+      <div class="container text-center">
+        <ul class="nav justify-content-center">
+          <li class="nav-item"><%= link_to "Home", root_path, class:"footer-link" %></li>
+          <li class="nav-item"><%=link_to "About", about_path, class:"footer-link" %></li>
+          <li class="nav-item"><%= link_to "お問い合わせ", new_contact_path, class:"footer-link" %></li>
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>
