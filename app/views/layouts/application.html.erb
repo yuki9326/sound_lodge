@@ -15,7 +15,7 @@
       <div id="sp-menu">
         <ul class="nav-content">
           <% if end_user_signed_in? %>
-            <li class="nav-list"><%= link_to 'Sound Logeとは', about_path, class:"nav-link" %></li>
+            <li class="nav-list"><%= link_to 'About', about_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'マイページ', end_user_path(current_end_user.id), class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav-link" %></li>
@@ -48,6 +48,7 @@
         </a>
     </div>
     </header>
+    <footer class=""
     <%= yield %>
   </body>
 </html>
