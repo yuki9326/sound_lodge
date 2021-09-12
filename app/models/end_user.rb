@@ -24,4 +24,7 @@ class EndUser < ApplicationRecord
     self.shop_favorites.exists?(shop_profile_id: shop_profile.id)
   end
   enum end_user_status: {musician:1, shop:2}
+
+  validates :username, length: {maximum: 20}
+  validate :name, presence: true
 end
