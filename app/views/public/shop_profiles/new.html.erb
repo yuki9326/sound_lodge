@@ -40,7 +40,7 @@
     </div>
     <div class="form-group">
       <%= f.label :audio_equipment, "店舗音響設備" %>
-      <%= f.text_field :audio_equipment, class:"form-control" %>
+      <%= f.text_area :audio_equipment, class:"form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :price, "希望価格(1時間)" %>
@@ -49,7 +49,7 @@
       </div>
     </div>
     <br>
-    <%= f.submit "登録", class:"btn btn-warning btn-block" %>
+    <%= f.submit "登録", class:"btn btn-outline-dark btn-block" %>
     <% end %>
   </div>
 </div>

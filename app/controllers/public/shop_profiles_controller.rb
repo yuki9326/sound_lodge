@@ -44,6 +44,12 @@ class Public::ShopProfilesController < ApplicationController
     end
   end
 
+  def search
+    @shop_profiles = ShopProfile.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   private
 
   def shop_profile_params

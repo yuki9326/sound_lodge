@@ -26,5 +26,5 @@ class EndUser < ApplicationRecord
   enum end_user_status: {musician:1, shop:2}
 
   validates :username, length: {maximum: 20}
-  validate :name, presence: true
+  validates :name, presence: true
 end

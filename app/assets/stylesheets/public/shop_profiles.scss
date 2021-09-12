@@ -9,17 +9,23 @@
 
 .shop-profile-heading{
   text-align: center;
-  margin-top: 50px;
-  font-style: italic;
-  border-bottom: 6px double #000;
-  margin-bottom: 50px;
-}
-
-.shop-profile-heading:first-letter {
-  font-size: 150%;
-  color: #eb6100;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  color: #777777;
 }
 
 .card {
   position: static !important;
+}
+
+.shop-image-file{
+  margin-left: 300px;
+}
+
+.profile-label{
+  color: #777777;
+}
+
+.favorite{
+  margin-right: 10px;
 }

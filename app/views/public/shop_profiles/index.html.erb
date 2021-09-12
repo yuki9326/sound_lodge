@@ -2,10 +2,14 @@
     <h1 class="shop-profile-heading">Organizers</h1>
     <%= form_tag(shop_profiles_path, method: "get") do %>
     <%= label_tag :genre, "ジャンル" %>
-    <%= select_tag :genre, options_for_select(ShopProfile.genres.keys.map {|k| [I18n.t("enums.shop_profile.genre.#{k}"), k]}) %>
+    <%= select_tag :genre, options_for_select(ShopProfile.genres.keys.map {|k| [I18n.t("enums.shop_profile.genre.#{k}"), k]}),{prompt: "---"} %>
     <%= label_tag :area, "エリア" %>
-    <%= select_tag :area, options_for_select(ShopProfile.areas.keys.map {|k| [I18n.t("enums.shop_profile.area.#{k}"), k]}) %>
-    <%= submit_tag "絞り込み検索" %>
+    <%= select_tag :area, options_for_select(ShopProfile.areas.keys.map {|k| [I18n.t("enums.shop_profile.area.#{k}"), k]}),{prompt: "---"} %>
+    <%= submit_tag "絞り込み検索", class:"submit-search" %>
+    <% end %>
+    <%= form_with url: shop_profiles_search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
     <% end %>
     <br><br>
 

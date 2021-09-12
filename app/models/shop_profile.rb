@@ -16,4 +16,15 @@ class ShopProfile < ApplicationRecord
   country:6, world:7, enka:8, japanese_old_pops:9, jazz:10, classic:11, others:12}
 
   scope :get_by_genre, ->(genre,area) {where(genre: genre).where(area: area)}
+
+  def self.search(keyword)
+    where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
+  validates :shop_name, length: {maximum: 30}, presence: true
+  validates :introduction, length: {maximum: 250}
+  validates :area, presence: true
+  validates :genre, presence: true
+  validates :audio_equipment, length: {maximum: 250}
+
 end
