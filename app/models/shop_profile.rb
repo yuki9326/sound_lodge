@@ -20,8 +20,8 @@ class ShopProfile < ApplicationRecord
     # binding.irb
     return self if genre.blank? && area.blank? && username.blank?
     # binding.irb
-    get_genre(genre).where(username=?, "%keyword%")
-    .get_area(area).where(username= ?, "%keyword%" )
+    get_genre(genre)
+    .get_area(area).where("username = ?", "%keyword%" )
   end
 
   scope :get_genre, -> (genre) { where(genre: genre) if genre.present? }

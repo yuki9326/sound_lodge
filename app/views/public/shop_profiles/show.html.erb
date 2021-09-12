@@ -1,50 +1,34 @@
 <div class="container">
   <h1 class="shop-profile-heading">Profile</h1>
   <div class="row">
-    <div class="col-4">
-      <%= attachment_image_tag @shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
-      <p class="text-center"><%= link_to @shop_reviews.count, shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) %>件のレビュー</p>
-      <% if end_user_signed_in? %>
-        <div class="d-flex justify-content-center">
-          <p class="favorite">お気に入りに追加</p>
-          <div id="show_favorite_<%= @shop_profile.id %>">
-            <%= render 'public/shop_favorites/favorite', shop_profile: @shop_profile %>
-          </div>
-        </div>
-        <% end %>
+    <div class="col-6 position-static">
+      <%= attachment_image_tag @shop_profile, :image, :fill, 250, 180, fallback:"no_image.jpg", class:"shop-icon" %>
         <div id="avarage"></div>
-    </div>
-    <div class="col-4">
-      <p class="profile-name"><%= @shop_profile.end_user.username %></p>
-    </div>
-    <div class="col-4">
-      <div class="rating-box">
-        <h6>レビューを書く</h6>
-          <%= form_with model: @shop_review, url: shop_profile_shop_reviews_path(@shop_profile) ,local: true do |f| %>
-            <%= f.label :comment, "コメント" %>
-            <%= f.text_area :comment, class:"form-control" %>
-            <br>
-            <div id="star">
-            <%= f.label :rate, "評価" %>
-            <%= f.hidden_field :rate, id: :review_star %>
+        <p class="review-count"><%= link_to @shop_reviews.count, shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) %>件のレビュー</p>
+        <% if end_user_signed_in? %>
+          <div class="d-flex">
+            <p class="favorite">お気に入りに追加</p>
+            <div id="show_favorite_<%= @shop_profile.id %>">
+              <%= render 'public/shop_favorites/favorite', shop_profile: @shop_profile %>
             </div>
-            <br>
-            <%= f.submit "投稿", class:"btn btn-success" %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-6 position-static">
+      <p class="profile-name"><%= @shop_profile.end_user.username %></p>
     </div>
   </div>
   <br><br>
   <div class="row">
-    <div class="profile-box">
+    <div class="profile-box position-static col-12">
       <strong class="profile-label">店名</strong>
       <p><%= @shop_profile.shop_name %></p>
       <strong class="profile-label">都道府県</strong>
       <p><%= @shop_profile.area_i18n %></p>
       <strong class="profile-label">店舗音響設備</strong>
-      <p><%= @shop_profile.audio_equipment %></p>
+      <p class="profile-sentence"><%= @shop_profile.audio_equipment %></p>
       <strong class="profile-label">店舗紹介文</strong>
-      <p><%= @shop_profile.introduction %></p>
+      <p class="profile-sentence"><%= @shop_profile.introduction %></p>
       <strong class="profile-label">希望音楽ジャンル</strong>
       <p><%= @shop_profile.genre_i18n %></p>
       <strong class="profile-label">ボーカルの希望</strong>
@@ -57,6 +41,25 @@
       <p><%= @shop_profile.price %>円</p>
       <strong class="profile-label">店舗画像</strong><br>
       <%= attachment_image_tag @shop_profile, :shop_image, :fill, 350, 250, class:"shop-image-file" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-4 position-static">
+        <div class="rating-box">
+          <h6>レビューを書く</h6>
+            <%= form_with model: @shop_review, url: shop_profile_shop_reviews_path(@shop_profile) ,local: true do |f| %>
+              <%= f.label :comment, "コメント" %>
+              <%= f.text_area :comment, class:"form-control" %>
+              <br>
+              <div id="star">
+              <%= f.label :rate, "評価" %>
+              <%= f.hidden_field :rate, id: :review_star %>
+              </div>
+              <br>
+              <%= f.submit "投稿", class:"btn btn-outline-dark btn-block" %>
+            <% end %>
+        </div>
     </div>
   </div>
 </div>
@@ -81,3 +84,4 @@
     score: "#{shop_review.average(:rate).round(1)}"
   });
 </script>
+

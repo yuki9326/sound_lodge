@@ -1,91 +1,81 @@
 <div class="container">
   <h1 class="musician-profile-heading">Profile</h1>
     <div class="row">
-      <div class="col-md-2">
-        <%= attachment_image_tag @musician_profile, :image, :fill, 150, 150, fallback:"no_image.jpg" %>
-        <p class="profile-name"><%= @musician_profile.end_user.username %></p>
-        <p class="text-center"><%= link_to @musician_reviews.count, musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) %>件のレビュー</p>
-        <% if end_user_signed_in? %>
-        <div class="d-flex justify-content-between">
-          <p>お気に入りに追加</p>
-          <div class="" id="show_favorite_<%= @musician_profile.id %>">
-            <%= render 'public/musician_favorites/favorite', musician_profile: @musician_profile %>
+      <div class="col-6 position-static">
+        <%= attachment_image_tag @musician_profile, :image, :fill, 320, 250, fallback:"no_image.jpg", class:"shop-icon" %>
+          <div id="avarage"></div>
+          <p class="review-count"><%= link_to @musician_reviews.count, musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) %>件のレビュー</p>
+          <% if end_user_signed_in? %>
+          <div class="d-flex">
+            <p class="favorite">お気に入りに追加</p>
+            <div class="" id="show_favorite_<%= @musician_profile.id %>">
+              <%= render 'public/musician_favorites/favorite', musician_profile: @musician_profile %>
+            </div>
           </div>
-        </div>
+          <% end %>
+      </div>
+      <div class="col-6 position-static">
+        <p class="profile-name"><%= @musician_profile.end_user.username %></p>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="profile-box position-static col-12">
+        <strong class="profile-label">音楽ジャンル</strong>
+        <p><%= @musician_profile.genre_i18n %></p>
+        <strong class="profile-label">活動エリア</strong>
+        <p><%= @musician_profile.area_i18n %></p>
+        <strong class="profile-label">楽器</strong>
+        <p><%= @musician_profile.instrument %></p>
+        <strong class="profile-label">活動人数</strong>
+        <p><%= @musician_profile.total_member %>人</p>
+        <strong class="profile-label">ボーカルの有無</strong>
+        <% if @musician_profile.is_vocal = true %>
+          <p>有り</p>
+        <% else %>
+          <p>無し</p>
+        <% end %>
+        <strong class="profile-label">希望価格/1時間</strong>
+        <p><%= @musician_profile.price %></p>
+        <strong class="profile-label">自己紹介文</strong>
+        <p class="profile-sentence"><%= @musician_profile.introduction %></p>
+        <strong class="profile-label">演奏動画</strong><br>
+        <% if @musician_profile.video.attached? %>
+          <video src="<%= rails_blob_path(@musician_profile.video) %>" type="video/mp4" controls></video>
         <% end %>
       </div>
-      <div class="col-md-7">
-        <div class="profile-box">
-          <table class="table table-borderless">
-            <tr>
-              <th>音楽ジャンル</th>
-              <td><%= @musician_profile.genre_i18n %></td>
-            </tr>
-            <tr>
-              <th>活動エリア</th>
-              <td><%= @musician_profile.area_i18n %></td>
-            </tr>
-            <tr>
-              <th>楽器</th>
-              <td><%= @musician_profile.instrument %></td>
-            </tr>
-            <tr>
-              <th>活動人数</th>
-              <td><%= @musician_profile.total_member %>人</td>
-            </tr>
-            <tr>
-              <th>ボーカルの有無</th>
-              <td><% if @musician_profile.is_vocal = true %>
-                  <p>有り</p>
-                  <% else %>
-                  <p>無し</p>
-                  <% end %>
-              </td>
-            </tr>
-            <tr>
-              <th>希望価格(1時間)</th>
-              <td><%= @musician_profile.price %></td>
-            </tr>
-            <tr>
-              <th>自己紹介文</th>
-              <td><%= @musician_profile.introduction %></td>
-            </tr>
-            <tr>
-              <th>演奏動画</th>
-              <td><% if @musician_profile.video.attached? %>
-                  <video src="<%= rails_blob_path(@musician_profile.video) %>" type="video/mp4" controls></video>
-                <% end %></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="col-md-3">
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-6 position-static">
         <div class="rating-box">
-          <h6>レビューを書く</h6>
+          <h6 class="profile-label">レビューを書く</h6>
               <%= form_with model: @musician_review, url: musician_profile_musician_reviews_path(@musician_profile) ,local: true do |f| %>
-                <%= f.label :comment, "コメント" %>
+                <%= f.label :comment, "コメント", class:"profile-label" %>
                 <%= f.text_area :comment, class:"form-control" %>
                 <br>
                 <div id="star">
-                <%= f.label :rate, "評価" %>
-                <%= f.hidden_field :rate, id: :review_star %>
+                <%= f.label :rate, "評価", class:"profile-label" %>　<%= f.hidden_field :rate, id: :review_star %>
                 </div>
                 <br>
-                <%= f.submit "投稿", class:"btn btn-success" %>
+                <%= f.submit "投稿", class:"review btn btn-outline-dark btn-block" %>
               <% end %>
               <br>
         </div>
-        <div class="chat-wrapper">
+      </div>
+        <div class="chat-wrapper position-static col-6">
           <% if end_user_signed_in? %>
             <% if @room.present? %>
-              <%= link_to "メッセージを送る", room_messages_path(@room), class:"btn btn-success" %>
-            <% else %>
-              <%= link_to("メッセージを送る", rooms_path(end_user_ids: [current_end_user.id, @musician_profile.end_user.id]), method: :post, class:"btn btn-success") %>
+              <%= link_to room_messages_path(@room), class:"message btn btn-outline-dark btn-block" do %>
+                <i class="far fa-comments">　メッセージを送る</i>
               <% end %>
+            <% else %>
+              <%= link_to(rooms_path(end_user_ids: [current_end_user.id, @musician_profile.end_user.id]), method: :post, class:"message btn btn-outline-dark btn-block") do %>
+                <i class="far fa-comments">　メッセージを送る</i>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
-      </div>
     </div>
 </div>
 
@@ -97,6 +87,16 @@
     starHalf: "<%= asset_path('star-half.png') %>",
     scoreName: 'musician_review[rate]',
     half: true
+  });
+  $('#avarage').raty({
+    size: 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'musician_review[rate]',
+    half: true,
+    readOnly: true,
+    score: "#{musician_review.average(:rate).round(1)}"
   });
 </script>
 
