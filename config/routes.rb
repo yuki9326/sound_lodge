@@ -26,7 +26,6 @@ Rails.application.routes.draw do
       resources :musician_reviews, only:[:index, :create, :show]
       resource :musician_favorites, only:[:create, :destroy]
     end
-    get 'shop_profiles/search' => 'shop_profiles#search'
     resources :shop_profiles, except:[:destroy] do
       resources :shop_reviews, only:[:index, :create, :show]
       resource :shop_favorites, only:[:create, :destroy]

@@ -5,11 +5,9 @@
     <%= select_tag :genre, options_for_select(ShopProfile.genres.keys.map {|k| [I18n.t("enums.shop_profile.genre.#{k}"), k]}),{prompt: "---"} %>
     <%= label_tag :area, "エリア" %>
     <%= select_tag :area, options_for_select(ShopProfile.areas.keys.map {|k| [I18n.t("enums.shop_profile.area.#{k}"), k]}),{prompt: "---"} %>
+    <%= label_tag :username, "ユーザーネーム" %>
+    <%= text_field_tag :username %>
     <%= submit_tag "絞り込み検索", class:"submit-search" %>
-    <% end %>
-    <%= form_with url: shop_profiles_search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: @keyword %>
-    <%= f.submit "検索" %>
     <% end %>
     <br><br>
 

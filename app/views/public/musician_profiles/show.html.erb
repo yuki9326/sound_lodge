@@ -52,7 +52,9 @@
             </tr>
             <tr>
               <th>演奏動画</th>
-              <td><%= @musician_profile.video_id %></td>
+              <td><% if @musician_profile.video.attached? %>
+                  <video src="<%= rails_blob_path(@musician_profile.video) %>" type="video/mp4" controls></video>
+                <% end %></td>
             </tr>
           </table>
         </div>

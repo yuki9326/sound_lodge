@@ -8,9 +8,9 @@ class Public::ShopProfilesController < ApplicationController
 
   def index
     @shop_profiles = ShopProfile.order(created_at: :desc).limit(20)
-    if params[:genre].present? && params[:area].present?
-      @shop_profiles = @shop_profiles.get_by_genre(params[:genre],params[:area])
-    end
+    #if params[:genre].present? || params[:area].present?
+      @shop_profiles = @shop_profiles.search(genre: params[:genre], area: params[:area], username: params[:username])
+    #end
   end
 
   def create
@@ -42,12 +42,6 @@ class Public::ShopProfilesController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def search
-    @shop_profiles = ShopProfile.search(params[:keyword])
-    @keyword = params[:keyword]
-    render "index"
   end
 
   private

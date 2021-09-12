@@ -12,7 +12,7 @@
           </div>
         </div>
         <% end %>
-        
+        <div id="avarage"></div>
     </div>
     <div class="col-4">
       <p class="profile-name"><%= @shop_profile.end_user.username %></p>
@@ -69,5 +69,15 @@
     starHalf: "<%= asset_path('star-half.png') %>",
     scoreName: 'shop_review[rate]',
     half: true
+  });
+  $('#avarage').raty({
+    size: 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'shop_review[rate]',
+    half: true,
+    readOnly: true,
+    score: "#{shop_review.average(:rate).round(1)}"
   });
 </script>

@@ -47,7 +47,7 @@ class Public::MusicianProfilesController < ApplicationController
   private
 
   def musician_profile_params
-    params.require(:musician_profile).permit(:genre, :end_user_id, :review_id, :area, :instrument, :total_member, :is_vocal, :video_id, :introduction, :price, :rate, :image)
+    params.require(:musician_profile).permit(:genre, :end_user_id, :review_id, :area, :instrument, :total_member, :is_vocal, :video, :introduction, :price, :rate, :image)
   end
 
   def redirect_sessions

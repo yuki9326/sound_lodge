@@ -15,11 +15,17 @@ class ShopProfile < ApplicationRecord
   enum genre: {pops:0, rock:1, electronica:2, hiphop:3, raggae:4, r_and_b:5,
   country:6, world:7, enka:8, japanese_old_pops:9, jazz:10, classic:11, others:12}
 
-  scope :get_by_genre, ->(genre,area) {where(genre: genre).where(area: area)}
-
-  def self.search(keyword)
-    where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+  scope :search, -> (genre:, area:, username:) do
+    # 引数にはキーワード引数を設定.：で終わるとその引数は必須
+    # binding.irb
+    return self if genre.blank? && area.blank? && username.blank?
+    # binding.irb
+    get_genre(genre).where(username=?, "%keyword%")
+    .get_area(area).where(username= ?, "%keyword%" )
   end
+
+  scope :get_genre, -> (genre) { where(genre: genre) if genre.present? }
+  scope :get_area, -> (area) { where(area: area) if area.present? }
 
   validates :shop_name, length: {maximum: 30}, presence: true
   validates :introduction, length: {maximum: 250}
