@@ -52,7 +52,7 @@
           <h6 class="profile-label">レビューを書く</h6>
               <%= form_with model: @musician_review, url: musician_profile_musician_reviews_path(@musician_profile) ,local: true do |f| %>
                 <%= f.label :comment, "コメント", class:"profile-label" %>
-                <%= f.text_area :comment, class:"form-control" %>
+                <%= f.text_area :comment, class:" review form-control" %>
                 <br>
                 <div id="star">
                 <%= f.label :rate, "評価", class:"profile-label" %>　<%= f.hidden_field :rate, id: :review_star %>
