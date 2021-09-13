@@ -1,32 +1,46 @@
 <div class="container">
-    <h1 class="musician-profile-heading">Musicians</h1>
-    <%= form_tag(musician_profiles_path, method: "get") do %>
+    <h1 class="shop-profile-heading"></h1>
+    <%= form_tag(shop_profiles_path, method: "get") do %>
     <%= label_tag :genre, "ジャンル" %>
-    <%= select_tag :genre, options_for_select(MusicianProfile.genres.keys.map {|k| [I18n.t("enums.musician_profile.genre.#{k}"), k]}) %>
+    <%= select_tag :genre, options_for_select(ShopProfile.genres.keys.map {|k| [I18n.t("enums.shop_profile.genre.#{k}"), k]}),{prompt: "---"} %>
     <%= label_tag :area, "エリア" %>
-    <%= select_tag :area, options_for_select(MusicianProfile.areas.keys.map {|k| [I18n.t("enums.musician_profile.area.#{k}"), k]}) %>
-    <%= submit_tag "絞り込み検索" %>
-    <% end %>
-
-    <% if @musician_profiles.count == 0 %>
-    <p>検索結果なし</p>
+    <%= select_tag :area, options_for_select(ShopProfile.areas.keys.map {|k| [I18n.t("enums.shop_profile.area.#{k}"), k]}),{prompt: "---"} %>
+    <%= label_tag :username, "ユーザーネーム" %>
+    <%= text_field_tag :username %>
+    <%= submit_tag "絞り込み検索", class:"submit-search" %>
     <% end %>
     <br><br>
 
-    <div class="d-flex flex-wrap justify-content-between">
-        <% @musician_profiles.each do |musician_profile| %>
-        <div class="profile-box border-dark d-flex justify-content-center">
-            <div class="profile-content">
-                <div class="image-area d-inline">
-                    <%= attachment_image_tag musician_profile, :image, fallback:"no_image.jpg", class:"rounded-circle image-area" %>
-                </div>
-                <h4 class="d-inline"><%= musician_profile.end_user.username.truncate(10) %></h4><br>
-                <i class="fas fa-map-pin"><%= musician_profile.area_i18n %></i><br>
-                <i class="fas fa-music"><%= musician_profile.instrument %></i><br>
-                <i class="fas fa-yen-sign"><%= musician_profile.price %>/時間</i>
-                <%= link_to "詳細", musician_profile_path(musician_profile.id), class:"btn btn-warning" %>
-            </div>
+    <div class="profile-list">
+      <% @musician_profiles.each do |musician_profile| %>
+        <div class="profile-box-list d-flex">
+          <div class="box-image">
+            <%= attachment_image_tag musician_profile, :image, :fill, 150, 150, fallback:"no_image.jpg", size:'150x150' %>
+              <div id="avarage"></div>
+          </div>
+          <div class="box-content">
+              <strong class="list-name"><%= musician_profile.end_user.username.truncate(10) %></strong><br><br>
+              <i class="fas fa-map-pin mb-2"><%= musician_profile.area_i18n %></i><br>
+              <i class="fas fa-music mb-2"><%= musician_profile.instrument.truncate(10) %></i><br>
+              <i class="fas fa-yen-sign mb-2"><%= musician_profile.price %>/時間</i>
+              <%= link_to "詳細", musician_profile_path(musician_profile.id), class:"profile btn btn-outline-dark btn-block" %>
+          </div>
         </div>
-        <% end %>
+      <% end %>
+    <%= paginate @musician_profiles %>
     </div>
 </div>
+
+
+<script>
+$('#avarage').raty({
+    size: 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'musician_review[rate]',
+    half: true,
+    readOnly: true,
+    score: "#{musician_review.average(:rate).round(1)}"
+  });
+</script>
