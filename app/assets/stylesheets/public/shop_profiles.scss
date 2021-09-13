@@ -14,10 +14,6 @@
   color: #777777;
 }
 
-.card {
-  position: static !important;
-}
-
 .shop-image-file{
   margin-left: 300px;
 }
@@ -56,3 +52,28 @@ input.review.btn-block[type="submit"],{
   margin-left: 60px;
 }
 
+.box-content{
+  margin: 0 auto;
+  letter-spacing: 10px;
+}
+
+.profile-box-list{
+  border: 1px solid #000000;
+  box-shadow: 2px 2px 4px gray;
+  margin: 20px auto;
+  padding: 30px 20px;
+  background-color: #ffffff;
+  width: 60%;
+}
+
+.list-name{
+  font-size: 20px;
+}
+
+.box-image{
+  margin-left: 70px;
+}
+
+.profile.btn{
+  width: 100px;
+}

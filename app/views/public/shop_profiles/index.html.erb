@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="shop-profile-heading">Organizers</h1>
+    <h1 class="shop-profile-heading"></h1>
     <%= form_tag(shop_profiles_path, method: "get") do %>
     <%= label_tag :genre, "ジャンル" %>
     <%= select_tag :genre, options_for_select(ShopProfile.genres.keys.map {|k| [I18n.t("enums.shop_profile.genre.#{k}"), k]}),{prompt: "---"} %>
@@ -11,18 +11,34 @@
     <% end %>
     <br><br>
 
-    <div class="d-flex flex-wrap justify-content-start">
-        <% @shop_profiles.each do |shop_profile| %>
-        <div class="card">
-            <%= attachment_image_tag shop_profile, :image, :fill, 200, 200, fallback:"no_image.jpg", size:'200x200', class:"card-img-top" %>
-            <div class="card-body">
-                <h4 class="card-title"><%= shop_profile.end_user.username %></h4>
-                <p class="card-text">店名　　<%= shop_profile.shop_name %></p>
-                <p class="card-text">所在地　<%= shop_profile.area_i18n %></p>
-                <p class="card-text">１時間　<%= shop_profile.price %>円</p>
-                <%= link_to "詳細", shop_profile_path(shop_profile.id), class:"btn btn-warning" %>
-            </div>
+    <div class="profile-list">
+      <% @shop_profiles.each do |shop_profile| %>
+        <div class="profile-box-list d-flex">
+          <div class="box-image">
+            <%= attachment_image_tag shop_profile, :image, :fill, 150, 150, fallback:"no_image.jpg", size:'150x150' %>
+              <div id="avarage"></div>
+          </div>
+          <div class="box-content">
+              <strong class="list-name"><%= shop_profile.end_user.username %></strong><br><br>
+              <i class="fas fa-store mb-2"><%= shop_profile.shop_name %></i><br>
+              <i class="fas fa-map-pin mb-2"><%= shop_profile.area_i18n %></i><br>
+              <i class="fas fa-yen-sign mb-2"><%= shop_profile.price %>円</i><br>
+              <%= link_to "詳細", shop_profile_path(shop_profile.id), class:"profile btn btn-outline-dark btn-block" %>
+          </div>
         </div>
-        <% end %>
+      <% end %>
     </div>
 </div>
+
+<script>
+$('#avarage').raty({
+    size: 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'musician_review[rate]',
+    half: true,
+    readOnly: true,
+    score: "#{musician_review.average(:rate).round(1)}"
+  });
+</script>
