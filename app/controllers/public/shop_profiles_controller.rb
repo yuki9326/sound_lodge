@@ -7,7 +7,7 @@ class Public::ShopProfilesController < ApplicationController
   end
 
   def index
-    @shop_profiles = ShopProfile.order(created_at: :desc).limit(20)
+    @shop_profiles = ShopProfile.page(params[:page]).reverse_order.per(10)
     #if params[:genre].present? || params[:area].present?
       @shop_profiles = @shop_profiles.search(genre: params[:genre], area: params[:area], username: params[:username])
     #end

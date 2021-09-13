@@ -60,7 +60,7 @@ input.review.btn-block[type="submit"],{
 .profile-box-list{
   border: 1px solid #000000;
   box-shadow: 2px 2px 4px gray;
-  margin: 20px auto;
+  margin: 25px auto;
   padding: 30px 20px;
   background-color: #ffffff;
   width: 60%;
@@ -76,4 +76,8 @@ input.review.btn-block[type="submit"],{
 
 .profile.btn{
   width: 100px;
+}
+
+.pagination{
+  justify-content: center;
 }
