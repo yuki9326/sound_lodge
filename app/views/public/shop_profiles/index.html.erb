@@ -9,10 +9,6 @@
     <%= text_field_tag :username %>
     <%= submit_tag "絞り込み検索", class:"submit-search" %>
     <% end %>
-
-    <% if @shop_profiles.count == 0 %>
-    <p>検索結果なし</p>
-    <% end %>
     <br><br>
 
     <div class="profile-list">
@@ -24,9 +20,9 @@
           </div>
           <div class="box-content">
               <strong class="list-name"><%= shop_profile.end_user.username.truncate(10) %></strong><br><br>
-              <i class="fas fa-store mb-2"><%= shop_profile.shop_name.truncate(10) %></i><br>
-              <i class="fas fa-map-pin mb-2"><%= shop_profile.area_i18n %></i><br>
-              <i class="fas fa-yen-sign mb-2"><%= shop_profile.price %>円</i><br>
+              <i class="fas fa-store mb-2"></i><%= shop_profile.shop_name.truncate(10) %><br>
+              <i class="fas fa-map-pin mb-2"></i><%= shop_profile.area_i18n %><br>
+              <i class="fas fa-yen-sign mb-2"></i><%= shop_profile.price %><br>
               <%= link_to "詳細", shop_profile_path(shop_profile.id), class:"profile btn btn-outline-dark btn-block" %>
           </div>
         </div>

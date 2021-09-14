@@ -9,13 +9,28 @@
 
 .end-user-heading{
   text-align: center;
-  margin-top: 50px;
-  font-style: italic;
-  border-bottom: 6px double #000;
-  margin-bottom: 50px;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  color: #777777;
 }
 
-.end-user-heading:first-letter {
-  font-size: 150%;
-  color: #eb6100;
+.rank-box{
+   border: 1px solid #000000;
+  box-shadow: 2px 2px 4px gray;
+  margin: 25px auto;
+  padding: 30px 20px;
+  background-color: #ffffff;
+  width: 60%;
+}
+
+.rank-image{
+  margin-right: 20px;
+}
+
+.rank-name{
+  font-size: 20px;
+}
+
+.mypage-heading{
+  text-align: center;
 }

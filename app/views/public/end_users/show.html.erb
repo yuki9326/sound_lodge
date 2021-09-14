@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="end-user-heading">My Page</h1>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-4 position-static">
       <table class="table">
         <tr>
           <th>氏名</th>
@@ -23,39 +23,60 @@
           <th>プロフィール</th>
           <td>
             <% if @end_user.musician? %>
-            <%= link_to "表示", musician_profile_path(@end_user.musician_profile.id), class:"btn btn-warning" %>
+            <%= link_to "編集", edit_musician_profile_path(@end_user.musician_profile.id), class:"btn btn-outline-dark" %>
             <% end %>
             <% if @end_user.shop? %>
-            <%= link_to "表示", shop_profile_path(@end_user.shop_profile.id), class:"btn btn-warning" %>
+            <%= link_to "編集", edit_shop_profile_path(@end_user.shop_profile.id), class:"btn btn-outline-dark" %>
             <% end %>
           </td>
         </tr>
+        <tr>
+          <th>会員情報</th>
+          <td><%= link_to "編集", edit_end_user_path(@end_user.id), class:"btn btn-outline-dark" %></td>
+        </tr>
+        <tr>
+          <th>お気に入り</th>
+          <td><% if current_end_user.end_user_status == "musician" %>
+                <%= link_to "一覧", end_users_shop_favorite_list_path, class:"btn btn-outline-dark" %>
+              <% else %>
+                <%= link_to "一覧", end_users_musician_favorite_list_path, class:"btn btn-outline-dark" %>
+              <% end %>
+            </td>
+        </tr>
+        <tr>
+          <th>メッセージ</th>
+          <td><%= link_to "一覧", rooms_path, class:"btn btn-outline-dark" %></td>
+        </tr>
       </table>
-      <%= link_to "会員情報編集", edit_end_user_path(@end_user.id), class:"btn btn-success" %>
     </div>
 
-    <div class="col-md-6">
-      <h4 class="mypage_heading">あなたへのおすすめ</h4>
+    <div class="col-8 position-static">
+      <h4 class="mypage-heading">あなたへのおすすめ</h4><br>
       <% if current_end_user.end_user_status == "musician" %>
         <% @shop_ranks.each do |shop_rank| %>
-        <%= shop_rank.end_user.username %>
-        <%= shop_rank.area_i18n %>
+        <div class="rank-box d-flex">
+          <div class="rank-image">
+          <%= attachment_image_tag shop_rank, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rank-icon" %>
+          </div>
+          <div class="rank-content">
+            <strong class="rank-name"><%= shop_rank.end_user.username.truncate(10) %></strong><br><br>
+            <i class="fas fa-map-pin mb-2"></i><%= shop_rank.area_i18n %>
+          </div>
+        </div>
         <% end %>
       <% else %>
         <% @musician_ranks.each do |musician_rank| %>
-        <%= musician_rank.end_user.username %>
+        <div class="rank-box d-flex">
+          <div class="rank-image">
+          <%= attachment_image_tag musician_rank, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rank-icon" %>
+          </div>
+          <div class="rank-content">
+            <strong class="rank-name"><%= musician_rank.end_user.username.truncate(10) %></strong><br><br>
+            <i class="fas fa-map-pin mb-2"></i><%= musician_rank.area_i18n %>
+          </div>
+        </div>
         <% end %>
       <% end %>
-    </div>
-
-    <div class="col-md-3">
-      <% if current_end_user.end_user_status == "musician" %>
-      <%= link_to "お気に入り一覧", end_users_shop_favorite_list_path, class:"btn btn-warning" %>
-      <% else %>
-      <%= link_to "お気に入り一覧", end_users_musician_favorite_list_path, class:"btn btn-warning" %>
-      <% end %>
-      <br><br><br>
-      <%= link_to "DM一覧", rooms_path, class:"btn btn-warning" %>
     </div>
   </div>
 </div>

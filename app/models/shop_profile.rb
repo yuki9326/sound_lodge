@@ -17,14 +17,32 @@ class ShopProfile < ApplicationRecord
 
   scope :search, -> (genre:, area:, username:) do
     # 引数にはキーワード引数を設定.：で終わるとその引数は必須
-    # binding.irb
+     #binding.irb
     return self if genre.blank? && area.blank? && username.blank?
+
     # binding.irb
-    get_genre(genre)
-    .get_area(area).where("username = ?", "%keyword%" )
+    #get_genre(genre)
+    #.get_area(area).where("end_users.username LIKE ?", "%eee%" ).select("shop_profiles.*, end_users.*")
+
+    #self.joins(:end_user).where("(genre = ?) OR (area = ?) OR (end_users.username LIKE ?)", ShopProfile.genres[genre], ShopProfile.areas[area], "%#{username}%").select("shop_profiles.*, end_users.username")
+    #self.joins(:end_user).or(self.joins(:end_user).where(genre: genre)).or(self.joins(:end_user).where(area: area)).where("end_users.username LIKE ?", "%#{username}%").select("shop_profiles.*, end_users.username")
+    #self.joins(:end_user).where("(genre = ?)", ShopProfile.genres[genre]).select("shop_profiles.*, end_users.username")
+    #self.joins(:end_user).where("(genre = ?) OR (area = ?)", ShopProfile.genres[genre], ShopProfile.areas[area]).select("shop_profiles.*, end_users.username")
+    #self.joins(:end_user).where("(genre = ?) OR (area = ?) OR genre IS NOT NULL OR area IS NOT NULL", ShopProfile.genres[genre], ShopProfile.areas[area]).select("shop_profiles.*, end_users.username")
+    if genre.blank?
+      self.joins(:end_user).where("(area = ?) OR (end_users.username LIKE ?)", ShopProfile.areas[area], "%#{username}%").select("shop_profiles.*, end_users.username")
+    end
+
+    if area.blank?
+      self.joins(:end_user).where("(genre = ?) OR (end_users.username LIKE ?)", ShopProfile.genres[genre], "%#{username}%").select("shop_profiles.*, end_users.username")
+    end
+
+    if username.blank?
+      self.joins(:end_user).where("(genre = ?) OR (area = ?)", ShopProfile.genres[genre], ShopProfile.areas[area]).select("shop_profiles.*, end_users.username")
+    end
   end
 
-  scope :get_genre, -> (genre) { where(genre: genre) if genre.present? }
+  scope :get_genre, -> (genre) { joins(:end_user).where(genre: genre) if genre.present? }
   scope :get_area, -> (area) { where(area: area) if area.present? }
 
   validates :shop_name, length: {maximum: 30}, presence: true
