@@ -8,6 +8,11 @@ class Public::ShopProfilesController < ApplicationController
 
   def index
     @shop_profiles = ShopProfile.page(params[:page]).reverse_order.per(10)
+    p "DEBUG"
+    p params[:genre]
+    p params[:area]
+    p params[:username]
+
     #if params[:genre].present? || params[:area].present?
       @shop_profiles = @shop_profiles.search(genre: params[:genre], area: params[:area], username: params[:username])
     #end

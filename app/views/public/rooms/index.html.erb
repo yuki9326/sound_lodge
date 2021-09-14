@@ -1,34 +1,20 @@
-<div class="container"><br><br>
- <h1 class="mypage_heading">Messages</h1>
- <div class="row">
-  <div class="rooms">
-
-<% current_end_user.rooms.each do |room| %>
-
- <div class="room">
-
- <div class="room-name">
-
-<% @another_end_user = (room.end_users.where.not(id: current_end_user.id).to_a)[0] %>
-
-<%= link_to @another_end_user.username, room_messages_path(room) %>
-<% if @another_end_user.messages.where(is_read: false).present? %>
-<%= @another_end_user.messages.count %>
-<% end %>
-
- </div>
-
- <div class="delete-room">
-
-<%= link_to "×", room_path(room), method: :delete %>
-
- </div>
-
- </div>
-
-<% end %>
-
+<div class="container">
+  <h1 class="message-heading">Messages</h1>
+  <div class="row">
+    <% current_end_user.rooms.each do |room| %>
+    <div class="message-box">
+      <div class="room-name d-flex">
+        <% @another_end_user = (room.end_users.where.not(id: current_end_user.id).to_a)[0] %>
+        <i class="fas fa-user"><%= link_to @another_end_user.username, room_messages_path(room) %></i>
+        <% if @another_end_user.messages.where(is_read: false).present? %>
+          <%= @another_end_user.messages.count %>
+        <% end %>
+        <div class="delete-room">
+          <%= link_to "x", room_path(room), method: :delete %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
 
- </div>
-</div>

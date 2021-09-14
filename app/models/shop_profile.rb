@@ -16,29 +16,25 @@ class ShopProfile < ApplicationRecord
   country:6, world:7, enka:8, japanese_old_pops:9, jazz:10, classic:11, others:12}
 
   scope :search, -> (genre:, area:, username:) do
-    # 引数にはキーワード引数を設定.：で終わるとその引数は必須
-     #binding.irb
+
     return self if genre.blank? && area.blank? && username.blank?
-
-    # binding.irb
-    #get_genre(genre)
-    #.get_area(area).where("end_users.username LIKE ?", "%eee%" ).select("shop_profiles.*, end_users.*")
-
-    #self.joins(:end_user).where("(genre = ?) OR (area = ?) OR (end_users.username LIKE ?)", ShopProfile.genres[genre], ShopProfile.areas[area], "%#{username}%").select("shop_profiles.*, end_users.username")
-    #self.joins(:end_user).or(self.joins(:end_user).where(genre: genre)).or(self.joins(:end_user).where(area: area)).where("end_users.username LIKE ?", "%#{username}%").select("shop_profiles.*, end_users.username")
-    #self.joins(:end_user).where("(genre = ?)", ShopProfile.genres[genre]).select("shop_profiles.*, end_users.username")
-    #self.joins(:end_user).where("(genre = ?) OR (area = ?)", ShopProfile.genres[genre], ShopProfile.areas[area]).select("shop_profiles.*, end_users.username")
-    #self.joins(:end_user).where("(genre = ?) OR (area = ?) OR genre IS NOT NULL OR area IS NOT NULL", ShopProfile.genres[genre], ShopProfile.areas[area]).select("shop_profiles.*, end_users.username")
+    
     if genre.blank?
-      self.joins(:end_user).where("(area = ?) OR (end_users.username LIKE ?)", ShopProfile.areas[area], "%#{username}%").select("shop_profiles.*, end_users.username")
-    end
-
-    if area.blank?
-      self.joins(:end_user).where("(genre = ?) OR (end_users.username LIKE ?)", ShopProfile.genres[genre], "%#{username}%").select("shop_profiles.*, end_users.username")
-    end
-
-    if username.blank?
-      self.joins(:end_user).where("(genre = ?) OR (area = ?)", ShopProfile.genres[genre], ShopProfile.areas[area]).select("shop_profiles.*, end_users.username")
+      if area.blank?
+        self.joins(:end_user).where(" (end_users.username LIKE ?)", "%#{username}%").select("shop_profiles.*, end_users.username")
+      else
+        self.joins(:end_user).where(" (area = ?) AND (end_users.username LIKE ?)", ShopProfile.areas[area], "%#{username}%").select("shop_profiles.*, end_users.username")
+      end
+    elsif area.blank?
+      if genre.blank?
+        self.joins(:end_user).where(" (end_users.username LIKE ?)", "%#{username}%").select("shop_profiles.*, end_users.username")
+      else
+        self.joins(:end_user).where("(genre = ?) AND (end_users.username LIKE ?)", ShopProfile.genres[genre], "%#{username}%").select("shop_profiles.*, end_users.username")
+      end
+    elsif username.blank?
+      self.joins(:end_user).where("(genre = ?) AND (area = ?)", ShopProfile.genres[genre], ShopProfile.areas[area]).select("shop_profiles.*, end_users.username")
+    else
+      self.joins(:end_user).where(" (genre = ? ) AND (area = ?) AND (end_users.username LIKE ?)", ShopProfile.genres[genre], ShopProfile.areas[area], "%#{username}%").select("shop_profiles.*, end_users.username")
     end
   end
 
