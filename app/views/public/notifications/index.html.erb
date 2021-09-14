@@ -1,17 +1,35 @@
-
-
-
-
-
-
-
 <div class="container">
-  <h2>Message</h2>
-  <h2>Good</h2>
-  <h2>Favorite</h2>
-  <% @notification_favorite.each do |favorite| %>
-    <% if favorite.is_read == false %>
-      <%= favorite.id %>
-    <% end %>
-  <% end %>
+  <h1 class="notification-heading">Notification</h1>
+  <div class="row">
+    <div class="notification-field">
+      <h2 class="notification-title">Messages</h2>
+      <div class="notification-box">
+        <% @notification_message.each do |message| %>
+          <% if message.is_read == false %>
+            <p class="notification-text">新しいメッセージがあります。</p>
+            <%= message.id %>
+          <% end %>
+        <% end %>
+      </div>
+      <h2 class="notification-title">Favorites</h2>
+      <div class="notification-box">
+        <% @notification_favorite.each do |favorite| %>
+          <% if favorite.is_read == false %>
+            <p class="notification-text">新しくお気に入りに追加されました。</p>
+            <%= favorite.id %>
+          <% end %>
+        <% end %>
+      </div>
+      <h2 class="notification-title">Reviews</h2>
+      <div class="notification-box">
+        <% @notification_review.each do |review| %>
+          <% if review.is_read == false %>
+            <p class="notification-text">新しいレビューがあります。</p>
+            <%= review.id %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+

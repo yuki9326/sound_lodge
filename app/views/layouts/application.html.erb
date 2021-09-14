@@ -12,9 +12,31 @@
   <body>
     <header>
       <%= link_to image_tag("logo.jpg"), "/",class: "navbar-brand" %>
-      <% if @notification_message.present? ||  @notification_favorite.present? || @notification_review.present? %>
-        <%= link_to notifications_path do %>
-          <i class="fas fa-bell fa-lg"></i>
+      <% if @notification_message.present? %>
+        <%= link_to rooms_path do %>
+          <i class="far fa-envelope fa-lg"></i>
+        <% end %>
+      <% end %>
+      <% if @notification_review.present? %>
+        <% if current_end_user.end_user_status == "musician" %>
+          <%= link_to musician_profile_musician_reviews_path(musician_profile_id: current_end_user.musician_profile.id) do %>
+            <i class="notification far fa-star fa-lg"></i>
+          <% end %>
+        <% else %>
+          <%= link_to shop_profile_shop_reviews_path(shop_profile_id: current_end_user.shop_profile.id) do %>
+            <i class="notification far fa-star fa-lg"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if @notification_favorite.present? %>
+        <% if current_end_user.end_user_status == "musician" %>
+          <%= link_to musician_profile_path(current_end_user.musician_profile.id) do %>
+          <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to shop_profile_path(current_end_user.shop_profile.id) do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
         <% end %>
       <% end %>
       <div id="sp-menu">

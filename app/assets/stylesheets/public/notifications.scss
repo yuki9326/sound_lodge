@@ -1,3 +1,19 @@
 // Place all the styles related to the public/notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notification-heading{
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  color: #777777;
+}
+
+.notification-field{
+  margin: 0 auto;
+}
+
+.notification.far.fa-star{
+  margin-left: 20px;
+  margin-right: 20px;
+}

@@ -45,21 +45,33 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-4 position-static">
+    <div class="col-6 position-static">
         <div class="rating-box">
           <h6>レビューを書く</h6>
             <%= form_with model: @shop_review, url: shop_profile_shop_reviews_path(@shop_profile) ,local: true do |f| %>
-              <%= f.label :comment, "コメント" %>
-              <%= f.text_area :comment, class:"form-control" %>
+              <%= f.label :comment, "コメント", class:"profile-label" %>
+              <%= f.text_area :comment, class:"review form-control" %>
               <br>
               <div id="star">
-              <%= f.label :rate, "評価" %>
-              <%= f.hidden_field :rate, id: :review_star %>
+              <%= f.label :rate, "評価", class:"profile-label" %>　<%= f.hidden_field :rate, id: :review_star %>
               </div>
               <br>
-              <%= f.submit "投稿", class:"btn btn-outline-dark btn-block" %>
+              <%= f.submit "投稿", class:"review btn btn-outline-dark btn-block" %>
             <% end %>
         </div>
+    </div>
+    <div class="chat-wrapper position-static col-6">
+      <% if end_user_signed_in? %>
+        <% if @room.present? %>
+          <%= link_to room_messages_path(@room), class:"message btn btn-outline-dark btn-block" do %>
+            <i class="far fa-comments">　メッセージを送る</i>
+          <% end %>
+        <% else %>
+          <%= link_to(rooms_path(end_user_ids: [current_end_user.id, @shop_profile.end_user.id]), method: :post, class:"message btn btn-outline-dark btn-block") do %>
+            <i class="far fa-comments">　メッセージを送る</i>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
