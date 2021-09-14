@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="shop-profile-heading"></h1>
+    <h1 class="shop-profile-heading">Organizers</h1>
     <%= form_tag(shop_profiles_path, method: "get") do %>
     <%= label_tag :genre, "ジャンル" %>
     <%= select_tag :genre, options_for_select(ShopProfile.genres.keys.map {|k| [I18n.t("enums.shop_profile.genre.#{k}"), k]}),{prompt: "---"} %>

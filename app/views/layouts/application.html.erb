@@ -12,6 +12,11 @@
   <body>
     <header>
       <%= link_to image_tag("logo.jpg"), "/",class: "navbar-brand" %>
+      <% if @notification_message.present? ||  @notification_favorite.present? || @notification_review.present? %>
+        <%= link_to notifications_path do %>
+          <i class="fas fa-bell fa-lg"></i>
+        <% end %>
+      <% end %>
       <div id="sp-menu">
         <ul class="nav-content">
           <% if end_user_signed_in? %>
@@ -21,11 +26,6 @@
             <li class="nav-list"><%= link_to 'ミュージシャンを探す', musician_profiles_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'お問い合わせ', new_contact_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class:"nav-link" %></li>
-            <% if @notification_message.present? ||  @notification_favorite.present? || @notification_review.present? %>
-              <%= link_to notifications_path do %>
-                <i class="fas fa-bell"></i>
-              <% end %>
-            <% end %>
           <% elsif admin_signed_in? %>
             <li class="nav-list">会員店舗一覧</li>
             <li class="nav-list">会員ミュージシャン一覧</li>

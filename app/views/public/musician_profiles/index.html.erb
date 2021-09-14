@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="musician-profile-heading"></h1>
+    <h1 class="musician-profile-heading">Musicians</h1>
     <%= form_tag(musician_profiles_path, method: "get") do %>
     <%= label_tag :genre, "ジャンル" %>
     <%= select_tag :genre, options_for_select(MusicianProfile.genres.keys.map {|k| [I18n.t("enums.musician_profile.genre.#{k}"), k]}),{prompt: "---"} %>

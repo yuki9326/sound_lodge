@@ -1,3 +1,44 @@
 // Place all the styles related to the public/messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.message{
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 30px;
+  border: 15px solid transparent;
+  background-color: #e0edff;
+  border-radius: 15px;
+  width: 60%;
+}
+
+.message-user{
+  display: inline-flex;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.message-image{
+  display: none;
+}
+
+.form-input{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form-message{
+  width: 40%;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.far.fa-image{
+  margin-right: 20px;
+  cursor: pointer;
+　cursor: hand;
+}
+
+.send.btn{
+  margin-bottom: 20px;
+}

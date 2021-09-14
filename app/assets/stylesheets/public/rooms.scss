@@ -20,7 +20,13 @@
 }
 
 .delete-room{
-  right: 0;
-  top: 0;
+  margin-left: 100px;
 }
 
+.room-name{
+  justify-content: center;
+}
+
+i.fas.fa-user{
+  margin: 0 auto;
+}
