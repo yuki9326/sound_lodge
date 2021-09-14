@@ -18,9 +18,7 @@ class Public::MusicianProfilesController < ApplicationController
 
   def index
     @musician_profiles = MusicianProfile.page(params[:page]).reverse_order.per(10)
-    if params[:genre].present? && params[:area].present?
-      @musician_profiles = @musician_profiles.get_by_genre(params[:genre],params[:area])
-    end
+    @musician_profiles = @musician_profiles.search(genre: params[:genre], area: params[:area], username: params[:username])
   end
 
   def show

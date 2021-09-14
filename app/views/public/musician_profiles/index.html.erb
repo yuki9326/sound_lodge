@@ -1,10 +1,10 @@
 <div class="container">
-    <h1 class="shop-profile-heading"></h1>
-    <%= form_tag(shop_profiles_path, method: "get") do %>
+    <h1 class="musician-profile-heading"></h1>
+    <%= form_tag(musician_profiles_path, method: "get") do %>
     <%= label_tag :genre, "ジャンル" %>
-    <%= select_tag :genre, options_for_select(ShopProfile.genres.keys.map {|k| [I18n.t("enums.shop_profile.genre.#{k}"), k]}),{prompt: "---"} %>
+    <%= select_tag :genre, options_for_select(MusicianProfile.genres.keys.map {|k| [I18n.t("enums.musician_profile.genre.#{k}"), k]}),{prompt: "---"} %>
     <%= label_tag :area, "エリア" %>
-    <%= select_tag :area, options_for_select(ShopProfile.areas.keys.map {|k| [I18n.t("enums.shop_profile.area.#{k}"), k]}),{prompt: "---"} %>
+    <%= select_tag :area, options_for_select(MusicianProfile.areas.keys.map {|k| [I18n.t("enums.musician_profile.area.#{k}"), k]}),{prompt: "---"} %>
     <%= label_tag :username, "ユーザーネーム" %>
     <%= text_field_tag :username %>
     <%= submit_tag "絞り込み検索", class:"submit-search" %>

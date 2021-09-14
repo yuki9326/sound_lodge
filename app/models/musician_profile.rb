@@ -15,5 +15,31 @@ class MusicianProfile < ApplicationRecord
   enum genre: {pops:0, rock:1, electronica:2, hiphop:3, raggae:4, r_and_b:5,
   country:6, world:7, enka:8, japanese_old_pops:9, jazz:10, classic:11, others:12}
 
-  scope :get_by_genre, ->(genre,area) {where(genre: genre).where(area: area)}
+  #scope :get_by_genre, ->(genre,area) {where(genre: genre).where(area: area)}
+
+  scope :search, -> (genre:, area:, username:) do
+
+    return self if genre.blank? && area.blank? && username.blank?
+
+    if genre.blank?
+      if area.blank?
+        self.joins(:end_user).where(" (end_users.username LIKE ?)", "%#{username}%").select("musician_profiles.*, end_users.username")
+      else
+        self.joins(:end_user).where(" (area = ?) AND (end_users.username LIKE ?)", MusicianProfile.areas[area], "%#{username}%").select("musician_profiles.*, end_users.username")
+      end
+    elsif area.blank?
+      if genre.blank?
+        self.joins(:end_user).where(" (end_users.username LIKE ?)", "%#{username}%").select("musician_profiles.*, end_users.username")
+      else
+        self.joins(:end_user).where("(genre = ?) AND (end_users.username LIKE ?)", MusicianProfile.genres[genre], "%#{username}%").select("musician_profiles.*, end_users.username")
+      end
+    elsif username.blank?
+      self.joins(:end_user).where("(genre = ?) AND (area = ?)", MusicianProfile.genres[genre], MusicianProfile.areas[area]).select("musician_profiles.*, end_users.username")
+    else
+      self.joins(:end_user).where(" (genre = ? ) AND (area = ?) AND (end_users.username LIKE ?)", MusicianProfile.genres[genre], MusicianProfile.areas[area], "%#{username}%").select("musician_profiles.*, end_users.username")
+    end
+  end
+
+  scope :get_genre, -> (genre) { joins(:end_user).where(genre: genre) if genre.present? }
+  scope :get_area, -> (area) { where(area: area) if area.present? }
 end
