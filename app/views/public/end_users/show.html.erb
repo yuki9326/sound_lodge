@@ -54,27 +54,31 @@
       <h4 class="mypage-heading">あなたへのおすすめ</h4><br>
       <% if current_end_user.end_user_status == "musician" %>
         <% @shop_ranks.each do |shop_rank| %>
-        <div class="rank-box d-flex">
-          <div class="rank-image">
-          <%= attachment_image_tag shop_rank, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rank-icon" %>
-          </div>
-          <div class="rank-content">
-            <strong class="rank-name"><%= shop_rank.end_user.username.truncate(10) %></strong><br><br>
-            <i class="fas fa-map-pin mb-2"></i><%= shop_rank.area_i18n %>
-          </div>
-        </div>
+          <%= link_to shop_profile_path(shop_rank.id) do %>
+            <div class="rank-box d-flex">
+              <div class="rank-image">
+              <%= attachment_image_tag shop_rank, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rank-icon" %>
+              </div>
+              <div class="rank-content">
+                <strong class="rank-name"><%= shop_rank.end_user.username.truncate(10) %></strong><br><br>
+                <i class="fas fa-map-pin mb-2"></i><%= shop_rank.area_i18n %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% else %>
         <% @musician_ranks.each do |musician_rank| %>
-        <div class="rank-box d-flex">
-          <div class="rank-image">
-          <%= attachment_image_tag musician_rank, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rank-icon" %>
+          <%= link_to musician_profile_path(musician_rank.id) do %>
+          <div class="rank-box d-flex">
+            <div class="rank-image">
+            <%= attachment_image_tag musician_rank, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rank-icon" %>
+            </div>
+            <div class="rank-content">
+              <strong class="rank-name"><%= musician_rank.end_user.username.truncate(10) %></strong><br><br>
+              <i class="fas fa-map-pin mb-2"></i><%= musician_rank.area_i18n %>
+            </div>
           </div>
-          <div class="rank-content">
-            <strong class="rank-name"><%= musician_rank.end_user.username.truncate(10) %></strong><br><br>
-            <i class="fas fa-map-pin mb-2"></i><%= musician_rank.area_i18n %>
-          </div>
-        </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
