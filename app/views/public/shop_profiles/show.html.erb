@@ -1,11 +1,11 @@
 <div class="container">
   <h1 class="shop-profile-heading">Profile</h1>
   <div class="row">
-    <div class="col-6 position-static">
+    <div class="col-6">
       <%= attachment_image_tag @shop_profile, :image, :fill, 250, 180, fallback:"no_image.jpg", class:"shop-icon" %>
         <div id="avarage"></div>
         <p class="review-count"><%= link_to @shop_reviews.count, shop_profile_shop_reviews_path(shop_profile_id: @shop_profile.id) %>件のレビュー</p>
-        <% if end_user_signed_in? %>
+        <% if end_user_signed_in? && @shop_profile.end_user.id != current_end_user.id %>
           <div class="d-flex">
             <p class="favorite">お気に入りに追加</p>
             <div id="show_favorite_<%= @shop_profile.id %>">
@@ -14,13 +14,13 @@
           </div>
         <% end %>
     </div>
-    <div class="col-6 position-static">
+    <div class="col-6">
       <p class="profile-name"><%= @shop_profile.end_user.username %></p>
     </div>
   </div>
   <br><br>
   <div class="row">
-    <div class="profile-box position-static col-12">
+    <div class="profile-box col-12">
       <strong class="profile-label">店名</strong>
       <p><%= @shop_profile.shop_name %></p>
       <strong class="profile-label">都道府県</strong>
@@ -45,7 +45,8 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-6 position-static">
+    <% if end_user_signed_in? && @shop_profile.end_user.id != current_end_user.id %>
+    <div class="col-6">
         <div class="rating-box">
           <h6>レビューを書く</h6>
             <%= form_with model: @shop_review, url: shop_profile_shop_reviews_path(@shop_profile) ,local: true do |f| %>
@@ -60,8 +61,7 @@
             <% end %>
         </div>
     </div>
-    <div class="chat-wrapper position-static col-6">
-      <% if end_user_signed_in? %>
+    <div class="chat-wrapper col-6">
         <% if @room.present? %>
           <%= link_to room_messages_path(@room), class:"message btn btn-outline-dark btn-block" do %>
             <i class="far fa-comments">　メッセージを送る</i>
@@ -71,12 +71,18 @@
             <i class="far fa-comments">　メッセージを送る</i>
           <% end %>
         <% end %>
-      <% end %>
     </div>
+    <% end %>
   </div>
 </div>
 
 <script>
+  <%= @shop_reviews = ShopReview.where(shop_profile_id: params[:id]).where.not(rate:nil) %>
+  <% if @shop_reviews == [] %>
+    <% review_average = 0 %>
+  <% else %>
+    <% review_average = @shop_reviews.average(:rate).round(1) %>
+  <% end %>
   $('#star').raty({
     size: 36,
     starOn: "<%= asset_path('star-on.png') %>",
@@ -93,7 +99,7 @@
     scoreName: 'shop_review[rate]',
     half: true,
     readOnly: true,
-    score: "#{shop_review.average(:rate).round(1)}"
+    score: "<%= review_average %>"
   });
 </script>
 

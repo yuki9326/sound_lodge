@@ -4,7 +4,7 @@
     <div class="card review mx-auto">
       <div class="card-header d-flex align-items-center justify-content-between">
         <%= attachment_image_tag @shop_review.shop_profile, :image, :fill, 100, 100, fallback:"no_image.jpg" %>
-        <%= @shop_review.end_user.username %>
+        <%= @shop_review.end_user.username.truncate(20) %>
         <div id="average-review-rating-<%= @shop_review.id %>" data-score=<%= @shop_review.rate %>></div>
           <script>
             $('#average-review-rating-<%= @shop_review.id %>').raty({
@@ -24,7 +24,8 @@
   <br>
 
   <div class="row">
-    <%= link_to "この会員へのレビューを見る", shop_profile_shop_reviews_path, class:"btn btn-warning mx-auto" %>
-    <%= link_to "プロフィールへ戻る", shop_profile_path(@shop_profile.id), class:"btn btn-success mx-auto" %>
+    <div class="review-link">
+      <%= link_to "プロフィールへ戻る", shop_profile_path(@shop_profile.id), class:"btn btn-outline-dark" %>
+    </div>
   </div>
 </div>

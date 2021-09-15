@@ -1,10 +1,11 @@
 <div class="container">
   <h1 class="mypage_heading">Favorites</h1>
   <div class="row">
-    <% @favorites.each do |favorite| %>
-      <%= favorite.end_user.username %>
-      <%= favorite.shop_profile.shop_name %>
-      <%= favorite.shop_profile.area_i18n %>
+    <% @shop_lists.each do |shop_list| %>
+      <%= attachment_image_tag shop_list.shop_profile, :image, :fill, 100, 100 %>
+      <%= shop_list.end_user.username %>
+      <%= shop_list.shop_profile.shop_name %>
+      <%= shop_list.shop_profile.area_i18n %>
     <% end %>
   </div>
 </div>

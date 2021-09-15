@@ -1,5 +1,5 @@
 class Public::ShopProfilesController < ApplicationController
-  before_action :authenticate_end_user!, except:[:index, :show]
+  before_action :authenticate_end_user!, except:[:index]
 
   def new
     @shop_profile = ShopProfile.new

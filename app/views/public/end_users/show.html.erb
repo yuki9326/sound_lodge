@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="end-user-heading">My Page</h1>
   <div class="row">
-    <div class="col-4 position-static">
+    <div class="col-4 ">
       <table class="table">
         <tr>
           <th>氏名</th>
@@ -9,7 +9,7 @@
         </tr>
         <tr>
           <th>ユーザーネーム</th>
-          <td><%= @end_user.username %></td>
+          <td><%= @end_user.username.truncate(20) %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
@@ -36,12 +36,9 @@
         </tr>
         <tr>
           <th>お気に入り</th>
-          <td><% if current_end_user.end_user_status == "musician" %>
-                <%= link_to "一覧", end_users_shop_favorite_list_path, class:"btn btn-outline-dark" %>
-              <% else %>
-                <%= link_to "一覧", end_users_musician_favorite_list_path, class:"btn btn-outline-dark" %>
-              <% end %>
-            </td>
+          <td>
+            <%= link_to "一覧", end_users_favorite_list_path, class:"btn btn-outline-dark" %>
+          </td>
         </tr>
         <tr>
           <th>メッセージ</th>
@@ -50,7 +47,7 @@
       </table>
     </div>
 
-    <div class="col-8 position-static">
+    <div class="col-8">
       <h4 class="mypage-heading">あなたへのおすすめ</h4><br>
       <% if current_end_user.end_user_status == "musician" %>
         <% @shop_ranks.each do |shop_rank| %>

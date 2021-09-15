@@ -72,10 +72,12 @@ class Public::EndUsersController < ApplicationController
   end
 
   def favorite_list
-    if @end_user.end_status == "musician"
-      @favorites = current_end_user.shop_favorites
+    if current_end_user.end_user_status == "musician"
+      @shop_lists = current_end_user.shop_favorites
+      render :shop_favorite_list
     else
-      @favorites = current_end_user.musician_favorites
+      @musician_lists = current_end_user.musician_favorites
+      render :musician_favorite_list
     end
   end
 

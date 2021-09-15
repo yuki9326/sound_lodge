@@ -1,5 +1,5 @@
 class Public::MusicianProfilesController < ApplicationController
-  before_action :authenticate_end_user!, except: [:index, :show]
+  before_action :authenticate_end_user!, except: [:index]
 
   def new
     @musician_profile = MusicianProfile.new

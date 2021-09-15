@@ -4,11 +4,13 @@
     <div class="mx-auto">
       <h4 class="text-center">本当に退会しますか？</h4>
       <br>
-      <p class="text-center">退会すると会員情報やお気に入りが削除され、<br>
+      <p class="delete-text text-center">退会すると会員情報やお気に入りが削除され、<br>
       会員のプロフィール詳細の閲覧やメッセージを利用できなくなります。</p>
     </div>
   </div>
   <div class="row justify-content-center">
-    <%= link_to "マイページに戻る", end_user_path(@end_user.id), class:"btn btn-success" %>　<%= link_to '退会する', end_users_unsubscribe_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class:"btn btn-danger" %>
+    <div class="delete-link">
+      <%= link_to "マイページに戻る", end_user_path(@end_user.id), class:"btn btn-outline-success" %>　<%= link_to '退会する', end_users_unsubscribe_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class:"btn btn-outline-danger" %>
+    </div>
   </div>
 </div>

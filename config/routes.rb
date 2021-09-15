@@ -19,8 +19,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'end_users/confirm' => 'end_users#confirm'
     patch 'end_users/unsubscribe' => 'end_users#unsubscribe'
-    get 'end_users/musician_favorite_list' => 'end_users#musician_favorite_list'
-    get 'end_users/shop_favorite_list' => 'end_users#shop_favorite_list'
+    get 'end_users/favorite_list' => 'end_users#favorite_list'
     resources :end_users, only:[:show, :edit, :update]
     resources :musician_profiles, except:[:destroy] do
       resources :musician_reviews, only:[:index, :create, :show]

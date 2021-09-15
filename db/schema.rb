@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_113909) do
   create_table "musician_reviews", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "musician_profile_id"
-    t.float "rate"
+    t.float "rate", default: 0.0
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -178,7 +178,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_113909) do
   create_table "shop_reviews", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "shop_profile_id"
-    t.float "rate"
+    t.float "rate", default: 0.0
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -42,4 +42,10 @@ class MusicianProfile < ApplicationRecord
 
   scope :get_genre, -> (genre) { joins(:end_user).where(genre: genre) if genre.present? }
   scope :get_area, -> (area) { where(area: area) if area.present? }
+
+  validates :area, presence: true
+  validates :genre, presence: true
+  validates :instrument, presence: true
+  validates :total_member, presence: true
+  validates :introduction, length: {maximum: 250}
 end

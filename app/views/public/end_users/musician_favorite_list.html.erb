@@ -1,10 +1,10 @@
 <div class="container">
   <h1 class="mypage_heading">Favorites</h1>
   <div class="row">
-    <% @favorites.each do |favorite| %>
-      <%= favorite.end_user.username %>
-      <%= favorite.musician_profile.instrument %>
-      <%= favorite.musician_profile.area_i18n %>
+    <% @musician_lists.each do |musician_list| %>
+      <%= musician_list.end_user.username %>
+      <%= musician_list.musician_profile.instrument %>
+      <%= musician_list.musician_profile.area_i18n %>
     <% end %>
   </div>
 </div>

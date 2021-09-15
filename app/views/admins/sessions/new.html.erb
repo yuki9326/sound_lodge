@@ -1,28 +1,22 @@
-<h1 class="admins_session_heading">管理者ログイン</h1>
+<div class="container">
+  <h1 class="session-heading">Log In For Admin</h1><br><br>
+  <div class="row justify-content-center">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <ul>
-  <li>
-    <%= f.label :email, "メールアドレス" %>
-  </li>
-  <li>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </li>
-  <li>
-    <%= f.label :password, "パスワード" %>
-  </li>
-  <li>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </li>
-  <li>
-    <% if devise_mapping.rememberable? %>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control session" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, autocomplete: "current-password", class:"form-control session" %>
+      <% if devise_mapping.rememberable? %>
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     <% end %>
-  </li>
-  <br>
-  <li>
-    <%= f.submit "ログイン" %>
-  </li>
-</ul>
-<% end %>
+    </div>
+    <br>
+    <%= f.submit "ログイン", class:"btn btn-outline-dark btn-block" %>
+    <% end %>
+  </div>
+</div>

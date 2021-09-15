@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="musician-profile-heading">Profile</h1>
     <div class="row">
-      <div class="col-6 position-static">
+      <div class="col-6">
         <%= attachment_image_tag @musician_profile, :image, :fill, 320, 250, fallback:"no_image.jpg", class:"shop-icon" %>
           <div id="avarage"></div>
           <p class="review-count"><%= link_to @musician_reviews.count, musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) %>件のレビュー</p>
@@ -14,13 +14,13 @@
           </div>
           <% end %>
       </div>
-      <div class="col-6 position-static">
+      <div class="col-6">
         <p class="profile-name"><%= @musician_profile.end_user.username %></p>
       </div>
     </div>
     <br><br>
     <div class="row">
-      <div class="profile-box position-static col-12">
+      <div class="profile-box col-12">
         <strong class="profile-label">音楽ジャンル</strong>
         <p><%= @musician_profile.genre_i18n %></p>
         <strong class="profile-label">活動エリア</strong>
@@ -47,7 +47,7 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-6 position-static">
+      <div class="col-6">
         <div class="rating-box">
           <h6 class="profile-label">レビューを書く</h6>
               <%= form_with model: @musician_review, url: musician_profile_musician_reviews_path(@musician_profile) ,local: true do |f| %>
@@ -63,7 +63,7 @@
               <br>
         </div>
       </div>
-        <div class="chat-wrapper position-static col-6">
+        <div class="chat-wrapper col-6">
           <% if end_user_signed_in? %>
             <% if @room.present? %>
               <%= link_to room_messages_path(@room), class:"message btn btn-outline-dark btn-block" do %>
@@ -80,6 +80,12 @@
 </div>
 
  <script>
+ <% @musician_reviews = MusicianReview.where(musician_profile_id: params[:id]).where.not(rate: nil) %>
+  <% if @musician_reviews == [] %>
+    <% review_average = 0 %>
+  <% else %>
+    <% review_average = @musician_reviews.average(:rate).round(1) %>
+  <% end %>
   $('#star').raty({
     size: 36,
     starOn: "<%= asset_path('star-on.png') %>",
@@ -96,7 +102,7 @@
     scoreName: 'musician_review[rate]',
     half: true,
     readOnly: true,
-    score: "#{musician_review.average(:rate).round(1)}"
+    score: "<%= review_average %>"
   });
 </script>
 

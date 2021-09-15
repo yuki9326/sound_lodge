@@ -9,9 +9,11 @@ class Public::RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(room_params)
-    @room.save
-    redirect_to room_messages_path(@room)
+    if params[:end_user_ids].count == 2
+      @room = Room.new(room_params)
+      @room.save
+      redirect_to room_messages_path(@room)
+    end
   end
 
   def destroy

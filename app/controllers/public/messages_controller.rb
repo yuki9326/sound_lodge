@@ -12,6 +12,7 @@ class Public::MessagesController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
+    @message.end_user_id = current_end_user.id
     if @message.save
       @room.end_users.each do |end_user|
         if end_user.id != current_end_user.id
@@ -28,7 +29,7 @@ class Public::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :image).merge(end_user_id: current_end_user.id)
+    params.require(:message).permit(:content, :image)
   end
 
   def redirect_sessions
