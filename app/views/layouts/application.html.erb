@@ -55,6 +55,7 @@
             <li class="nav-list"><%= link_to 'お問い合わせ一覧', admin_contacts_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"nav-link" %></li>
           <% else %>
+            <li class="nav-list"><%= link_to 'ホーム', root_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'Sound Lodgeとは', about_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'ログイン', new_end_user_session_path, class:"nav-link" %></li>
             <li class="nav-list"><%= link_to 'お店を探す', shop_profiles_path, class:"nav-link" %></li>
