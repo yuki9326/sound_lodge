@@ -9,13 +9,20 @@
 
 .contact-heading{
   text-align: center;
-  margin-top: 50px;
-  font-style: italic;
-  border-bottom: 6px double #000;
-  margin-bottom: 50px;
+  margin-top: 100px;
+  margin-bottom: 40px;
+  color: #777777;
 }
 
-.contact-heading:first-letter {
-  font-size: 150%;
-  color: #eb6100;
+.inquiry1.btn{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.inquiry-link{
+  margin: 50px auto;
+}
+
+.thanks-message{
+  margin: 200px auto;
 }

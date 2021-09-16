@@ -1,10 +1,22 @@
 <div class="container">
-  <h1 class="mypage_heading">Favorites</h1>
+  <h1 class="end-user-heading">Favorites</h1>
   <div class="row">
-    <% @musician_lists.each do |musician_list| %>
-      <%= musician_list.end_user.username %>
-      <%= musician_list.musician_profile.instrument %>
-      <%= musician_list.musician_profile.area_i18n %>
-    <% end %>
+    <div class="profile-list">
+      <% @musician_lists.each do |musician_list| %>
+      <div class="profile-box-list d-flex">
+        <div class="box-image">
+          <%= attachment_image_tag musician_list.musician_profile, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %>
+        </div>
+        <div class="box-content">
+          <strong class="list-name"><%= musician_list.end_user.username.truncate(10) %></strong><br><br>
+          <i class="fas fa-music mb-2"></i><%= musician_list.musician_profile.instrument.truncate(10) %><br>
+          <i class="fas fa-map-pin mb-2"></i><%= musician_list.musician_profile.area_i18n %><br>
+          <i class="fas fa-yen-sign mb-2"></i><%= musician_list.musician_profile.price %><br>
+          <%= link_to "詳細", musician_profile_path(musician_list.musician_profile.id), class:"profile btn btn-outline-dark btn-block" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
+

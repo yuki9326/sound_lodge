@@ -19,6 +19,7 @@ class Public::MusicianReviewsController < ApplicationController
 
   def show
     @musician_review = MusicianReview.find(params[:id])
+    @musician_profile = @musician_review.musician_profile
   end
 
  private

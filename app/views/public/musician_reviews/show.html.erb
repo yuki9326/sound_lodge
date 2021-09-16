@@ -24,6 +24,8 @@
   <br>
 
   <div class="row">
-    <%= link_to "一覧へ戻る", musician_profile_musician_reviews_path, class:"btn btn-warning mx-auto" %>
+    <div class="review-link">
+      <%= link_to "プロフィールへ戻る", musician_profile_path(@musician_profile.id), class:"btn btn-outline-dark" %>
+    </div>
   </div>
 </div>

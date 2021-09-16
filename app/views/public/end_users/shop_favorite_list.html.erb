@@ -1,11 +1,21 @@
 <div class="container">
-  <h1 class="mypage_heading">Favorites</h1>
-  <div class="row">
-    <% @shop_lists.each do |shop_list| %>
-      <%= attachment_image_tag shop_list.shop_profile, :image, :fill, 100, 100 %>
-      <%= shop_list.end_user.username %>
-      <%= shop_list.shop_profile.shop_name %>
-      <%= shop_list.shop_profile.area_i18n %>
-    <% end %>
-  </div>
+  <h1 class="end-user-heading">Favorites</h1>
+
+    <div class="profile-list">
+      <% @shop_lists.each do |shop_list| %>
+      <div class="profile-box-list d-flex">
+        <div class="box-image">
+          <%= attachment_image_tag shop_list.shop_profile, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %>
+        </div>
+        <div class="box-content">
+          <strong class="list-name"><%= shop_list.end_user.username.truncate(10) %></strong><br><br>
+          <i class="fas fa-store mb-2"></i><%= shop_list.shop_profile.shop_name.truncate(10) %><br>
+          <i class="fas fa-map-pin mb-2"></i><%= shop_list.shop_profile.area_i18n %><br>
+          <i class="fas fa-yen-sign mb-2"></i><%= shop_list.shop_profile.price %><br>
+          <%= link_to "詳細", shop_profile_path(shop_list.shop_profile.id), class:"profile btn btn-outline-dark btn-block" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
 </div>
+

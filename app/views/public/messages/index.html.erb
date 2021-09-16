@@ -5,7 +5,7 @@
     </div>
     <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
     <div class="form-input">
-      <%= f.text_area :content, class: "form-message" %>
+      <%= f.text_area :content, class: "form-message" %><br>
       <%= f.label :image, class: "far fa-image fa-2x" do %>
         <%= f.file_field :image, class:"message-image" %>
       <% end %>

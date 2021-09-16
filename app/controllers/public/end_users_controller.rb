@@ -29,7 +29,6 @@ class Public::EndUsersController < ApplicationController
       end
       @musician_ranks = @musician_ranks.flatten.take(3)
     end
-    @musician_profile = @end_user.musician_profile
   end
 
   def edit

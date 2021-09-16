@@ -22,22 +22,24 @@
   </div>
 
   <div class="row">
+    <div class="inquiry-link d-flex">
     <%= form_with model: @contact do |f| %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :email %>
       <%= f.hidden_field :subject %>
       <%= f.hidden_field :mail_body %>
       <%= f.hidden_field :end_user_id %>
-      <%= f.submit '送信', class:"btn btn-success" %>
+      <%= f.submit '送信', class:" inquiry1 d-flex btn btn-outline-success" %>
     <% end %>
 
-    <%= form_with model: @contact, url: contacts_back_path do |f| %>
+    <%= form_with model: @contact, url: contacts_back_path, local:true do |f| %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :email %>
         <%= f.hidden_field :subject %>
         <%= f.hidden_field :mail_body %>
         <%= f.hidden_field :end_user_id %>
-        <%= f.submit '入力画面に戻る', class:"btn btn-danger" %>
+        <%= f.submit '入力画面に戻る', class:"inquiry btn btn-outline-dark" %>
       <% end %>
+    </div>
   </div>
 </div>

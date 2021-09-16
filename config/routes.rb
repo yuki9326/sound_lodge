@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       resource :shop_favorites, only:[:create, :destroy]
     end
     post 'contacts/confirm' => 'contacts#confirm'
-    post 'contacts/back' => 'contact#back'
+    post 'contacts/back' => 'contacts#back'
     get 'contacts/thanks' => 'contacts#thanks'
     resources :contacts, only:[:new, :create]
     resources :rooms, only:[:new, :index, :create, :destroy] do
@@ -41,10 +41,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :musician_profiles, only:[:show, :index] do
+    resources :musician_profiles, only:[:show, :index, :edit, :update] do
       resources :musician_reviews, only:[:index]
     end
-    resources :shop_profiles, only:[:show, :index] do
+    resources :shop_profiles, only:[:show, :index, :edit, :update] do
       resources :shop_reviews, only:[:index]
     end
     resources :end_users, only:[:show, :edit, :update]

@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     case resource
     when :admin
       admin_path
-    when :end_user
+    when EndUser
       root_path
     end
   end
