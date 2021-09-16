@@ -1,0 +1,53 @@
+<div class="container">
+  <h1 class="musician-profile-heading">Edit Profile</h1><br><br>
+  <div class="row justify-content-center">
+    <%= form_with model: @musician_profile, url:admin_musician_profile_path(@musician_profile.id), local:true do |f| %>
+
+    <div class="form-group">
+      <%= f.label :image, "プロフィール画像" %><br>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class="form-group">
+      <%= f.label :area, "活動エリア" %>
+      <%= f.select :area, MusicianProfile.areas_i18n.invert, {prompt: "---"}, {class:"form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :genre, "音楽ジャンル" %>
+      <%= f.select :genre, MusicianProfile.genres_i18n.invert, {prompt: "---"}, {class:"form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :instrument, "楽器" %>
+      <%= f.text_field :instrument, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :total_member, "活動人数" %>
+      <div class="d-flex flex-row">
+        <%= f.text_field :total_member, class:"form-control" %><span> 人</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :is_vocal, "ボーカルの有無" %>
+      <%= f.radio_button :is_vocal, :有り, checked: "checked" %>
+      <%= f.label :有り %>
+      <%= f.radio_button :is_vocal, :無し %>
+      <%= f.label :無し %>
+    </div>
+    <div class="form-group">
+      <%= f.label :video_id, "演奏動画" %><br>
+      <%= f.file_field :video %>
+    </div>
+    <div class="form-group">
+      <%= f.label :introduction, "自己紹介文" %>
+      <%= f.text_area :introduction, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price, "希望価格/1時間" %>
+      <div class="d-flex flex-row">
+        <%= f.text_field :price, class:"form-control" %><span> 円</span>
+      </div>
+    </div>
+    <br>
+    <%= f.submit "変更", class:"btn btn-outline-success btn-block" %>
+    <% end %>
+  </div>
+</div>
