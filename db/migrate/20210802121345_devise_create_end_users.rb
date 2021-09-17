@@ -33,7 +33,7 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       t.string :name, null: false, default: ""
       t.string :username, null: false, default: ""
       t.boolean :is_active, null: false, default: true
-      t.integer :end_user_status, null: false, default: ""
+      #t.integer :end_user_status, null: false, default: ""
 
 
       t.timestamps
