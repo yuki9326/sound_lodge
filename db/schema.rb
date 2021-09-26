@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_113909) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "end_user_id", null: false
+    t.integer "end_user_id"
     t.string "subject", null: false
     t.string "name", null: false
     t.string "email", null: false
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_113909) do
   create_table "musician_profiles", force: :cascade do |t|
     t.integer "genre", null: false
     t.integer "end_user_id", null: false
-    t.integer "review_id"
+    t.integer "musician_review_id"
     t.integer "area", default: 0, null: false
     t.string "instrument", null: false
     t.integer "total_member", null: false
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_113909) do
   create_table "shop_profiles", force: :cascade do |t|
     t.integer "genre", null: false
     t.integer "end_user_id", null: false
-    t.integer "review_id"
+    t.integer "shop_review_id"
     t.string "shop_name", null: false
     t.integer "area", default: 0, null: false
     t.boolean "is_vocal", default: true, null: false

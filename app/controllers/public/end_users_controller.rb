@@ -42,7 +42,6 @@ class Public::EndUsersController < ApplicationController
     if @end_user.update(end_user_params)
       if before_end_user_status == @end_user.end_user_status
         redirect_to end_user_path(@end_user.id)
-        #return
       else
         if @end_user.end_user_status == "musician"
           @end_user.shop_profile.destroy
@@ -52,8 +51,6 @@ class Public::EndUsersController < ApplicationController
           redirect_to new_shop_profile_path
         end
       end
-
-      #redirect_to end_user_path(@end_user.id)
     else
       render :edit
     end

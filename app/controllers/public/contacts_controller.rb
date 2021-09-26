@@ -6,9 +6,9 @@ class Public::ContactsController < ApplicationController
 
   def confirm
     @contact = Contact.new(contact_params)
-    if @contact.invalid?
-      render :new
-    end
+    #if @contact.invalid?
+     # render :new
+    #end
   end
 
   def back
@@ -32,6 +32,6 @@ class Public::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:email,:name,:subject,:mail_body).merge(end_user_id: current_end_user.id)
+    params.require(:contact).permit(:email,:name,:subject,:mail_body)
   end
 end

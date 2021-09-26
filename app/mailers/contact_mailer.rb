@@ -5,7 +5,7 @@ class ContactMailer < ApplicationMailer
     mail to:    ENV['TOMAIL'], subject: '【お問い合わせ】' + @contact.subject
   end
 
-  def send_when_admin_reply(end_user, contact)
+  def send_when_admin_reply(contact)
     @contact = contact
     @answer = contact.reply
     mail to: contact.email, subject: '【Sound Lodge】お問い合わせありがとうございます'

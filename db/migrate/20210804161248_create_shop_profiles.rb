@@ -3,7 +3,7 @@ class CreateShopProfiles < ActiveRecord::Migration[5.2]
     create_table :shop_profiles do |t|
       t.integer :genre, null: false
       t.integer :end_user_id, null: false
-      t.integer :review_id
+      t.integer :shop_review_id
       t.string :shop_name, null: false
       t.integer :area, null: false, default: 0
       t.boolean :is_vocal, null: false, default: true

@@ -2,7 +2,7 @@
   <h1 class="musician-profile-heading">Profile</h1>
     <div class="row">
       <div class="col-6">
-        <%= attachment_image_tag @musician_profile, :image, :fill, 320, 250, fallback:"no_image.jpg", class:"shop-icon" %>
+        <%= attachment_image_tag @musician_profile, :image, :fill, 320, 250, fallback:"no_image.jpg", size:"320x250", class:"shop-icon" %>
           <div id="avarage"></div>
           <p class="review-count"><%= link_to @musician_reviews.count, musician_profile_musician_reviews_path(musician_profile_id: @musician_profile.id) %>件のレビュー</p>
           <% if end_user_signed_in? && @musician_profile.end_user.id != current_end_user.id %>

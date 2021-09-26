@@ -28,6 +28,7 @@
         </div>
 
         <script>
+          $('#avarage_<%= shop_profile.end_user.id %>').empty();
           <% shop_reviews = ShopReview.where(shop_profile_id: shop_profile.id).where.not(rate: nil) %>
           <% if shop_reviews == [] %>
             <% review_average = 0 %>
