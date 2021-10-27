@@ -29,6 +29,7 @@
 
 
         <script>
+        $('#avarage_<%= musician_profile.end_user.id %>').empty();
         <% musician_reviews = MusicianReview.where(musician_profile_id: musician_profile.id) %>
         <% if musician_reviews == [] %>
           <% review_average = 0 %>
